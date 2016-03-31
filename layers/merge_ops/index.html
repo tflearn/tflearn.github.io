@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Merge Layers - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Merge Layers";
+    var mkdocs_page_input_path = "layers/merge_ops.md";
+    var mkdocs_page_url = "/layers/merge_ops/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Merge Layers</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#merge">Merge</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#merge-outputs">Merge Outputs</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Layers &raquo;</li>
+        
+      
+    
+    <li>Merge Layers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="merge">Merge</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.merge_ops.merge</b></span>  (tensors_list,  mode,  axis=1,  name='Merge')</span></p>
+<p>Merge a list of <code>Tensor</code> into a single one.</p>
+<h3>Input</h3>
+
+<p>List of Tensors.</p>
+<h3>Output</h3>
+
+<p>Merged Tensors.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>tensors_list</strong>: A list of <code>Tensor</code>, A list of tensors to merge.</li>
+<li><strong>mode</strong>: <code>str</code>. Merging mode, it supports:
+'concat': concatenate outputs along specified axis
+'elemwise_sum': outputs element-wise sum.
+'elemwise_mul': outputs element-wise sum.
+'sum': outputs element-wise sum along specified axis
+'mean': outputs element-wise average along specified axis
+'prod': outputs element-wise multiplication along specified axis
+'max': outputs max elements along specified axis
+'min': outputs min elements along specified axis
+'and': <code>logical and</code> btw outputs elements along specified axis
+'or': <code>logical or</code> btw outputs elements along specified axis</li>
+<li><strong>axis</strong>: <code>int</code>. Represents the axis to use for merging mode.
+In most cases: 0 for concat and 1 for other modes.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Merge'.</li>
+</ul>
+<hr />
+<h1 id="merge-outputs">Merge Outputs</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.merge_ops.merge_outputs</b></span>  (tensor_list,  name='MergeOutputs')</span></p>
+<p>A layer that concatenate all outputs of a network into a single tensor.</p>
+<h3>Input</h3>
+
+<p>List of Tensors [<em>shape</em>].</p>
+<h3>Output</h3>
+
+<p>Concatenated Tensors [nb_tensors, <em>shape</em>].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>tensor_list</strong>: list of <code>Tensor</code>. The network outputs.</li>
+<li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code>.</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../estimator/" class="btn btn-neutral float-right" title="Estimator Layers">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../embedding_ops/" class="btn btn-neutral" title="Embedding Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../embedding_ops/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../estimator/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

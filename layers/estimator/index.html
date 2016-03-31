@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Estimator Layers - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Estimator Layers";
+    var mkdocs_page_input_path = "layers/estimator.md";
+    var mkdocs_page_url = "/layers/estimator/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Estimator Layers</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#regression">Regression</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Layers &raquo;</li>
+        
+      
+    
+    <li>Estimator Layers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="regression">Regression</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.estimator.regression</b></span>  (incoming,  placeholder=None,  optimizer='adam',  loss='categorical_crossentropy',  metric='default',  learning_rate=0.001,  dtype=tf.float32,  batch_size=64,  shuffle_batches=True,  op_name=None,  name=None)</span></p>
+<h3>Input</h3>
+
+<p>2-D Tensor Layer.</p>
+<h3>Output</h3>
+
+<p>2-D Tensor Layer (Same as input).</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 2-D Tensor.</li>
+<li><strong>placeholder</strong>: <code>Tensor</code>. This regression target (label) placeholder.
+If 'None' provided, a placeholder will be added automatically.
+You can retrieve that placeholder through graph key: 'TARGETS',
+or the 'placeholder' attribute of this function's returned tensor.</li>
+<li><strong>optimizer</strong>: <code>str</code> (name) or <code>Optimizer</code>. Optimizer to use.
+Default: 'sgd' (Stochastic Descent Gradient).</li>
+<li><strong>loss</strong>: <code>str</code> (name) or <code>Tensor</code>. Loss function used by this layer
+optimizer. Default: 'categorical_crossentropy'.</li>
+<li><strong>metric</strong>: <code>str</code>, <code>Metric</code> or <code>Tensor</code>. The metric to be used.
+Default: 'default' metric is 'accuracy'. To disable metric
+calculation, set it to 'None'.</li>
+<li><strong>learning_rate</strong>: <code>float</code>. This layer optimizer's learning rate.</li>
+<li><strong>dtype</strong>: <code>tf.types</code>. This layer placeholder type. Default: tf.float32.</li>
+<li><strong>batch_size</strong>: <code>int</code>. Batch size of data to use for training. tflearn
+supports different batch size for every optimizers. Default: 64.</li>
+<li><strong>shuffle_batches</strong>: <code>bool</code>. Shuffle or not this optimizer batches at
+every epoch. Default: True.</li>
+<li><strong>op_name</strong>: A name for this layer optimizer (optional).
+Default: optimizer op name.</li>
+<li><strong>name</strong>: A name for this layer's placeholder scope.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>placeholder</strong>: <code>Tensor</code>. Placeholder for feeding labels.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../activations/" class="btn btn-neutral float-right" title="Activations">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../merge_ops/" class="btn btn-neutral" title="Merge Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../merge_ops/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../../activations/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

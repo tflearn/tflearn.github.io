@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Data Utils - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Data Utils";
+    var mkdocs_page_input_path = "data_utils.md";
+    var mkdocs_page_url = "/data_utils/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Data Utils</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#to_categorical">to_categorical</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#pad_sequences">pad_sequences</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#string_to_semi_redundant_sequences">string_to_semi_redundant_sequences</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#shuffle">shuffle</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#samplewise_zero_center">samplewise_zero_center</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#samplewise_std_normalization">samplewise_std_normalization</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#featurewise_zero_center">featurewise_zero_center</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#featurewise_std_normalization">featurewise_std_normalization</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Others &raquo;</li>
+        
+      
+    
+    <li>Data Utils</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="to_categorical">to_categorical</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.to_categorical</b></span>  (y,  nb_classes)</span></p>
+<p>Convert class vector (integers from 0 to nb_classes)
+to binary class matrix, for use with categorical_crossentropy.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>y</strong>: <code>array</code>. Class vector to convert.</li>
+<li><strong>nb_classes</strong>: <code>int</code>. Total number of classes.</li>
+</ul>
+<hr />
+<h1 id="pad_sequences">pad_sequences</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.pad_sequences</b></span>  (sequences,  maxlen=None,  dtype='int32',  padding='pre',  truncating='pre',  value=0.0)</span></p>
+<p>Pad each sequence to the same length: the length of the longest sequence.
+If maxlen is provided, any sequence longer than maxlen is truncated to
+maxlen. Truncation happens off either the beginning (default) or the
+end of the sequence. Supports post-padding and pre-padding (default).</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>sequences</strong>: list of lists where each element is a sequence.</li>
+<li><strong>maxlen</strong>: int, maximum length.</li>
+<li><strong>dtype</strong>: type to cast the resulting sequence.</li>
+<li><strong>padding</strong>: 'pre' or 'post', pad either before or after each sequence.</li>
+<li><strong>truncating</strong>: 'pre' or 'post', remove values from sequences larger than
+maxlen either in the beginning or in the end of the sequence</li>
+<li><strong>value</strong>: float, value to pad the sequences to the desired value.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>x: <code>numpy array</code> with dimensions (number_of_sequences, maxlen)</p>
+<hr />
+<h1 id="string_to_semi_redundant_sequences">string_to_semi_redundant_sequences</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.string_to_semi_redundant_sequences</b></span>  (string,  seq_maxlen=25,  redun_step=3)</span></p>
+<p>Vectorize a string and returns parsed sequences and targets, along with
+the associated dictionary.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>path</strong>: <code>float</code>. Path of text file.</li>
+<li><strong>seq_maxlen</strong>: <code>int</code>. Maximum length of a sequence. Default: 25.</li>
+<li><strong>redun_step</strong>: <code>int</code>. Redundancy step. Default: 3.</li>
+</ul>
+<h3>Returns</h3>
+
+<p><code>tuple</code>: (inputs, targets, dictionary)</p>
+<hr />
+<h1 id="shuffle">shuffle</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.shuffle</b></span>  (*arrs)</span></p>
+<p>Shuffle given arrays at unison, along first axis.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li>*arrs: Each array to shuffle at unison as a parameter.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>Tuple of shuffled arrays.</p>
+<hr />
+<h1 id="samplewise_zero_center">samplewise_zero_center</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.samplewise_zero_center</b></span>  (X)</span></p>
+<p>Zero center each sample by subtracting it by its mean.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>X</strong>: <code>array</code>. The batch of samples to center.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A numpy array with same shape as input.</p>
+<hr />
+<h1 id="samplewise_std_normalization">samplewise_std_normalization</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.samplewise_std_normalization</b></span>  (X)</span></p>
+<p>Scale each sample with its standard deviation.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>X</strong>: <code>array</code>. The batch of samples to scale.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A numpy array with same shape as input.</p>
+<hr />
+<h1 id="featurewise_zero_center">featurewise_zero_center</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.featurewise_zero_center</b></span>  (X,  mean=None)</span></p>
+<p>Zero center every sample with specified mean. If not specified, the mean
+is evaluated over all samples.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>X</strong>: <code>array</code>. The batch of samples to center.</li>
+<li><strong>mean</strong>: <code>float</code>. The mean to use for zero centering. If not specified, it
+will be evaluated on provided data.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A numpy array with same shape as input. Or a tuple (array, mean) if no
+mean value was specified.</p>
+<hr />
+<h1 id="featurewise_std_normalization">featurewise_std_normalization</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.featurewise_std_normalization</b></span>  (X,  std=None)</span></p>
+<p>Scale each sample by the specified standard deviation. If no std
+specified, std is evaluated over all samples data.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>X</strong>: <code>array</code>. The batch of samples to scale.</li>
+<li><strong>std</strong>: <code>float</code>. The std to use for scaling data. If not specified, it
+will be evaluated over the provided data.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A numpy array with same shape as input. Or a tuple (array, std) if no
+std value was specified.</p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../config/" class="btn btn-neutral float-right" title="Graph Config">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../helpers/regularizer/" class="btn btn-neutral" title="Regularizer"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../helpers/regularizer/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../config/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

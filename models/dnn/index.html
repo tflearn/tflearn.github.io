@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Deep Neural Network - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Deep Neural Network";
+    var mkdocs_page_input_path = "models/dnn.md";
+    var mkdocs_page_url = "/models/dnn/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Deep Neural Network</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#deep-neural-network-model">Deep Neural Network Model</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Models &raquo;</li>
+        
+      
+    
+    <li>Deep Neural Network</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="deep-neural-network-model">Deep Neural Network Model</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.models.dnn.DNN</b></span>  (network,  clip_gradients=5.0,  tensorboard_verbose=0,  tensorboard_dir='/tmp/tflearn_logs/',  checkpoint_path=None,  max_checkpoints=None)</span></p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>network</strong>: <code>Tensor</code>. Neural network to be used.</li>
+<li><strong>tensorboard_verbose</strong>: <code>int</code>. Summary verbose level, it accepts
+different levels of tensorboard logs:</li>
+</ul>
+<pre><code class="python">0: Loss, Accuracy (Best Speed).
+1: Loss, Accuracy, Gradients.
+2: Loss, Accuracy, Gradients, Weights.
+3: Loss, Accuracy, Gradients, Weights, Activations, Sparsity.(Best visualization)
+</code></pre>
+
+<ul>
+<li><strong>tensorboard_dir</strong>: <code>str</code>. Directory to store tensorboard logs.
+Default: "/tmp/tflearn_logs/"</li>
+<li><strong>checkpoint_path</strong>: <code>str</code>. Path to store model checkpoints. If None,
+no model checkpoint will be saved. Default: None.</li>
+<li><strong>max_checkpoints</strong>: <code>int</code> or None. Maximum amount of checkpoints. If
+None, no limit. Default: None.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>trainer</strong>: <code>Trainer</code>. Handle model training.</li>
+<li><strong>predictor</strong>: <code>Predictor</code>. Handle model prediction.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>evaluate</b></span>  (X,  Y,  batch_size)</span></p>
+<p>Evaluate model on given samples.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>X</strong>: array, <code>list</code> of array (if multiple inputs) or <code>dict</code>
+(with inputs layer name as keys). Data to feed to train
+model.</li>
+<li><strong>Y</strong>: array, <code>list</code> of array (if multiple inputs) or <code>dict</code>
+(with estimators layer name as keys). Targets (Labels) to
+feed to train model. Usually set as the next element of a
+sequence, i.e. for x[0] =&gt; y[0] = x[1].</li>
+<li><strong>batch_size</strong>: <code>int</code>. The batch size. Default: 128.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>The metric score.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (X_inputs,  Y_targets,  n_epoch=10,  validation_set=None,  show_metric=False,  batch_size=None,  shuffle=None,  snapshot_epoch=True,  snapshot_step=None,  run_id=None)</span></p>
+<p>Train model, feeding X_inputs and Y_targets to the network.</p>
+<p>NOTE: When not feeding dicts, data assignations is made by
+input/estimator layers creation order (For example, the second
+input layer created will be feeded by the second value of
+X_inputs list).</p>
+<h5>Examples</h5>
+
+<pre><code class="python">model.fit(X, Y) # Single input and output
+model.fit({'input1': X}, {'output1': Y}) # Single input and output
+model.fit([X1, X2], Y) # Mutliple inputs, Single output
+
+# validate with X_val and [Y1_val, Y2_val]
+model.fit(X, [Y1, Y2], validation_set=(X_val, [Y1_val, Y2_val]))
+# 10% of training data used for validation
+model.fit(X, Y, validation_set=0.1)
+</code></pre>
+
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>X_inputs</strong>: array, <code>list</code> of array (if multiple inputs) or <code>dict</code>
+(with inputs layer name as keys). Data to feed to train
+model.</li>
+<li><strong>Y_targets</strong>: array, <code>list</code> of array (if multiple inputs) or <code>dict</code>
+(with estimators layer name as keys). Targets (Labels) to
+feed to train model.</li>
+<li><strong>n_epoch</strong>: <code>int</code>. Number of epoch to run. Default: None.</li>
+<li><strong>validation_set</strong>: <code>tuple</code>. Represents data used for validation.
+<code>tuple</code> holds data and targets (provided as same type as
+X_inputs and Y_targets). Additionally, it also accepts
+<code>float</code> (&lt;1) to performs a data split over training data.</li>
+<li><strong>show_metric</strong>: <code>bool</code>. Display or not accuracy at every step.</li>
+<li><strong>batch_size</strong>: <code>int</code> or None. If <code>int</code>, overrides all network
+estimators 'batch_size' by this value.</li>
+<li><strong>shuffle</strong>: <code>bool</code> or None. If <code>bool</code>, overrides all network
+estimators 'shuffle' by this value.</li>
+<li><strong>snapshot_epoch</strong>: <code>bool</code>. If True, it will snapshot model at the end
+of every epoch. (Snapshot a model will evaluate this model
+on validation set, as well as create a checkpoint if
+'checkpoint_path' specified).</li>
+<li><strong>snapshot_step</strong>: <code>int</code> or None. If <code>int</code>, it will snapshot model
+every 'snapshot_step' steps.</li>
+<li><strong>run_id</strong>: <code>str</code>. Give a name for this run. (Useful for Tensorboard).</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>get_weights</b></span>  (weight_tensor)</span></p>
+<p>Get a variable weights.</p>
+<h5>Examples</h5>
+
+<pre><code>dnn = DNNTrainer(...)
+w = dnn.get_weights(denselayer.W) # get a dense layer weights
+w = dnn.get_weights(convlayer.b) # get a conv layer biases
+</code></pre>
+
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>weight_tensor</strong>: <code>Tensor</code>. A Variable.</li>
+</ul>
+<h5>Returns</h5>
+
+<p><code>np.array</code>. The provided variable weights.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>load</b></span>  (model_file)</span></p>
+<p>Restore model weights.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>model_file</strong>: <code>str</code>. Model path.</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>predict</b></span>  (X)</span></p>
+<p>Model prediction for given input data.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>X</strong>: array, <code>list</code> of array (if multiple inputs) or <code>dict</code>
+(with inputs layer name as keys). Data to feed for prediction.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>array or <code>list</code> of array. The predicted value.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>save</b></span>  (model_file)</span></p>
+<p>Save model weights.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>model_file</strong>: <code>str</code>. Model path.</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>set_weights</b></span>  (tensor,  weights)</span></p>
+<p>Assign a tensor variable a given value.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>tensor</strong>: <code>Tensor</code>. The tensor variable to assign value.</li>
+<li><strong>weights</strong>: The value to be assigned.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../generator/" class="btn btn-neutral float-right" title="Generative Neural Network">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../examples/" class="btn btn-neutral" title="Examples"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../examples/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../generator/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

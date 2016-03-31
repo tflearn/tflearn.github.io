@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Trainer - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+  <link href="../../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Trainer";
+    var mkdocs_page_input_path = "helpers/trainer.md";
+    var mkdocs_page_url = "/helpers/trainer/";
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Trainer</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#trainer">Trainer</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#trainop">TrainOp</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Helpers for Extending Tensorflow &raquo;</li>
+        
+      
+    
+    <li>Trainer</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="trainer">Trainer</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.trainer.Trainer</b></span>  (train_ops,  graph=None,  clip_gradients=5.0,  tensorboard_dir='/tmp/tflearn_logs/',  tensorboard_verbose=0,  checkpoint_path=None,  max_checkpoints=None,  keep_checkpoint_every_n_hours=10000.0,  random_seed=None)</span></p>
+<p>Generic class to handle any TensorFlow graph training. It requires
+the use of <code>TrainOp</code> to specify all optimization parameters.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>train_ops</strong>: list of <code>TrainOp</code>. A list of a network training
+operations for performing optimizations.</li>
+<li><strong>graph</strong>: <code>tf.Graph</code>. The TensorFlow graph to use. Default: default tf
+graph.</li>
+<li><strong>clip_gradients</strong>: <code>float</code>. Clip gradient. Default: 5.0.</li>
+<li><strong>tensorboard_dir</strong>: <code>str</code>. Tensorboard log directory.
+Default: "/tmp/tflearn_logs/".</li>
+<li><strong>tensorboard_verbose</strong>: <code>int</code>. Verbose level. It supports:</li>
+</ul>
+<pre><code class="python">0 - Loss, Accuracy. (Best Speed)
+1 - Loss, Accuracy, Gradients.
+2 - Loss, Accuracy, Gradients, Weights.
+3 - Loss, Accuracy, Gradients, Weights, Activations, Sparsity.(Best Visualization)
+</code></pre>
+
+<ul>
+<li><strong>checkpoint_path</strong>: <code>str</code>. Path to store model checkpoints. If None,
+no model checkpoint will be saved. Default: None.</li>
+<li><strong>max_checkpoints</strong>: <code>int</code> or None. Maximum amount of checkpoints. If
+None, no limit. Default: None.</li>
+<li><strong>keep_checkpoint_every_n_hours</strong>: <code>float</code>. Number of hours between each
+model checkpoints.</li>
+<li><strong>random_seed</strong>: <code>int</code>. Random seed, for test reproductivity.
+Default: None.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  run_id=None)</span></p>
+<p>Train network with feeded data dicts.</p>
+<h5>Examples</h5>
+
+<pre><code class="python"># 1 Optimizer
+trainer.fit(feed_dicts={input1: X, output1: Y},val_feed_dicts={input1: X, output1: Y})
+trainer.fit(feed_dicts={input1: X1, input2: X2, output1: Y},val_feed_dicts=0.1) # 10% of data used for validation
+
+# 2 Optimizers
+trainer.fit(feed_dicts=[{in1: X1, out1:Y}, {in2: X2, out2:Y2}],val_feed_dicts=[{in1: X1, out1:Y}, {in2: X2, out2:Y2}])
+</code></pre>
+
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>feed_dicts</strong>: <code>dict</code> or list of <code>dict</code>. The dictionary to feed
+data to the network. It follows Tensorflow feed dict
+specifications: '{placeholder: data}'. In case of multiple
+optimizers, a list of dict is expected, that will
+respectively feed optimizers.</li>
+<li><strong>n_epoch</strong>: <code>int</code>. Number of epoch to runs.</li>
+<li><strong>val_feed_dicts</strong>: <code>dict</code>, list of <code>dict</code>, <code>float</code> or list of
+<code>float</code>. The data used for validation. Feed dict are
+following the same specification as <code>feed_dicts</code> above. It
+is also possible to provide a <code>float</code> for splitting training
+data for validation.</li>
+<li><strong>show_metric</strong>: <code>bool</code>. If True, accuracy will be calculated and
+displayed at every step. Might give slower training.</li>
+<li><strong>snapshot_step</strong>: <code>int</code>. If not None, the network will be snapshot
+every provided step (calculate validation loss/accuracy and
+save model, if a <code>checkpoint_path</code> is specified in <code>Trainer</code>).</li>
+<li><strong>snapshot_epoch</strong>: <code>bool</code>. If True, snapshot the network at the end
+of every epoch.</li>
+<li><strong>shuffle_all</strong>: <code>bool</code>. If True, shuffle all data batches (overrides
+<code>TrainOp</code> shuffle parameter behavior).</li>
+<li><strong>run_id</strong>: <code>str</code>. A name for the current run. Used for Tensorboard
+display. If no name provided, a random one will be generated.</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>restore</b></span>  (model_file)</span></p>
+<p>Restore a Tensorflow model</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>model_file</strong>: path of tensorflow model to restore</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>save</b></span>  (model_file,  global_step=None)</span></p>
+<p>Save a Tensorflow model</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>model_file</strong>: <code>str</code>. Saving path of tensorflow model</li>
+<li><strong>global_step</strong>: <code>float</code>. The training step to append to the
+model file name (optional).</li>
+</ul>
+<hr />
+<h1 id="trainop">TrainOp</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.trainer.TrainOp</b></span>  (loss,  optimizer,  metric=None,  batch_size=64,  ema=0.0,  trainable_vars=None,  shuffle=True,  step_tensor=None,  name=None,  graph=None)</span></p>
+<p>TrainOp represents a set of operation used for optimizing a network.</p>
+<p>A TrainOp is meant to hold all training parameters of an optimizer.
+<code>Trainer</code> class will then instantiate them all specifically considering all
+optimizers of the network (set names, scopes... set optimization ops...).</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>loss</strong>: <code>Tensor</code>. Loss operation to evaluate network cost.
+Optimizer will use this cost function to train network.</li>
+<li><strong>optimizer</strong>: <code>Optimizer</code>. Tensorflow Optimizer. The optimizer to
+use to train network.</li>
+<li><strong>metric</strong>:  <code>Tensor</code>. The metric tensor to be used for evaluation.</li>
+<li><strong>batch_size</strong>: <code>int</code>. Batch size for data feeded to this optimizer.
+Default: 64.</li>
+<li><strong>ema</strong>: <code>float</code>. Exponential moving averages.</li>
+<li><strong>trainable_vars</strong>: list of <code>tf.Variable</code>. List of trainable variables to
+use for training. Default: all trainable variables.</li>
+<li><strong>shuffle</strong>: <code>bool</code>. Shuffle data.</li>
+<li><strong>step_tensor</strong>: <code>tf.Tensor</code>. A variable holding training step. If not
+provided, it will be created. Early defining the step tensor
+might be useful for network creation, such as for learning rate
+decay.</li>
+<li><strong>name</strong>: <code>str</code>. A name for this class (optional).</li>
+<li><strong>graph</strong>: <code>tf.Graph</code>. Tensorflow Graph to use for training. Default:
+default tf graph.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>initialize_fit</b></span>  (feed_dict,  val_feed_dict,  show_metric,  summ_writer)</span></p>
+<p>Initialize data for feeding the training process. It is meant to
+be used by <code>Trainer</code> before starting to fit data.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>feed_dict</strong>: <code>dict</code>. The data dictionary to feed.</li>
+<li><strong>val_feed_dict</strong>: <code>dict</code>. The validation data dictionary to feed.</li>
+<li><strong>show_metric</strong>: <code>bool</code>. If True, display accuracy at every step.</li>
+<li><strong>summ_writer</strong>: <code>SummaryWriter</code>. The summary writer to use for
+Tensorboard logging.</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>initialize_training_ops</b></span>  (i,  session,  tensorboard_verbose,  clip_gradients)</span></p>
+<p>Initialize all ops used for training. Because a network can have
+multiple optimizers, an id 'i' is allocated to differentiate them.
+This is meant to be used by <code>Trainer</code> when initializing all train ops.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>i</strong>: <code>int</code>. This optimizer training process ID.</li>
+<li><strong>session</strong>: <code>tf.Session</code>. The session used to train the network.</li>
+<li><strong>tensorboard_verbose</strong>: <code>int</code>. Logs verbose. Supports:</li>
+</ul>
+<pre><code>0 - Loss, Accuracy.
+1 - Loss, Accuracy, Gradients.
+2 - Loss, Accuracy, Gradients, Weights.
+3 - Loss, Accuracy, Gradients, Weights, Activations, Sparsity..
+</code></pre>
+
+<ul>
+<li><strong>clip_gradients</strong>: <code>float</code>. Option for clipping gradients.</li>
+</ul>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../evaluator/" class="btn btn-neutral float-right" title="Evaluator">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../../variables/" class="btn btn-neutral" title="Variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../../variables/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../evaluator/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

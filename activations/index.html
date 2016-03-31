@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Activations - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Activations";
+    var mkdocs_page_input_path = "activations.md";
+    var mkdocs_page_url = "/activations/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Activations</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#linear">Linear</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#tanh">Tanh</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#sigmoid">Sigmoid</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#softmax">Softmax</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#softplus">Softplus</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#softsign">Softsign</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#relu">ReLU</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#relu6">ReLU6</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#leakyrelu">LeakyReLU</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#prelu">PReLU</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#elu">ELU</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Built-in Ops &raquo;</li>
+        
+      
+    
+    <li>Activations</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="linear">Linear</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.linear</b></span>  (x)</span></p>
+<p>f(x) = x</p>
+<h3>Arguments</h3>
+
+<ul>
+<li>x : A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
+<code>int16</code>, or <code>int8</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>The incoming Tensor (without changes).</p>
+<hr />
+<h1 id="tanh">Tanh</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.tanh</b></span>  (x)</span></p>
+<p>Computes hyperbolic tangent of <code>x</code> element-wise.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A Tensor with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>complex64</code>, <code>int64</code>,
+or <code>qint32</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A Tensor with the same type as <code>x</code> if <code>x.dtype != qint32</code> otherwise
+  the return type is <code>quint8</code>.</p>
+<hr />
+<h1 id="sigmoid">Sigmoid</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.sigmoid</b></span>  (x)</span></p>
+<p>Computes sigmoid of <code>x</code> element-wise.
+Specifically, <code>y = 1 / (1 + exp(-x))</code>.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A Tensor with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>complex64</code>, <code>int64</code>,
+or <code>qint32</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A Tensor with the same type as <code>x</code> if <code>x.dtype != qint32</code> otherwise
+the return type is <code>quint8</code>.</p>
+<hr />
+<h1 id="softmax">Softmax</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.softmax</b></span>  (x)</span></p>
+<p>Computes softmax activations.</p>
+<p>For each batch <code>i</code> and class <code>j</code> we have</p>
+<p>softmax[i, j] = exp(logits[i, j]) / sum(exp(logits[i]))</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code>. Must be one of the following types: <code>float32</code>,
+<code>float64</code>. 2-D with shape <code>[batch_size, num_classes]</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code>. Has the same type as <code>x</code>. Same shape as <code>x</code>.</p>
+<hr />
+<h1 id="softplus">Softplus</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.softplus</b></span>  (x)</span></p>
+<p>Computes softplus: <code>log(exp(features) + 1)</code>.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code>. Must be one of the following types: <code>float32</code>,
+<code>float64</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>, <code>int16</code>, <code>int8</code>, <code>uint16</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code>. Has the same type as <code>x</code>.</p>
+<hr />
+<h1 id="softsign">Softsign</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.softsign</b></span>  (x)</span></p>
+<p>Computes softsign: <code>features / (abs(features) + 1)</code>.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code>. Must be one of the following types: <code>float32</code>,
+<code>float64</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>, <code>int16</code>, <code>int8</code>, <code>uint16</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code>. Has the same type as <code>x</code>.</p>
+<hr />
+<h1 id="relu">ReLU</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.relu</b></span>  (x)</span></p>
+<p>Computes rectified linear: <code>max(features, 0)</code>.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code>. Must be one of the following types: <code>float32</code>,
+<code>float64</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>, <code>int16</code>, <code>int8</code>, <code>uint16</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code>. Has the same type as <code>x</code>.</p>
+<hr />
+<h1 id="relu6">ReLU6</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.relu6</b></span>  (x)</span></p>
+<p>Computes Rectified Linear 6: <code>min(max(features, 0), 6)</code>.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
+<code>int16</code>, or <code>int8</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code> with the same type as <code>x</code>.</p>
+<hr />
+<h1 id="leakyrelu">LeakyReLU</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.leaky_relu</b></span>  (x,  alpha=0.1,  name='LeakyReLU')</span></p>
+<p>Modified version of ReLU, introducing a nonzero gradient for negative
+input.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
+<code>int16</code>, or <code>int8</code>.</li>
+<li><strong>alpha</strong>: <code>float</code>. slope.</li>
+<li><strong>name</strong>: A name for this activation op (optional).</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code> with the same type as <code>x</code>.</p>
+<h3>References</h3>
+
+<p>Rectifier Nonlinearities Improve Neural Network Acoustic Models,
+Maas et al. (2013).</p>
+<h3>Links</h3>
+
+<p><a href="http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf</a></p>
+<hr />
+<h1 id="prelu">PReLU</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.prelu</b></span>  (x,  weights_init='zeros',  name='PReLU')</span></p>
+<p>Parametric Rectified Linear Unit.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>x</strong>: A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
+<code>int16</code>, or <code>int8</code>.</li>
+<li><strong>weights_init</strong>: <code>str</code>. Weights initialization. Default: zeros.</li>
+<li><strong>name</strong>: A name for this activation op (optional).</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>str</code>. This op scope.</li>
+<li><strong>alphas</strong>: <code>Variable</code>. PReLU alphas.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code> with the same type as <code>x</code>.</p>
+<h3>References</h3>
+
+<p>Delving Deep into Rectifiers: Surpassing Human-Level Performance
+on ImageNet Classification. He et al., 2014.</p>
+<h3>Links</h3>
+
+<p><a href="http://arxiv.org/pdf/1502.01852v1.pdf">http://arxiv.org/pdf/1502.01852v1.pdf</a></p>
+<hr />
+<h1 id="elu">ELU</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.elu</b></span>  (x)</span></p>
+<p>Exponential Linear Unit.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li>x : A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
+<code>int16</code>, or <code>int8</code>.</li>
+<li>name : A name for this activation op (optional).</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>tuple</code> of <code>tf.Tensor</code>. This layer inference, i.e. output Tensors
+at training and testing time.</p>
+<h3>References</h3>
+
+<p>Fast and Accurate Deep Network Learning by Exponential Linear Units,
+Djork-Arné Clevert, Thomas Unterthiner, Sepp Hochreiter. 2015.</p>
+<h3>Links</h3>
+
+<p><a href="http://arxiv.org/abs/1511.07289">http://arxiv.org/abs/1511.07289</a></p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../objectives/" class="btn btn-neutral float-right" title="Objectives">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../layers/estimator/" class="btn btn-neutral" title="Estimator Layers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../layers/estimator/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../objectives/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

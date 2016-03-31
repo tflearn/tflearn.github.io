@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Optimizers - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Optimizers";
+    var mkdocs_page_input_path = "optimizers.md";
+    var mkdocs_page_url = "/optimizers/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Optimizers</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#base-optimizer-class">Base Optimizer class</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#stochastic-gradient-descent">Stochastic Gradient Descent</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#rmsprop">RMSprop</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#adam">Adam</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#momentum">Momentum</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#adagrad">AdaGrad</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#ftrl-proximal">Ftrl Proximal</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>Built-in Ops &raquo;</li>
+        
+      
+    
+    <li>Optimizers</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="base-optimizer-class">Base Optimizer class</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.Optimizer</b></span>  (learning_rate,  use_locking,  name)</span></p>
+<p>A basic class to create optimizers to be used with TFLearn estimators.
+First, The Optimizer class is initialized with given parameters,
+but no Tensor is created. In a second step, invoking <code>get_tensor</code> method
+will actually build the Tensorflow <code>Optimizer</code> Tensor, and return it.</p>
+<p>This way, a user can easily specifies an optimizer with non default
+parameters and learning rate decay, while TFLearn estimators will
+build the optimizer and a step tensor by itself.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. The optimizer name.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>tensor</strong>: <code>Optimizer</code>. The optimizer tensor.</li>
+<li><strong>has_decay</strong>: <code>bool</code>. True if optimizer has a learning rate decay.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>build</b></span>  (step_tensor=None)</span></p>
+<p>This method creates the optimizer with specified parameters. It must
+be implemented for every <code>Optimizer</code>.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>step_tensor</strong>: <code>tf.Tensor</code>. A variable holding the training step.
+Only necessary when optimizer has a learning rate decay.</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>get_tensor</b></span>  (self)</span></p>
+<p>A method to retrieve the optimizer tensor.</p>
+<h5>Returns</h5>
+
+<p>The <code>Optimizer</code>.</p>
+<hr />
+<h1 id="stochastic-gradient-descent">Stochastic Gradient Descent</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.SGD</b></span>  (learning_rate=0.001,  lr_decay=0.0,  decay_step=100,  staircase=False,  use_locking=False,  name='SGD')</span></p>
+<p>SGD Optimizer accepts learning rate decay. When training a model,
+it is often recommended to lower the learning rate as the training
+progresses. The function returns the decayed learning rate.  It is
+computed as:</p>
+<pre><code class="python">decayed_learning_rate = learning_rate *  decay_rate ^ (global_step / decay_steps)
+</code></pre>
+
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators.
+sgd = SGD(learning_rate=0.01, lr_decay=0.96, decay_step=100)
+regression = regression(net, optimizer=sgd)
+
+# Without TFLearn estimators (returns tf.Optimizer).
+sgd = SGD(learning_rate=0.01).get_tensor()
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>lr_decay</strong>: <code>float</code>. The learning rate decay to apply.</li>
+<li><strong>decay_step</strong>: <code>int</code>. Apply decay every provided steps.</li>
+<li><strong>staircase</strong>: <code>bool</code>. It <code>True</code> decay learning rate at discrete intervals.</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "GradientDescent".</li>
+</ul>
+<hr />
+<h1 id="rmsprop">RMSprop</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.RMSProp</b></span>  (learning_rate=0.001,  decay=0.9,  momentum=0.0,  epsilon=1e-10,  use_locking=False,  name='RMSProp')</span></p>
+<p>Maintain a moving (discounted) average of the square of gradients.
+Divide gradient by the root of this average.</p>
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators.
+rmsprop = RMSProp(learning_rate=0.1, decay=0.999)
+regression = regression(net, optimizer=rmsprop)
+
+# Without TFLearn estimators (returns tf.Optimizer).
+rmsprop = RMSProp(learning_rate=0.01, decay=0.999).get_tensor()
+# or
+rmsprop = RMSProp(learning_rate=0.01, decay=0.999)()
+
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>decay</strong>: <code>float</code>. Discounting factor for the history/coming gradient.</li>
+<li><strong>momentum</strong>: <code>float</code>. Momentum.</li>
+<li><strong>epsilon</strong>: <code>float</code>. Small value to avoid zero denominator.</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "RMSProp".</li>
+</ul>
+<hr />
+<h1 id="adam">Adam</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.Adam</b></span>  (learning_rate=0.001,  beta1=0.9,  beta2=0.999,  epsilon=1e-08,  use_locking=False,  name='Adam')</span></p>
+<p>The default value of 1e-8 for epsilon might not be a good default in
+general. For example, when training an Inception network on ImageNet a
+current good choice is 1.0 or 0.1.</p>
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators
+adam = Adam(learning_rate=0.001, beta1=0.99)
+regression = regression(net, optimizer=adam)
+
+# Without TFLearn estimators (returns tf.Optimizer)
+adam = Adam(learning_rate=0.01).get_tensor()
+
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>beta1</strong>: <code>float</code>. The exponential decay rate for the 1st moment
+estimates.</li>
+<li><strong>beta2</strong>: <code>float</code>. The exponential decay rate for the 2nd moment
+estimates.</li>
+<li><strong>epsilon</strong>: <code>float</code>. A small constant for numerical stability.</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "Adam".</li>
+</ul>
+<h3>References</h3>
+
+<p>Adam: A Method for Stochastic Optimization. Diederik Kingma,
+Jimmy Ba. ICLR 2015.</p>
+<h3>Links</h3>
+
+<p><a href="http://arxiv.org/pdf/1412.6980v8.pdf">Paper</a></p>
+<hr />
+<h1 id="momentum">Momentum</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.Momentum</b></span>  (learning_rate=0.001,  momentum=0.9,  lr_decay=0.0,  decay_step=100,  staircase=False,  use_locking=False,  name='Momentum')</span></p>
+<p>Momentum Optimizer accepts learning rate decay. When training a model,
+it is often recommended to lower the learning rate as the training
+progresses. The function returns the decayed learning rate.  It is
+computed as:</p>
+<pre><code class="python">decayed_learning_rate = learning_rate *  decay_rate ^ (global_step / decay_steps)
+</code></pre>
+
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators
+momentum = Momentum(learning_rate=0.01, lr_decay=0.96, decay_step=100)
+regression = regression(net, optimizer=momentum)
+
+# Without TFLearn estimators (returns tf.Optimizer)
+mm = Momentum(learning_rate=0.01, lr_decay=0.96).get_tensor()
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>momentum</strong>: <code>float</code>. Momentum.</li>
+<li><strong>lr_decay</strong>: <code>float</code>. The learning rate decay to apply.</li>
+<li><strong>decay_step</strong>: <code>int</code>. Apply decay every provided steps.</li>
+<li><strong>staircase</strong>: <code>bool</code>. It <code>True</code> decay learning rate at discrete intervals.</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "Momentum".</li>
+</ul>
+<hr />
+<h1 id="adagrad">AdaGrad</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.AdaGrad</b></span>  (learning_rate=0.001,  initial_accumulator_value=0.1,  use_locking=False,  name='AdaGrad')</span></p>
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators
+adagrad = AdaGrad(learning_rate=0.01, initial_accumulator_value=0.01)
+regression = regression(net, optimizer=adagrad)
+
+# Without TFLearn estimators (returns tf.Optimizer)
+adagrad = AdaGrad(learning_rate=0.01).get_tensor()
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>initial_accumulator_value</strong>: <code>float</code>. Starting value for the
+accumulators, must be positive</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "AdaGrad".</li>
+</ul>
+<h3>References</h3>
+
+<p>Adaptive Subgradient Methods for Online Learning and Stochastic
+Optimization. J. Duchi, E. Hazan &amp; Y. Singer. Journal of Machine
+Learning Research 12 (2011) 2121-2159.</p>
+<h3>Links</h3>
+
+<p><a href="http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf">Paper</a></p>
+<hr />
+<h1 id="ftrl-proximal">Ftrl Proximal</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.Ftrl</b></span>  (learning_rate=3.0,  learning_rate_power=-0.5,  initial_accumulator_value=0.1,  l1_regularization_strength=0.0,  l2_regularization_strength=0.0,  use_locking=False,  name='Ftrl')</span></p>
+<p>The Ftrl-proximal algorithm, abbreviated for Follow-the-regularized-leader,
+is described in the paper below.</p>
+<p>It can give a good performance vs. sparsity tradeoff.</p>
+<p>Ftrl-proximal uses its own global base learning rate and can behave like
+Adagrad with <code>learning_rate_power=-0.5</code>, or like gradient descent with
+<code>learning_rate_power=0.0</code>.</p>
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators.
+ftrl = Ftrl(learning_rate=0.01, learning_rate_power=-0.1)
+regression = regression(net, optimizer=ftrl)
+
+# Without TFLearn estimators (returns tf.Optimizer).
+ftrl = Ftrl(learning_rate=0.01).get_tensor()
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>learning_rate_power</strong>: <code>float</code>. Must be less or equal to zero.</li>
+<li><strong>initial_accumulator_value</strong>: <code>float</code>. The starting value for accumulators.
+Only positive values are allowed.</li>
+<li><strong>l1_regularization_strength</strong>: <code>float</code>. Must be less or equal to zero.</li>
+<li><strong>l2_regularization_strength</strong>: <code>float</code>. Must be less or equal to zero.</li>
+<li><strong>use_locking</strong>: bool`. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "Ftrl".</li>
+</ul>
+<h3>Links</h3>
+
+<p><a href="https://www.eecs.tufts.
+edu/~dsculley/papers/ad-click-prediction.pdf">Ad Click Prediction: a View from the Trenches</a></p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../metrics/" class="btn btn-neutral float-right" title="Metrics">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../objectives/" class="btn btn-neutral" title="Objectives"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../objectives/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../metrics/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

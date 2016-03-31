@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>Getting Started - TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Getting Started";
+    var mkdocs_page_input_path = "getting_started.md";
+    var mkdocs_page_url = "/getting_started/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Getting Started</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#getting-started-with-tflearn">Getting started with TFLearn</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#high-level-api-usage">High-Level API usage</a></li>
+                
+                    <li><a class="toctree-l4" href="#layers">Layers</a></li>
+                
+                    <li><a class="toctree-l4" href="#built-in-operations">Built-in Operations</a></li>
+                
+                    <li><a class="toctree-l4" href="#training-evaluating-predicting">Training, Evaluating &amp; Predicting</a></li>
+                
+                    <li><a class="toctree-l4" href="#visualization">Visualization</a></li>
+                
+                    <li><a class="toctree-l4" href="#weights-persistence">Weights persistence</a></li>
+                
+                    <li><a class="toctree-l4" href="#fine-tuning">Fine-tuning</a></li>
+                
+                    <li><a class="toctree-l4" href="#data-management">Data management</a></li>
+                
+                    <li><a class="toctree-l4" href="#graph-initialization">Graph Initialization</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#extending-tensorflow">Extending Tensorflow</a></li>
+                
+                    <li><a class="toctree-l4" href="#layers_1">Layers</a></li>
+                
+                    <li><a class="toctree-l4" href="#built-in-operations_1">Built-in Operations</a></li>
+                
+                    <li><a class="toctree-l4" href="#trainer-evaluator-predictor">Trainer / Evaluator / Predictor</a></li>
+                
+                    <li><a class="toctree-l4" href="#variables">Variables</a></li>
+                
+                    <li><a class="toctree-l4" href="#summaries">Summaries</a></li>
+                
+                    <li><a class="toctree-l4" href="#regularizers">Regularizers</a></li>
+                
+                    <li><a class="toctree-l4" href="#preprocessing">Preprocessing</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#getting-further">Getting Further</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="getting-started-with-tflearn">Getting started with TFLearn</h1>
+<p>Here is a basic guide that introduces TFLearn and its functionalities. First highlighting TFLearn high-level API, for fast neural network building and training, and then showing how TFLearn layers, built-in ops and helpers can directly benefit any model implementation with Tensorflow.</p>
+<h1 id="high-level-api-usage">High-Level API usage</h1>
+<p>TFLearn introduces a High-Level API that makes neural network building and training fast and easy. This API is intuitive and fully compatible with Tensorflow.</p>
+<h3 id="layers">Layers</h3>
+<p>Layers are a core feature of TFLearn. While completely defining a model using Tensorflow ops can be time consuming and repetitive, TFLearn brings "layers" that represent an abstract set of operations to make building neural networks more convenient. For example, a convolutional layer will:</p>
+<ul>
+<li>Create and initialize weights and biases variables</li>
+<li>Apply convolution over incoming tensor</li>
+<li>Add an activation function after the convolution</li>
+<li>etc...</li>
+</ul>
+<p>In Tensorflow, write those kind of operation set can be quite fastidious:</p>
+<pre><code class="python">with tf.name_scope('conv1'):
+    W = tf.Variable(tf.random_normal([5, 5, 1, 32]), dtype=tf.float32, name='Weights')
+    b = tf.Variable(tf.random_normal([32]), dtype=tf.float32, name='biases')
+    x = tf.nn.conv2d(x, W, strides=[1, 1, 1, 1], padding='SAME')
+    x = tf.add_bias(W, b)
+    x = tf.nn.relu(x)
+</code></pre>
+
+<p>While in TFLearn, it only takes a line:</p>
+<pre><code class="python">tflearn.conv_2d(x, 32, 5, activation='relu', name='conv1')
+</code></pre>
+
+<p>Here is a list of all currently available layers:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Layers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://tflearn.org/layers/core/">core</a></td>
+<td>input_data, fully_connected, dropout, custom_layer, reshape, flatten, activation, single_unit</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/layers/conv/">conv</a></td>
+<td>conv_2d, conv_2d_transpose, max_pool_2d, avg_pool_2d, conv_1d, max_pool_1d, avg_pool_1d, shallow_residual_block, deep_residual_block</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/layers/recurrent/">recurrent</a></td>
+<td>simple_rnn, lstm, gru, bidirectionnal_rnn, dynamic_rnn</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/layers/embedding/">embedding</a></td>
+<td>embedding</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/layers/normalization/">normalization</a></td>
+<td>batch_normalization, local_response_normalization</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/layers/merge/">merge</a></td>
+<td>merge, merge_outputs</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/layers/estimator/">estimator</a></td>
+<td>regression</td>
+</tr>
+</tbody>
+</table>
+<h3 id="built-in-operations">Built-in Operations</h3>
+<p>Besides layers concept, TFLearn also provides many different ops to be used while building a neural network. These ops are firstly mean to be used as part of the above 'layers' arguments, but they can also be used independently in any other Tensorflow graph for convenience.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Ops</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://tflearn.org/activations">activations</a></td>
+<td>linear, tanh, sigmoid, softmax, softplus, softsign, relu, relu6, leaky_relu, prelu, elu</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/objectives">objectives</a></td>
+<td>softmax_categorical_crossentropy, categorical_crossentropy, binary_crossentropy, mean_square, hinge_loss</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/optimizers">optimizers</a></td>
+<td>SGD, RMSProp, Adam, Momentum, AdaGrad, Ftrl</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/metrics">metrics</a></td>
+<td>Accuracy, Top_k, R2</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/initializations">initializations</a></td>
+<td>zeros, uniform, uniform_scaling, normal, truncated_normal</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/losses">losses</a></td>
+<td>l1, l2</td>
+</tr>
+</tbody>
+</table>
+<p>In practice, the arguments (such as 'activation' or 'regularizer' of conv_2d) just require the op name. Below are some quick examples:</p>
+<pre><code class="python"># Activation and Regularization inside a layer:
+fc2 = tflearn.dense(fc1, 32, activation='tanh', regularizer='L2')
+# Equivalent to:
+fc2 = tflearn.dense(fc1, 32)
+tflearn.add_weights_regularization(fc2, loss='L2')
+fc2 = tflearn.relu(fc2)
+
+# Optimizer, Objective and Metric:
+reg = tflearn.regression(fc4, optimizer='rmsprop', metric='accuracy', loss='categorical_crossentropy')
+# Ops can also be defined outside, for deeper customization:
+momentum = tflearn.optimizers.Momentum(learning_rate=0.1, weight_decay=0.96, decay_step=200)
+top5 = tflearn.metrics.Top_k(k=5)
+reg = tflearn.regression(fc4, optimizer=momentum, metric=top5, loss='categorical_crossentropy')
+</code></pre>
+
+<h3 id="training-evaluating-predicting">Training, Evaluating &amp; Predicting</h3>
+<p>Training functions are another core feature of TFLearn. In Tensorflow, there are no pre-built API to train a network, so TFLearn integrates a set of functions to easily handle any neural network training, whatever the number of inputs, outputs and optimizers.</p>
+<p>If you are using TFlearn layers, many parameters are already self managed, so it is very easy to train a model, using <code>DNN</code> class:</p>
+<pre><code class="python">network = ... (some layers) ...
+network = regression(network, optimizer='sgd', loss='categorical_crossentropy')
+
+model = DNN(network)
+model.fit(X, Y)
+</code></pre>
+
+<p>It can also directly be called for prediction, or evaluation:</p>
+<pre><code class="python">network = ...
+
+model = DNN(network)
+model.load('model.tflearn')
+model.predict(X)
+</code></pre>
+
+<ul>
+<li>To learn more about those wrappers, see: <a href="http://tflearn.org/models/dnn">dnn</a> and <a href="http://tflearn.org/layers/estimator">estimator</a>.</li>
+</ul>
+<h3 id="visualization">Visualization</h3>
+<p>While writing a Tensorflow model and adding tensorboard summaries isn't very practical, TFLearn has the ability to self managed a lot of useful logs. Currently, TFLearn training classes are supporting a verbose level to automatically manage summaries:</p>
+<ul>
+<li>0: Loss &amp; Metric (Best speed).</li>
+<li>1: Loss, Metric &amp; Gradients.</li>
+<li>2: Loss, Metric, Gradients &amp; Weights.</li>
+<li>3: Loss, Metric, Gradients, Weights, Activations &amp; Sparsity (Best Visualization).</li>
+</ul>
+<p>Using <code>DNN</code> class, it is very simple, only specify the verbose level argument is required:</p>
+<pre><code class="python">model = DNN(network, tensorboard_verbose=3)
+</code></pre>
+
+<p>Then, you can run Tensorboard and visualize your network and its performance:</p>
+<pre><code>$ tensorboard --logdir='/tmp/tflearn_logs'
+</code></pre>
+
+<p><strong>Graph</strong></p>
+<p><img alt="Graph Visualization" src="../img/graph.png" /></p>
+<p><strong>Loss &amp; Accuracy (multiple runs)</strong></p>
+<p><img alt="Layer Visualization" src="../img/loss_acc.png" /></p>
+<p><strong>Layers</strong></p>
+<p><img alt="Multiple Loss Visualization" src="../img/layer_visualization.png" /></p>
+<h3 id="weights-persistence">Weights persistence</h3>
+<p>To save or restore a model, you can simply invoke 'save' or 'load' method of <code>DNN</code> class.</p>
+<pre><code class="python"># Save a model
+model.save('my_model.tflearn')
+# Load a model
+model.load('my_model.tflearn')
+</code></pre>
+
+<h3 id="fine-tuning">Fine-tuning</h3>
+<p>Fine-tune a pre-trained model on a new task might be useful in many cases. So, when defining a model in TFLearn, you can specify which layer's weights you want to be restored or not (when loading pre-trained model). This can be handle with the 'restore' argument of layer functions (only available for layers with weights).</p>
+<pre><code class="python"># Weights will be restored by default.
+dense_layer = Dense(input_layer, 32)
+# Weights will not be restored, if specified so.
+dense_layer = Dense(input_layer, 32, restore='False')
+</code></pre>
+
+<p>All weights that doesn't need to be restored will be added to tf.GraphKeys.EXCL_RESTORE_VARS collection, and when loading a pre-trained model, these variables restoration will simply be ignored.
+The following example shows how to fine-tune a network on a new task by restoring all weights except the last dense layer, and then train the new model on a new dataset:</p>
+<ul>
+<li>Fine-tuning example: <a href="https://github.com/tflearn/blob/master/tflearn/examples/basics/finetuning.py">finetuning.py</a>.</li>
+</ul>
+<h3 id="data-management">Data management</h3>
+<p>TFLearn supports numpy array data. Additionally, it also supports HDF5 for handling large datasets. HDF5 is a data model, library, and file format for storing and managing data. It supports an unlimited variety of datatypes, and is designed for flexible and efficient I/O and for high volume and complex data (<a href="https://www.hdfgroup.org/HDF5/">more info</a>). TFLearn can directly use HDF5 formatted data:</p>
+<pre><code class="python"># Load hdf5 dataset
+h5f = h5py.File('data.h5', 'r')
+X, Y = h5f['MyLargeData']
+
+... define network ...
+
+# Use HDF5 data model to train model
+model = DNN(network)
+model.fit(X, Y)
+</code></pre>
+
+<p>For an example, see: <a href="https://github.com/tflearn/blob/master/tflearn/examples/basics/hdf5.py">hdf5.py</a>.</p>
+<h3 id="graph-initialization">Graph Initialization</h3>
+<p>It might be useful to limit resources, or assigns more or less GPU RAM memory while training. To do so, a graph initializer can be used to configure a graph before run:</p>
+<pre><code class="python">tflearn.init_graph(set_seed=8888, num_cores=16, gpu_memory_fraction=0.5)
+</code></pre>
+
+<ul>
+<li>See: <a href="http://tflearn.org/config">config</a>.</li>
+</ul>
+<h1 id="extending-tensorflow">Extending Tensorflow</h1>
+<p>TFLearn is a very flexible library designed to let you use any of its component independently. A model can be succinctly built using any combination of Tensorflow operations and TFLearn built-in layers and operations. The following instructions will show you the basics for extending Tensorflow with TFLearn.</p>
+<h3 id="layers_1">Layers</h3>
+<p>Any layer can be used with any other Tensor from Tensorflow, this means that you can directly use TFLearn wrappers into your own Tensorflow graph.</p>
+<pre><code class="python"># Some operations using Tensorflow.
+X = tf.placeholder(shape=(None, 784), dtype=tf.float32)
+net = tf.reshape(X, [-1, 28, 28, 1])
+
+# Using TFLearn convolution layer.
+net = tflearn.conv_2d(net, 32, 3, activation='relu')
+
+# Using Tensorflow's max pooling op.
+net = tf.nn.max_pool(net, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
+
+...
+</code></pre>
+
+<ul>
+<li>For an example, see: <a href="https://github.com/tflearn/blob/master/tflearn/examples/extending_tensorflow/layers.py">layers.py</a>.</li>
+</ul>
+<h3 id="built-in-operations_1">Built-in Operations</h3>
+<p>TFLearn built-in ops makes Tensorflow graphs writing faster and more readable. So, similar to layers, built-in ops are fully compatible with any TensorFlow expression. The following code example shows how to use them along with pure Tensorflow API.</p>
+<ul>
+<li>See: <a href="https://github.com/tflearn/blob/master/tflearn/examples/extending_tensorflow/builtin_ops.py">builtin_ops.py</a>.</li>
+</ul>
+<p>Here is a list of available ops, click on the file for more details:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Ops</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://tflearn.org/activations">activations</a></td>
+<td>linear, tanh, sigmoid, softmax, softplus, softsign, relu, relu6, leaky_relu, prelu, elu</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/objectives">objectives</a></td>
+<td>softmax_categorical_crossentropy, categorical_crossentropy, binary_crossentropy, mean_square, hinge_loss</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/optimizers">optimizers</a></td>
+<td>SGD, RMSProp, Adam, Momentum, AdaGrad, Ftrl</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/metrics#accuracy_op">metrics</a></td>
+<td>accuracy_op, top_k_op, r2_op</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/initializations">initializations</a></td>
+<td>zeros, uniform, uniform_scaling, normal, truncated_normal</td>
+</tr>
+<tr>
+<td><a href="http://tflearn.org/losses">losses</a></td>
+<td>l1, l2</td>
+</tr>
+</tbody>
+</table>
+<p>Note:
+- Optimizers are designed as class and not function, for usage outside of TFlearn models, check: <a href="http://tflearn.org/optimizers">optimizers</a>.</p>
+<h3 id="trainer-evaluator-predictor">Trainer / Evaluator / Predictor</h3>
+<p>If you are using you own Tensorflow model, TFLearn also provides some 'helpers' functions that can train any Tensorflow graph. It is suitable to make training more convenient, by introducing realtime monitoring, batch sampling, moving averages, tensorboard logs, data feeding, etc... It supports any number of inputs, outputs and optimization ops.</p>
+<p>TFLearn implements a <code>TrainOp</code> class to represent an optimization process (i.e. backprop). It is defined as follow:</p>
+<pre><code class="python">trainop = TrainOp(net=my_network, loss=loss, metric=accuracy)
+</code></pre>
+
+<p>Then, all TrainOp can be feeded into a <code>Trainer</code> class, that will handle the whole training process, considering all TrainOp together as a whole model.</p>
+<pre><code class="python">model = Trainer(trainops=trainop, tensorboard_dir='/tmp/tflearn')
+model.fit(feed_dict={input_placeholder: X, target_placeholder: Y})
+</code></pre>
+
+<p>While most models will only have a single optimization process, it can be useful for more complex models to handle multiple ones.</p>
+<pre><code class="python">model = Trainer(trainops=[trainop1, trainop2])
+model.fit(feed_dict=[{in1: X1, label1: Y1}, {in2: X2, in3: X3, label2: Y2}])
+</code></pre>
+
+<ul>
+<li>
+<p>To learn more about TrainOp and Trainer, see: <a href="http://tflearn.org/helpers/trainer">trainer</a>.</p>
+</li>
+<li>
+<p>For an example, see: <a href="https://github.com/tflearn/blob/master/tflearn/examples/extending_tensorflow/trainer.py">trainer.py</a>.</p>
+</li>
+</ul>
+<p>For prediction, TFLearn implements a <code>Predictor</code> class that is working in a similar way as <code>Trainer</code>. It takes any network as parameter and return the predicted value.</p>
+<pre><code class="python">model = Predictor(network)
+model.predict(feed_dict={input_placeholder: X})
+</code></pre>
+
+<ul>
+<li>To learn more about Predictor class: <a href="http://tflearn.org/helpers/predictor">predictor</a>.</li>
+</ul>
+<p>To handle network that behave differently at training and testing time (such as dropout and batch normalization), <code>Trainer</code> class uses a boolean variable ('training'), that specifies if the network is used for training or testing/predicting. This variable is stored under tf.GraphKeys.IS_TRAINING collection, as its first element.
+So, when defining such ops, you need to add a condition to your op:</p>
+<pre><code class="python"># Example for Dropout:
+x = ...
+
+def apply_dropout(): # Function to apply when training mode ON.
+  return tf.nn.dropout(x, keep_prob)
+
+is_training = tflearn.get_training_mode() # Retrieve is_training variable.
+tf.cond(is_training, apply_dropout, lambda: x) # Only apply dropout at training time.
+</code></pre>
+
+<p>To make it easy, TFLearn implements functions to retrieve that variable or change its value:</p>
+<ul>
+<li>See: <a href="http://tflearn.org/config#is_training">training config</a>.</li>
+</ul>
+<h3 id="variables">Variables</h3>
+<p>TFLearn defines a set of functions for users to quickly define variables.</p>
+<p>While in Tensorflow, variable creation requires predifinied value or initializer, as well as an explicit device placement, TFLearn simplify variable definition:</p>
+<pre><code class="python">import tflearn.variables as vs
+my_var = vs.variable('W',
+                     shape=[784, 128],
+                     initializer='truncated_normal',
+                     regularizer='L2',
+                     device='/gpu:0')
+</code></pre>
+
+<ul>
+<li>For an example, see: <a href="https://github.com/tflearn/blob/master/tflearn/examples/extending_tensorflow/variables.py">variables.py</a>.</li>
+</ul>
+<h3 id="summaries">Summaries</h3>
+<p>When using <code>Trainer</code> class, it is also very easy to manage summaries. It just additionally required that the activations to monitor are stored into <code>tf.GraphKeys.ACTIVATIONS</code> collection.</p>
+<p>Then, simply specify verbose level to control visualization depth:</p>
+<pre><code class="python">model = Trainer(network, loss=loss, metric=acc, tensorboard_verbose=3)
+</code></pre>
+
+<p>Beside <code>Trainer</code> self-managed summaries option, you can also directly use TFLearn ops to quickly add summaries to your current Tensorflow graph.</p>
+<pre><code class="python">import tflearn.helpers.summarizer as s
+s.summarize_variables(train_vars=[...]) # Summarize all given variables' weights (All trainable variables if None).
+s.summarize_activations(activations=[...]) # Summarize all given activations
+s.summarize_gradients(grads=[...]) # Summarize all given variables' gradient (All trainable variables if None).
+s.summarize(value, type) # Summarize anything.
+</code></pre>
+
+<p>Every function above accepts a collection as parameter, and will return a merged summary over that collection (Default name: 'tflearn_summ'). So you just need to run the last summarizer to get the whole summary ops collection, already merged.</p>
+<pre><code class="python">s.summarize_variables(collection='my_summaries')
+s.Summarize_gradients(collection='my_summaries')
+summary_op = s.summarize_activations(collection='my_summaries')
+# summary_op is a the merged op of previously define weights, gradients and activations summary ops.
+</code></pre>
+
+<ul>
+<li>For an example, see: <a href="https://github.com/tflearn/blob/master/tflearn/examples/extending_tensorflow/summaries.py">summaries.py</a>.</li>
+</ul>
+<h3 id="regularizers">Regularizers</h3>
+<p>Add regularization to a model can be completed using TFLearn <a href="http://tflearn.org/helpers/regularizers">regularizer</a> helpers. It currently supports weights and activation regularization. Available regularization losses can be found in <a href="http://tflearn.org/helpers/regularizers">here</a>. All regularization losses are stored into tf.GraphKeys.REGULARIZATION_LOSSES collection.</p>
+<pre><code class="python"># Add L2 regularization to a variable
+W = tf.Variable(tf.random_normal([784, 256]), name=&quot;W&quot;)
+tflearn.add_weight_regularizer(W, 'L2', weight_decay=0.001)
+</code></pre>
+
+<h3 id="preprocessing">Preprocessing</h3>
+<p>Besides tensor operations, it might be useful to perform some preprocessing on input data. Thus, TFLearn has a set of preprocessing functions to make data manipulation more convenient (such as sequence padding, categorical labels, shuffling at unison, image processing, etc...).</p>
+<ul>
+<li>For more details, see: <a href="http://tflearn.org/data_utils">data_utils</a>.</li>
+</ul>
+<h1 id="getting-further">Getting Further</h1>
+<p>There are a lot of examples along with numerous neural network
+implementations available for you to practice TFLearn more in depth:</p>
+<ul>
+<li>See: <a href="http://tflearn.org/examples">Examples</a>.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../examples/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

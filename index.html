@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation for TFLearn, a deep learning library featuring a higher-level API for TensorFlow.">
+  <meta name="author" content="Aymeric Damien">
+  
+  <title>TFLearn</title>
+  
+
+  <link rel="shortcut icon" href="./img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  <link href="./css/extra.css" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "None";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script>
+  <script src="./js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> TFLearn</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href=".">Home</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#tflearn-deep-learning-library-featuring-a-higher-level-api-for-tensorflow">TFLearn: Deep learning library featuring a higher-level API for TensorFlow.</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#quick-overview">Quick overview</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#where-to-start">Where to Start?</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#model-visualization">Model Visualization</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#sources">Sources</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#contributions">Contributions</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#license">License</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="doc_index/">Index</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="getting_started/">Getting Started</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="examples/">Examples</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Models</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="models/dnn/">Deep Neural Network</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="models/generator/">Generative Neural Network</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Layers</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/core/">Core Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/conv/">Convolutional Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/recurrent/">Recurrent Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/normalization/">Normalization Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/embedding_ops/">Embedding Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/merge_ops/">Merge Layers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="layers/estimator/">Estimator Layers</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Built-in Ops</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="activations/">Activations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="objectives/">Objectives</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="optimizers/">Optimizers</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="metrics/">Metrics</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="initializations/">Initializations</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="losses/">Losses</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="summaries/">Summaries</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="variables/">Variables</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Helpers for Extending Tensorflow</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="helpers/trainer/">Trainer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="helpers/evaluator/">Evaluator</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="helpers/summarizer/">Summarizer</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="helpers/regularizer/">Regularizer</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="data_utils/">Data Utils</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="contributions/">Contributions</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">TFLearn</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="tflearn-deep-learning-library-featuring-a-higher-level-api-for-tensorflow">TFLearn: Deep learning library featuring a higher-level API for TensorFlow.</h1>
+<p>TFlearn is a modular and transparent deep learning library built on top of Tensorflow.  It was designed to provide a higher-level API to TensorFlow in order to facilitate and speed-up experimentations, while remaining fully transparent and compatible with it.</p>
+<p>TFLearn features include:</p>
+<ul>
+<li>Easy-to-use and understand high-level API for implementing deep neural networks, with tutorial and examples.</li>
+<li>Fast prototyping through highly modular built-in neural network layers, regularizers, optimizers, metrics...</li>
+<li>Full transparency over Tensorflow. All functions are built over tensors and can be used independently of TFLearn.</li>
+<li>Powerful helpers functions to train any TensorFlow graph, with support of multiple inputs, outputs and optimizers.</li>
+<li>Easy and beautiful graph visualization, with details about weights, gradients, activations and more...</li>
+<li>Effortless device placement for using multiple CPU/GPU.</li>
+</ul>
+<p>The high-level API currently supports most of recent deep learning models, such as Convolutions, LSTM, BiRNN, BatchNorm, PReLU, Residual networks, Generative networks... In the future, TFLearn is also intended to stay up-to-date with latest deep learning techniques.</p>
+<p>Note: This is the first release of TFLearn. Contributions are more than welcome!</p>
+<h1 id="quick-overview">Quick overview</h1>
+<p><strong>Code Example</strong></p>
+<pre><code class="python"># Classification
+tflearn.init_graph(num_cores=8, gpu_memory_fraction=0.5)
+
+net = tflearn.input_data(shape=[None, 784])
+net = tflearn.fully_connected(net, 64)
+net = tflearn.dropout(net, 0.5)
+net = tflearn.fully_connected(net, 10, activation='softmax')
+net = tflearn.regression(net, optimizer='adam', loss='categorical_crossentropy')
+
+model = tflearn.DNN(net)
+model.fit(X, Y)
+</code></pre>
+
+<pre><code class="python"># Sequence Generation
+net = tflearn.input_data(shape=[None, 100, 5000])
+net = tflearn.lstm(net, 64)
+net = tflearn.dropout(net, 0.5)
+net = tflearn.fully_connected(net, 5000, activation='softmax')
+net = tflearn.regression(net, optimizer='adam', loss='categorical_crossentropy')
+
+mmodel = tflearn.SequenceGenerator(net, dictionary=idx, seq_maxlen=100)
+model.fit(X, Y)
+model.generate(50, temperature=1.0)
+</code></pre>
+
+<p>There are many more examples available <a href="./examples">here</a>.</p>
+<h1 id="where-to-start">Where to Start?</h1>
+<p>To install TFLearn, see: <a href="./installation">Installation Guide</a>.</p>
+<p>If your version of Tensorflow is under 0.7: <a href="./installation/#upgrade-tensorflow">Upgrade Tensorflow</a>.</p>
+<p>For a tutorial: <a href="./getting_started">Getting Started with TFLearn</a>.</p>
+<p>For more examples: <a href="./examples">Examples List</a>.</p>
+<p>To browse the API, check the <a href="./doc_index#API">API Documentation</a>.</p>
+<h1 id="model-visualization">Model Visualization</h1>
+<p><strong>Graph</strong></p>
+<p><img alt="Graph Visualization" src="./img/graph.png" /></p>
+<p><strong>Loss &amp; Accuracy (multiple runs)</strong></p>
+<p><img alt="Loss Visualization" src="./img/loss_acc.png" /></p>
+<p><strong>Layers</strong></p>
+<p><img alt="Layers Visualization" src="./img/layer_visualization.png" /></p>
+<h1 id="sources">Sources</h1>
+<p>GitHub: <a href="https://github.com/tflearn/tflearn">https://github.com/tflearn/tflearn</a>.</p>
+<h1 id="contributions">Contributions</h1>
+<p>This is the first release of TFLearn, if you find any bug, please report it in the GitHub issues section.</p>
+<p>Improvements and requests for new features are more than welcome! Do not hesitate to twist and tweak TFLearn, and send pull-requests.</p>
+<p>For more info: <em><a href="./contributions">Contribute to TFLearn</a></em>.</p>
+<h1 id="license">License</h1>
+<p>MIT License</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="doc_index/" class="btn btn-neutral float-right" title="Index">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="doc_index/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.15.2
+Build Date UTC : 2016-03-31 10:04:11.949542
+-->
