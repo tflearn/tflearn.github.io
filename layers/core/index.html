@@ -487,7 +487,13 @@ with its parameters.</p>
 <hr />
 <h1 id="flatten">Flatten</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.flatten</b></span>  (incoming,  name='Flatten')</span></p>
-<p>A shortcut for Reshape layer into 2-D [Batch, Dims].</p>
+<p>Flatten the incoming Tensor.</p>
+<h3>Input</h3>
+
+<p>(2+)-D <code>Tensor</code>.</p>
+<h3>Output</h3>
+
+<p>2-D <code>Tensor</code> [batch, flatten_dims].</p>
 <h3>Arguments</h3>
 
 <ul>
@@ -517,7 +523,7 @@ with its parameters.</p>
 <h3>Arguments</h3>
 
 <ul>
-<li><strong>incoming</strong>: <code>Tensor</code>. Incoming (2+)D Tensor.</li>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming Tensor.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
 (see tflearn.activations). Default: 'linear'.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
