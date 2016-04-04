@@ -373,7 +373,7 @@
 <li>Easy-to-use and understand high-level API for implementing deep neural networks, with tutorial and examples.</li>
 <li>Fast prototyping through highly modular built-in neural network layers, regularizers, optimizers, metrics...</li>
 <li>Full transparency over Tensorflow. All functions are built over tensors and can be used independently of TFLearn.</li>
-<li>Powerful helpers functions to train any TensorFlow graph, with support of multiple inputs, outputs and optimizers.</li>
+<li>Powerful helper functions to train any TensorFlow graph, with support of multiple inputs, outputs and optimizers.</li>
 <li>Easy and beautiful graph visualization, with details about weights, gradients, activations and more...</li>
 <li>Effortless device placement for using multiple CPU/GPU.</li>
 </ul>
@@ -401,7 +401,7 @@ net = tflearn.dropout(net, 0.5)
 net = tflearn.fully_connected(net, 5000, activation='softmax')
 net = tflearn.regression(net, optimizer='adam', loss='categorical_crossentropy')
 
-mmodel = tflearn.SequenceGenerator(net, dictionary=idx, seq_maxlen=100)
+model = tflearn.SequenceGenerator(net, dictionary=idx, seq_maxlen=100)
 model.fit(X, Y)
 model.generate(50, temperature=1.0)
 </code></pre>
@@ -475,5 +475,5 @@ model.generate(50, temperature=1.0)
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-03-31 16:06:44.236146
+Build Date UTC : 2016-04-04 11:11:33.047239
 -->
