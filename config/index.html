@@ -378,7 +378,25 @@ an op will be placed on CPU if:1. there's no GPU implementation for the OP - or2
 <hr />
 <h1 id="is_training">is_training</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.config.is_training</b></span>  (is_training=False,  session=None)</span></p>
-<p>Check whether the model is currently in training mode or not.</p>
+<p>Set the graph training mode.</p>
+<p>This is meant to be used to control ops that have different output at
+training and testing time., such as dropout or batch normalization,</p>
+<h3>Examples</h3>
+
+<pre><code>&gt;&gt; # Retrieve variable responsible for managing training mode
+&gt;&gt; training_mode = tflearn.get_training_mode()
+&gt;&gt; # Define a conditional op
+&gt;&gt; my_conditional_op = tf.cond(training_mode, if_yes_op, if_no_op)
+&gt;&gt; # Set training mode to True
+&gt;&gt; tflearn.is_training(True)
+&gt;&gt; session.run(my_conditional_op)
+if_yes_op
+&gt;&gt; # Set training mode to False
+&gt;&gt; tflearn.is_training(False)
+&gt;&gt; session.run(my_conditional_op)
+if_no_op
+</code></pre>
+
 <h3>Returns</h3>
 
 <p>A <code>bool</code>, True if training, False else.</p>

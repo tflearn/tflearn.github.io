@@ -607,7 +607,7 @@ Default: 'same'.</li>
 </ul>
 <hr />
 <h1 id="deep-bottleneck">Deep Bottleneck</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.deep_bottleneck</b></span>  (incoming,  nb_layers,  nb_filter,  bottlenet_size,  activation='relu',  batch_norm=True,  bias=False,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='DeepBottleneck')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.deep_bottleneck</b></span>  (incoming,  nb_layers,  nb_filter,  bottleneck_size,  activation='relu',  batch_norm=True,  bias=False,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='DeepBottleneck')</span></p>
 <p>As described in MSRA's Deep Residual Network paper.</p>
 <h3>Input</h3>
 
@@ -622,7 +622,7 @@ Default: 'same'.</li>
 <li><strong>nb_layers</strong>: <code>int</code>. Number of layer blocks.</li>
 <li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters of the
 layers surrounding the bottleneck layer.</li>
-<li><strong>bottlenet_size</strong>: <code>int</code>. The number of convolutional filter of the
+<li><strong>bottleneck_size</strong>: <code>int</code>. The number of convolutional filter of the
 bottleneck convolutional layer.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
 (see tflearn.activations). Default: 'linear'.</li>
@@ -642,7 +642,7 @@ loading a model</li>
 </ul>
 <hr />
 <h1 id="deep-residual-block">Deep Residual Block</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.deep_residual_block</b></span>  (incoming,  nb_blocks,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=False,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='DeepResidualBlock')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.deep_residual_block</b></span>  (incoming,  nb_blocks,  bottleneck_size,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=False,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='DeepResidualBlock')</span></p>
 <p>A deep residual block as described in MSRA's Deep Residual Network paper.</p>
 <p>Notice: Because TensorFlow doesn't support a strides &gt; filter size,
 an average pooling is used as a fix, but decrease performances.</p>
@@ -657,6 +657,8 @@ an average pooling is used as a fix, but decrease performances.</p>
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Layer.</li>
 <li><strong>nb_blocks</strong>: <code>int</code>. Number of layer blocks.</li>
+<li><strong>bottleneck_size</strong>: <code>int</code>. The number of convolutional filter of the
+bottleneck convolutional layer.</li>
 <li><strong>out_channels</strong>: <code>int</code>. The number of convolutional filters of the
 layers surrounding the bottleneck layer.</li>
 <li><strong>downsample</strong>:</li>

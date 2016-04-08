@@ -399,7 +399,7 @@
 <li>Add an activation function after the convolution</li>
 <li>etc...</li>
 </ul>
-<p>In Tensorflow, write those kind of operation set can be quite fastidious:</p>
+<p>In Tensorflow, writing these kinds of operations can be quite tedious:</p>
 <pre><code class="python">with tf.name_scope('conv1'):
     W = tf.Variable(tf.random_normal([5, 5, 1, 32]), dtype=tf.float32, name='Weights')
     b = tf.Variable(tf.random_normal([32]), dtype=tf.float32, name='biases')
