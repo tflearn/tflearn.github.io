@@ -356,7 +356,7 @@
             <div class="section">
               
                 <h1 id="trainer">Trainer</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.trainer.Trainer</b></span>  (train_ops,  graph=None,  clip_gradients=5.0,  tensorboard_dir='/tmp/tflearn_logs/',  tensorboard_verbose=0,  checkpoint_path=None,  max_checkpoints=None,  keep_checkpoint_every_n_hours=10000.0,  random_seed=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.trainer.Trainer</b></span>  (train_ops,  graph=None,  clip_gradients=5.0,  tensorboard_dir='/tmp/tflearn_logs/',  tensorboard_verbose=0,  checkpoint_path=None,  max_checkpoints=None,  keep_checkpoint_every_n_hours=10000.0,  random_seed=None,  session=None)</span></p>
 <p>Generic class to handle any TensorFlow graph training. It requires
 the use of <code>TrainOp</code> to specify all optimization parameters.</p>
 <h3>Arguments</h3>
@@ -386,6 +386,9 @@ None, no limit. Default: None.</li>
 model checkpoints.</li>
 <li><strong>random_seed</strong>: <code>int</code>. Random seed, for test reproductivity.
 Default: None.</li>
+<li><strong>session</strong>: <code>Session</code>. A session for running ops. If None, a new one will
+be created. Note: When providing a session, variables must have been
+initialized already, otherwise an error will be raised.</li>
 </ul>
 <h2>Methods</h2>
 

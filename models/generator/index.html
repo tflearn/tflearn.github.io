@@ -353,7 +353,7 @@
             <div class="section">
               
                 <h1 id="sequence-generator-model">Sequence Generator Model</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.models.generator.SequenceGenerator</b></span>  (network,  dictionary=None,  seq_maxlen=25,  clip_gradients=0.0,  tensorboard_verbose=0,  tensorboard_dir='/tmp/tflearn_logs/',  checkpoint_path=None,  max_checkpoints=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.models.generator.SequenceGenerator</b></span>  (network,  dictionary=None,  seq_maxlen=25,  clip_gradients=0.0,  tensorboard_verbose=0,  tensorboard_dir='/tmp/tflearn_logs/',  checkpoint_path=None,  max_checkpoints=None,  session=None)</span></p>
 <p>A deep neural network model for generating sequences.</p>
 <h3>Arguments</h3>
 
@@ -378,12 +378,16 @@ Default: "/tmp/tflearn_logs/"</li>
 no model checkpoint will be saved. Default: None.</li>
 <li><strong>max_checkpoints</strong>: <code>int</code> or None. Maximum amount of checkpoints. If
 None, no limit. Default: None.</li>
+<li><strong>session</strong>: <code>Session</code>. A session for running ops. If None, a new one will
+be created. Note: When providing a session, variables must have been
+initialized already, otherwise an error will be raised.</li>
 </ul>
 <h3>Attributes</h3>
 
 <ul>
 <li><strong>trainer</strong>: <code>Trainer</code>. Handle model training.</li>
 <li><strong>predictor</strong>: <code>Predictor</code>. Handle model prediction.</li>
+<li><strong>session</strong>: <code>Session</code>. The current model session.</li>
 </ul>
 <h2>Methods</h2>
 
