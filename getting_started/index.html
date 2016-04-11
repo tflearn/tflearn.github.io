@@ -388,7 +388,7 @@
             <div class="section">
               
                 <h1 id="getting-started-with-tflearn">Getting started with TFLearn</h1>
-<p>Here is a basic guide that introduces TFLearn and its functionalities. First highlighting TFLearn high-level API, for fast neural network building and training, and then showing how TFLearn layers, built-in ops and helpers can directly benefit any model implementation with Tensorflow.</p>
+<p>Here is a basic guide that introduces TFLearn and its functionalities. First, highlighting TFLearn high-level API for fast neural network building and training, and then showing how TFLearn layers, built-in ops and helpers can directly benefit any model implementation with Tensorflow.</p>
 <h1 id="high-level-api-usage">High-Level API usage</h1>
 <p>TFLearn introduces a High-Level API that makes neural network building and training fast and easy. This API is intuitive and fully compatible with Tensorflow.</p>
 <h3 id="layers">Layers</h3>
@@ -452,7 +452,7 @@
 </tbody>
 </table>
 <h3 id="built-in-operations">Built-in Operations</h3>
-<p>Besides layers concept, TFLearn also provides many different ops to be used while building a neural network. These ops are firstly mean to be used as part of the above 'layers' arguments, but they can also be used independently in any other Tensorflow graph for convenience.</p>
+<p>Besides layers concept, TFLearn also provides many different ops to be used when building a neural network. These ops are firstly mean to be be part of the above 'layers' arguments, but they can also be used independently in any other Tensorflow graph for convenience. In practice, just providing the op name as argument is enough (such as activation='relu' or regularizer='L2' for conv_2d), but a function can also be provided for further customization.</p>
 <table>
 <thead>
 <tr>
@@ -487,13 +487,13 @@
 </tr>
 </tbody>
 </table>
-<p>In practice, the arguments (such as 'activation' or 'regularizer' of conv_2d) just require the op name. Below are some quick examples:</p>
+<p>Below are some quick examples:</p>
 <pre><code class="python"># Activation and Regularization inside a layer:
 fc2 = tflearn.fully_connected(fc1, 32, activation='tanh', regularizer='L2')
 # Equivalent to:
 fc2 = tflearn.fully_connected(fc1, 32)
 tflearn.add_weights_regularization(fc2, loss='L2')
-fc2 = tflearn.relu(fc2)
+fc2 = tflearn.tanh(fc2)
 
 # Optimizer, Objective and Metric:
 reg = tflearn.regression(fc4, optimizer='rmsprop', metric='accuracy', loss='categorical_crossentropy')
@@ -504,8 +504,8 @@ reg = tflearn.regression(fc4, optimizer=momentum, metric=top5, loss='categorical
 </code></pre>
 
 <h3 id="training-evaluating-predicting">Training, Evaluating &amp; Predicting</h3>
-<p>Training functions are another core feature of TFLearn. In Tensorflow, there are no pre-built API to train a network, so TFLearn integrates a set of functions to easily handle any neural network training, whatever the number of inputs, outputs and optimizers.</p>
-<p>If you are using TFlearn layers, many parameters are already self managed, so it is very easy to train a model, using <code>DNN</code> class:</p>
+<p>Training functions are another core feature of TFLearn. In Tensorflow, there are no pre-built API to train a network, so TFLearn integrates a set of functions that can easily handle any neural network training, whatever the number of inputs, outputs and optimizers.</p>
+<p>While using TFlearn layers, many parameters are already self managed, so it is very easy to train a model, using <code>DNN</code> model class:</p>
 <pre><code class="python">network = ... (some layers) ...
 network = regression(network, optimizer='sgd', loss='categorical_crossentropy')
 
@@ -522,21 +522,21 @@ model.predict(X)
 </code></pre>
 
 <ul>
-<li>To learn more about those wrappers, see: <a href="http://tflearn.org/models/dnn">dnn</a> and <a href="http://tflearn.org/layers/estimator">estimator</a>.</li>
+<li>To learn more about these wrappers, see: <a href="http://tflearn.org/models/dnn">dnn</a> and <a href="http://tflearn.org/layers/estimator">estimator</a>.</li>
 </ul>
 <h3 id="visualization">Visualization</h3>
-<p>While writing a Tensorflow model and adding tensorboard summaries isn't very practical, TFLearn has the ability to self managed a lot of useful logs. Currently, TFLearn training classes are supporting a verbose level to automatically manage summaries:</p>
+<p>While writing a Tensorflow model and adding tensorboard summaries isn't very practical, TFLearn has the ability to self managed a lot of useful logs. Currently, TFLearn supports a verbose level to automatically manage summaries:</p>
 <ul>
 <li>0: Loss &amp; Metric (Best speed).</li>
 <li>1: Loss, Metric &amp; Gradients.</li>
 <li>2: Loss, Metric, Gradients &amp; Weights.</li>
 <li>3: Loss, Metric, Gradients, Weights, Activations &amp; Sparsity (Best Visualization).</li>
 </ul>
-<p>Using <code>DNN</code> class, it is very simple, only specify the verbose level argument is required:</p>
+<p>Using <code>DNN</code> model class, it just requires to specify the verbose argument:</p>
 <pre><code class="python">model = DNN(network, tensorboard_verbose=3)
 </code></pre>
 
-<p>Then, you can run Tensorboard and visualize your network and its performance:</p>
+<p>Then, Tensorboard can be run to visualize network and performance:</p>
 <pre><code>$ tensorboard --logdir='/tmp/tflearn_logs'
 </code></pre>
 
@@ -547,17 +547,17 @@ model.predict(X)
 <p><strong>Layers</strong></p>
 <p><img alt="Multiple Loss Visualization" src="../img/layer_visualization.png" /></p>
 <h3 id="weights-persistence">Weights persistence</h3>
-<p>To save or restore a model, you can simply invoke 'save' or 'load' method of <code>DNN</code> class.</p>
+<p>To save or restore a model, simply invoke 'save' or 'load' method of <code>DNN</code> model class.</p>
 <pre><code class="python"># Save a model
 model.save('my_model.tflearn')
 # Load a model
 model.load('my_model.tflearn')
 </code></pre>
 
-<p>To retrieve a layer variables, you can either use the layer name, or directly use 'W' or 'b' attributes that are supercharged to the returned Tensor class.</p>
+<p>Retrieving a layer variables can either be done using the layer name, or directly by using 'W' or 'b' attributes that are supercharged to the layer's returned Tensor.</p>
 <pre><code class="python"># Let's create a layer
 fc1 = fully_connected(input_layer, 64, name=&quot;fc_layer_1&quot;)
-# Using Tensor attributes (Attributes are supercharged to the original Tensor class)
+# Using Tensor attributes (Layer will supercharge the returned Tensor with weights attributes)
 fc1_weights_var = fc1.W
 fc1_biases_var = fc1.b
 # Using Tensor name
@@ -703,16 +703,16 @@ model.fit(feed_dict=[{in1: X1, label1: Y1}, {in2: X2, in3: X3, label2: Y2}])
 <p>For an example, see: <a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/trainer.py">trainer.py</a>.</p>
 </li>
 </ul>
-<p>For prediction, TFLearn implements a <code>Predictor</code> class that is working in a similar way as <code>Trainer</code>. It takes any network as parameter and return the predicted value.</p>
-<pre><code class="python">model = Predictor(network)
+<p>For prediction, TFLearn implements a <code>Evaluator</code> class that is working in a similar way as <code>Trainer</code>. It takes any network as parameter and return the predicted value.</p>
+<pre><code class="python">model = Evaluator(network)
 model.predict(feed_dict={input_placeholder: X})
 </code></pre>
 
 <ul>
-<li>To learn more about Predictor class: <a href="http://tflearn.org/helpers/predictor">predictor</a>.</li>
+<li>To learn more about Evaluator class: <a href="http://tflearn.org/helpers/evaluator">evaluator</a>.</li>
 </ul>
-<p>To handle network that behave differently at training and testing time (such as dropout and batch normalization), <code>Trainer</code> class uses a boolean variable ('training'), that specifies if the network is used for training or testing/predicting. This variable is stored under tf.GraphKeys.IS_TRAINING collection, as its first element.
-So, when defining such ops, you need to add a condition to your op:</p>
+<p>To handle networks that have layer with different behavior at training and testing time (such as dropout and batch normalization), <code>Trainer</code> class uses a boolean variable ('is_training'), that specifies if the network is used for training or testing/predicting. This variable is stored under tf.GraphKeys.IS_TRAINING collection, as its first (and only) element.
+So, when defining such layers, this variable should be used as the op condition:</p>
 <pre><code class="python"># Example for Dropout:
 x = ...
 
@@ -724,12 +724,18 @@ tf.cond(is_training, apply_dropout, lambda: x) # Only apply dropout at training 
 </code></pre>
 
 <p>To make it easy, TFLearn implements functions to retrieve that variable or change its value:</p>
+<pre><code class="python"># Set training mode ON (set is_training var to True)
+tflearn.is_training(True)
+# Set training mode OFF (set is_training var to False)
+tflearn.is_training(False)
+</code></pre>
+
 <ul>
 <li>See: <a href="http://tflearn.org/config#is_training">training config</a>.</li>
 </ul>
 <h3 id="variables">Variables</h3>
 <p>TFLearn defines a set of functions for users to quickly define variables.</p>
-<p>While in Tensorflow, variable creation requires predifinied value or initializer, as well as an explicit device placement, TFLearn simplify variable definition:</p>
+<p>While in Tensorflow, variable creation requires predefined value or initializer, as well as an explicit device placement, TFLearn simplify variable definition:</p>
 <pre><code class="python">import tflearn.variables as vs
 my_var = vs.variable('W',
                      shape=[784, 128],
@@ -743,7 +749,7 @@ my_var = vs.variable('W',
 </ul>
 <h3 id="summaries">Summaries</h3>
 <p>When using <code>Trainer</code> class, it is also very easy to manage summaries. It just additionally required that the activations to monitor are stored into <code>tf.GraphKeys.ACTIVATIONS</code> collection.</p>
-<p>Then, simply specify verbose level to control visualization depth:</p>
+<p>Then, simply specify a verbose level to control visualization depth:</p>
 <pre><code class="python">model = Trainer(network, loss=loss, metric=acc, tensorboard_verbose=3)
 </code></pre>
 
@@ -766,7 +772,7 @@ summary_op = s.summarize_activations(collection='my_summaries')
 <li>For an example, see: <a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/summaries.py">summaries.py</a>.</li>
 </ul>
 <h3 id="regularizers">Regularizers</h3>
-<p>Add regularization to a model can be completed using TFLearn <a href="http://tflearn.org/helpers/regularizers">regularizer</a> helpers. It currently supports weights and activation regularization. Available regularization losses can be found in <a href="http://tflearn.org/helpers/regularizers">here</a>. All regularization losses are stored into tf.GraphKeys.REGULARIZATION_LOSSES collection.</p>
+<p>Add regularization to a model can be completed using TFLearn <a href="http://tflearn.org/helpers/regularizers">regularizer</a>. It currently supports weights and activation regularization. Available regularization losses can be found in <a href="http://tflearn.org/losses">here</a>. All regularization losses are stored into tf.GraphKeys.REGULARIZATION_LOSSES collection.</p>
 <pre><code class="python"># Add L2 regularization to a variable
 W = tf.Variable(tf.random_normal([784, 256]), name=&quot;W&quot;)
 tflearn.add_weight_regularizer(W, 'L2', weight_decay=0.001)
