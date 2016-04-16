@@ -4,7 +4,7 @@
     
     <url>
      <loc>http://tflearn.org/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>http://tflearn.org/doc_index/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>http://tflearn.org/installation/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,7 +28,7 @@
     
     <url>
      <loc>http://tflearn.org/getting_started/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -36,7 +36,7 @@
     
     <url>
      <loc>http://tflearn.org/examples/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -45,13 +45,13 @@
         
     <url>
      <loc>http://tflearn.org/models/dnn/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/models/generator/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -61,43 +61,43 @@
         
     <url>
      <loc>http://tflearn.org/layers/core/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/layers/conv/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/layers/recurrent/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/layers/normalization/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/layers/embedding_ops/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/layers/merge_ops/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/layers/estimator/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -107,49 +107,49 @@
         
     <url>
      <loc>http://tflearn.org/activations/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/objectives/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/optimizers/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/metrics/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/initializations/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/losses/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/summaries/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/variables/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -159,25 +159,25 @@
         
     <url>
      <loc>http://tflearn.org/helpers/trainer/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/helpers/evaluator/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/helpers/summarizer/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/helpers/regularizer/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -187,13 +187,13 @@
         
     <url>
      <loc>http://tflearn.org/data_utils/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>http://tflearn.org/config/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -202,7 +202,7 @@
     
     <url>
      <loc>http://tflearn.org/contributions/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -210,7 +210,7 @@
     
     <url>
      <loc>http://tflearn.org/license/</loc>
-     <lastmod>2016-04-12</lastmod>
+     <lastmod>2016-04-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
