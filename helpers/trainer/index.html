@@ -286,6 +286,27 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_flow/">Data Flow</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../data_utils/">Data Utils</a>
         
     </li>
@@ -393,7 +414,7 @@ initialized already, otherwise an error will be raised.</li>
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  run_id=None)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  dprep_dict=None,  daug_dict=None,  run_id=None)</span></p>
 <p>Train network with feeded data dicts.</p>
 <h5>Examples</h5>
 
@@ -418,7 +439,7 @@ respectively feed optimizers.</li>
 <code>float</code>. The data used for validation. Feed dict are
 following the same specification as <code>feed_dicts</code> above. It
 is also possible to provide a <code>float</code> for splitting training
-data for validation.</li>
+data for validation (Note that this will shuffle data).</li>
 <li><strong>show_metric</strong>: <code>bool</code>. If True, accuracy will be calculated and
 displayed at every step. Might give slower training.</li>
 <li><strong>snapshot_step</strong>: <code>int</code>. If not None, the network will be snapshot
@@ -428,6 +449,8 @@ save model, if a <code>checkpoint_path</code> is specified in <code>Trainer</cod
 of every epoch.</li>
 <li><strong>shuffle_all</strong>: <code>bool</code>. If True, shuffle all data batches (overrides
 <code>TrainOp</code> shuffle parameter behavior).</li>
+<li>dprep_dict</li>
+<li>daug_dict</li>
 <li><strong>run_id</strong>: <code>str</code>. A name for the current run. Used for Tensorboard
 display. If no name provided, a random one will be generated.</li>
 </ul>
@@ -474,6 +497,17 @@ use for training. Default: all trainable variables.</li>
 provided, it will be created. Early defining the step tensor
 might be useful for network creation, such as for learning rate
 decay.</li>
+<li><strong>input_vars</strong>: list of <code>Variable</code>. The input data for this training op
+to be transformed by data augmentation. Default:
+tf.GraphKeys.INPUTS collection. (optional) Only necessary when
+using data augmentation.</li>
+<li><strong>data_preprocessing</strong>: A <code>DataPreprocessing</code> subclass object to manage
+real-time data pre-processing when training and predicting (such
+as zero center data, std normalization...).</li>
+<li><strong>data_augmentation</strong>: <code>DataAugmentation</code>. A <code>DataAugmentation</code> subclass
+object to manage real-time data augmentation while training (
+such as random image crop, random image flip, random sequence
+reverse...).</li>
 <li><strong>name</strong>: <code>str</code>. A name for this class (optional).</li>
 <li><strong>graph</strong>: <code>tf.Graph</code>. Tensorflow Graph to use for training. Default:
 default tf graph.</li>
@@ -481,14 +515,19 @@ default tf graph.</li>
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>initialize_fit</b></span>  (feed_dict,  val_feed_dict,  show_metric,  summ_writer)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>initialize_fit</b></span>  (feed_dict,  val_feed_dict,  dprep_dict,  daug_dict,  show_metric,  summ_writer,  coord)</span></p>
 <p>Initialize data for feeding the training process. It is meant to
 be used by <code>Trainer</code> before starting to fit data.</p>
 <h5>Arguments</h5>
 
 <ul>
 <li><strong>feed_dict</strong>: <code>dict</code>. The data dictionary to feed.</li>
-<li><strong>val_feed_dict</strong>: <code>dict</code>. The validation data dictionary to feed.</li>
+<li><strong>val_feed_dict</strong>: <code>dict</code> or <code>float</code>. The validation data dictionary to
+feed or validation split.</li>
+<li><strong>dprep_dict</strong>: <code>dict</code>. Data Preprocessing dict (with placeholder as
+key and corresponding <code>DataPreprocessing</code> object as value).</li>
+<li><strong>daug_dict</strong>: <code>dict</code>. Data Augmentation dict (with placeholder as
+key and corresponding <code>DataAugmentation</code> object as value).</li>
 <li><strong>show_metric</strong>: <code>bool</code>. If True, display accuracy at every step.</li>
 <li><strong>summ_writer</strong>: <code>SummaryWriter</code>. The summary writer to use for
 Tensorboard logging.</li>

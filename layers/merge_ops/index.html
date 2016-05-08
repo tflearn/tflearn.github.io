@@ -286,6 +286,27 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_flow/">Data Flow</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../data_utils/">Data Utils</a>
         
     </li>
@@ -368,17 +389,21 @@
 
 <ul>
 <li><strong>tensors_list</strong>: A list of <code>Tensor</code>, A list of tensors to merge.</li>
-<li><strong>mode</strong>: <code>str</code>. Merging mode, it supports:
-'concat': concatenate outputs along specified axis
-'elemwise_sum': outputs element-wise sum.
-'elemwise_mul': outputs element-wise sum.
+<li><strong>mode</strong>: <code>str</code>. Merging mode, it supports:</li>
+</ul>
+<pre><code>'concat': concatenate outputs along specified axis
+'elemwise_sum': outputs element-wise sum
+'elemwise_mul': outputs element-wise sum
 'sum': outputs element-wise sum along specified axis
 'mean': outputs element-wise average along specified axis
 'prod': outputs element-wise multiplication along specified axis
 'max': outputs max elements along specified axis
 'min': outputs min elements along specified axis
-'and': <code>logical and</code> btw outputs elements along specified axis
-'or': <code>logical or</code> btw outputs elements along specified axis</li>
+'and': `logical and` btw outputs elements along specified axis
+'or': `logical or` btw outputs elements along specified axis
+</code></pre>
+
+<ul>
 <li><strong>axis</strong>: <code>int</code>. Represents the axis to use for merging mode.
 In most cases: 0 for concat and 1 for other modes.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Merge'.</li>

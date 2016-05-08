@@ -101,6 +101,8 @@
                 
                     <li><a class="toctree-l4" href="#data-management">Data management</a></li>
                 
+                    <li><a class="toctree-l4" href="#data-preprocessing-and-data-augmentation">Data Preprocessing and Data Augmentation</a></li>
+                
                     <li><a class="toctree-l4" href="#graph-initialization">Graph Initialization</a></li>
                 
             
@@ -318,6 +320,27 @@
             <li>
     <ul class="subnav">
     <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_flow/">Data Flow</a>
+        
+    </li>
 
         
             
@@ -609,6 +632,27 @@ model.fit(X, Y)
 </code></pre>
 
 <p>For an example, see: <a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/hdf5.py">hdf5.py</a>.</p>
+<h3 id="data-preprocessing-and-data-augmentation">Data Preprocessing and Data Augmentation</h3>
+<p>It is common to perform data pre-processing and data augmentation while training a model, so TFLearn provides wrappers to easily handle it. Note that TFLearn data stream is designed with pipelining in order to speed-up training (by pre-processing data on CPU while GPU is performing model training).</p>
+<pre><code class="python"># Real-time image preprocessing
+img_prep = tflearn.ImagePreprocessing()
+# Zero Center (With mean computed over the whole dataset)
+img_prep.add_featurewise_zero_center()
+# STD Normalization (With std computed over the whole dataset)
+img_prep.add_featurewise_stdnorm()
+
+# Real-time data augmentation
+img_aug = tflearn.ImageAugmentation()
+# Random flip an image
+img_aug.add_random_flip_leftright()
+
+# Add these methods into an 'input_data' layer
+network = input_data(shape=[None, 32, 32, 3],
+                     data_preprocessing=img_prep,
+                     data_augmentation=img_aug)
+</code></pre>
+
+<p>For more details, see <a href="http://tflearn.org/data_preprocessing">Data Preprocessing</a> and <a href="http://tflearn.org/data_augmentation">Data Augmentation</a></p>
 <h3 id="graph-initialization">Graph Initialization</h3>
 <p>It might be useful to limit resources, or assigns more or less GPU RAM memory while training. To do so, a graph initializer can be used to configure a graph before run:</p>
 <pre><code class="python">tflearn.init_graph(set_seed=8888, num_cores=16, gpu_memory_fraction=0.5)

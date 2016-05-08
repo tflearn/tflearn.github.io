@@ -304,6 +304,27 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_flow/">Data Flow</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../data_utils/">Data Utils</a>
         
     </li>
@@ -374,7 +395,7 @@
             <div class="section">
               
                 <h1 id="input-data">Input Data</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.input_data</b></span>  (shape=None,  placeholder=None,  dtype=tf.float32,  name='InputData')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.input_data</b></span>  (shape=None,  placeholder=None,  dtype=tf.float32,  data_preprocessing=None,  data_augmentation=None,  name='InputData')</span></p>
 <p><code>input_data</code> is used as a data entry (placeholder) of a network.
 This placeholder will be feeded with data when training</p>
 <p>This layer is used to keep track of the network inputs, by adding the
@@ -400,11 +421,18 @@ If not specified, a placeholder will be automatically created.
 You can retrieve that placeholder through graph key: 'INPUTS',
 or the 'placeholder' attribute of this function's returned tensor.</li>
 <li><strong>dtype</strong>: <code>tf.type</code>, Placeholder data type (optional). Default: float32.</li>
+<li><strong>data_preprocessing</strong>: A <code>DataPreprocessing</code> subclass object to manage
+real-time data pre-processing when training and predicting (such
+as zero center data, std normalization...).</li>
+<li><strong>data_augmentation</strong>: <code>DataAugmentation</code>. A <code>DataAugmentation</code> subclass
+object to manage real-time data augmentation while training (
+such as random image crop, random image flip, random sequence
+reverse...).</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />
 <h1 id="fully-connected">Fully Connected</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.fully_connected</b></span>  (incoming,  n_units,  activation='linear',  bias=True,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Dense')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.fully_connected</b></span>  (incoming,  n_units,  activation='linear',  bias=True,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='FullyConnected')</span></p>
 <p>A fully connected layer.</p>
 <h3>Input</h3>
 
@@ -430,7 +458,7 @@ layer weights (see tflearn.regularizers). Default: None.
    trainable: <code>bool</code>. If True, weights will be trainable.
    restore: <code>bool</code>. If True, this layer weights will be restored when
 loading a model
-   name: A name for this layer (optional). Default: 'Dense'.</li>
+   name: A name for this layer (optional). Default: 'FullyConnected'.</li>
 </ul>
 <h3>Attributes</h3>
 

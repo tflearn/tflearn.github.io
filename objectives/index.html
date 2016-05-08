@@ -202,6 +202,9 @@
                 <li class="toctree-l3"><a href="#hinge-loss">Hinge Loss</a></li>
                 
             
+                <li class="toctree-l3"><a href="#roc-auc-score">ROC AUC Score</a></li>
+                
+            
             </ul>
         
     </li>
@@ -291,6 +294,27 @@
             <li>
     <ul class="subnav">
     <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_flow/">Data Flow</a>
+        
+    </li>
 
         
             
@@ -440,6 +464,20 @@ both an elephant and a dog at the same time.</p>
 <ul>
 <li><strong>y_pred</strong>: <code>Tensor</code> of <code>float</code> type. Predicted values.</li>
 <li><strong>y_true</strong>: <code>Tensor</code> of <code>float</code> type. Targets (labels).</li>
+</ul>
+<hr />
+<h1 id="roc-auc-score">ROC AUC Score</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.objectives.roc_auc_score</b></span>  (y_pred,  y_true)</span></p>
+<p>Approximates the Area Under Curve score, using approximation based on
+the Wilcoxon-Mann-Whitney U statistic.</p>
+<p>Yan, L., Dodier, R., Mozer, M. C., &amp; Wolniewicz, R. (2003).
+Optimizing Classifier Performance via an Approximation to the Wilcoxon-Mann-Whitney Statistic.</p>
+<p>Measures overall performance for a full range of threshold levels.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>y_pred</strong>: <code>Tensor</code>. Predicted values.</li>
+<li><strong>y_true</strong>: <code>Tensor</code> . Targets (labels), a probability distribution.</li>
 </ul>
 <hr />
               

@@ -295,6 +295,27 @@
         
             
     <li class="toctree-l1 ">
+        <a class="" href="../../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../../data_flow/">Data Flow</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
         <a class="" href="../../data_utils/">Data Utils</a>
         
     </li>
@@ -365,7 +386,7 @@
             <div class="section">
               
                 <h1 id="simple-rnn">Simple RNN</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.simple_rnn</b></span>  (incoming,  n_units,  activation='sigmoid',  bias=True,  weights_init='truncated_normal',  return_seq=False,  trainable=True,  restore=True,  name='SimpleRNN')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.simple_rnn</b></span>  (incoming,  n_units,  activation='sigmoid',  bias=True,  weights_init='truncated_normal',  return_seq=False,  return_states=False,  initial_state=None,  trainable=True,  restore=True,  name='SimpleRNN')</span></p>
 <p>Simple Recurrent Layer.</p>
 <h3>Input</h3>
 
@@ -386,11 +407,15 @@ else: 2-D Tensor [samples, output dim].</p>
 (See tflearn.initializations) Default: 'truncated_normal'.</li>
 <li><strong>return_seq</strong>: <code>bool</code>. If True, returns the full sequence instead of
 last sequence output only.</li>
+<li><strong>return_states</strong>: <code>bool</code>. If True, returns a tuple with output and
+states: (output, states).</li>
+<li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
+a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />
 <h1 id="lstm">LSTM</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.lstm</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  bias=True,  weights_init='truncated_normal',  forget_bias=1.0,  return_seq=False,  trainable=True,  restore=True,  name='LSTM')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.lstm</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  bias=True,  weights_init='truncated_normal',  forget_bias=1.0,  return_seq=False,  return_states=False,  initial_state=None,  trainable=True,  restore=True,  name='LSTM')</span></p>
 <p>Long Short Term Memory Recurrent Layer.</p>
 <h3>Input</h3>
 
@@ -414,6 +439,10 @@ Default: 'tanh'.</li>
 <li><strong>forget_bias</strong>: <code>float</code>. Bias of the forget gate. Default: 1.0.</li>
 <li><strong>return_seq</strong>: <code>bool</code>. If True, returns the full sequence instead of
 last sequence output only.</li>
+<li><strong>return_states</strong>: <code>bool</code>. If True, returns a tuple with output and
+states: (output, states).</li>
+<li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
+a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <h3>References</h3>
@@ -425,7 +454,7 @@ Neural Computation 9(8): 1735-1780, 1997.</p>
 <p><a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf">http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf</a></p>
 <hr />
 <h1 id="gru">GRU</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.gru</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  bias=True,  weights_init='truncated_normal',  return_seq=False,  trainable=True,  restore=True,  name='GRU')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.gru</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  bias=True,  weights_init='truncated_normal',  return_seq=False,  return_states=False,  initial_state=None,  trainable=True,  restore=True,  name='GRU')</span></p>
 <p>Gated Recurrent Unit Layer.</p>
 <h3>Input</h3>
 
@@ -448,6 +477,10 @@ Default: 'tanh'.</li>
 (See tflearn.initializations) Default: 'truncated_normal'.</li>
 <li><strong>return_seq</strong>: <code>bool</code>. If True, returns the full sequence instead of
 last sequence output only.</li>
+<li><strong>return_states</strong>: <code>bool</code>. If True, returns a tuple with output and
+states: (output, states).</li>
+<li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
+a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <h3>References</h3>
@@ -459,7 +492,7 @@ Statistical Machine Translation, K. Cho et al., 2014.</p>
 <p><a href="http://arxiv.org/abs/1406.1078">http://arxiv.org/abs/1406.1078</a></p>
 <hr />
 <h1 id="bidirectional-rnn">Bidirectional RNN</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.bidirectional_rnn</b></span>  (incoming,  rnncell_fw,  rnncell_bw,  return_seq=False,  name='BidirectionalRNN')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.bidirectional_rnn</b></span>  (incoming,  rnncell_fw,  rnncell_bw,  return_seq=False,  return_states=False,  initial_state_fw=None,  initial_state_bw=None,  name='BidirectionalRNN')</span></p>
 <p>Build a bidirectional recurrent neural network, it requires 2 RNN Cells
 to process sequence in forward and backward order. Any RNN Cell can be
 used i.e. SimpleRNN, LSTM, GRU... with its own parameters. But the two
@@ -479,13 +512,21 @@ else: 2-D Tensor Layer [samples, output dim].</p>
 <li><strong>rnncell_bw</strong>: <code>RNNCell</code>. The RNN Cell to use for backward computation.</li>
 <li><strong>return_seq</strong>: <code>bool</code>. If True, returns the full sequence instead of
 last sequence output only.</li>
+<li><strong>return_states</strong>: <code>bool</code>. If True, returns a tuple with output and
+states: (output, states).</li>
+<li><strong>initial_state_fw</strong>: <code>Tensor</code>. An initial state for the forward RNN.
+This must be a tensor of appropriate type and shape [batch_size
+x cell.state_size].</li>
+<li><strong>initial_state_bw</strong>: <code>Tensor</code>. An initial state for the backward RNN.
+This must be a tensor of appropriate type and shape [batch_size
+x cell.state_size].</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />
 <h1 id="dynamic-rnn">Dynamic RNN</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.dynamic_rnn</b></span>  (incoming,  rnncell,  sequence_length=None,  time_major=False,  return_seq=False,  name='DynamicRNN')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.dynamic_rnn</b></span>  (incoming,  rnncell,  sequence_length=None,  time_major=False,  return_seq=False,  return_states=False,  initial_state=None,  name='DynamicRNN')</span></p>
 <p>RNN with dynamic sequence length.</p>
-<p>Unlike <code>rnn</code>, the input <code>inputs</code> is not a Python list of <code>Tensors</code>.
+<p>Unlike <code>rnn</code>, the input <code>incoming</code> is not a Python list of <code>Tensors</code>.
 Instead, it is a single <code>Tensor</code> where the maximum time is either the
 first or second dimension (see the parameter <code>time_major</code>).  The
 corresponding output is a single <code>Tensor</code> having the same number of time
@@ -504,8 +545,21 @@ else: 2-D Tensor Layer [samples, output dim].</p>
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. The incoming 3-D Tensor.</li>
 <li><strong>rnncell</strong>: <code>RNNCell</code>. The RNN Cell to use for computation.</li>
+<li><strong>sequence_length</strong>: <code>int32</code> <code>Tensor</code>. A Tensor of shape [batch_size].
+(Optional).</li>
+<li><strong>time_major</strong>: The shape format of the <code>inputs</code> and <code>outputs</code> Tensors.
+If true, these <code>Tensors</code> must be shaped <code>[max_time, batch_size, depth]</code>.
+If false, these <code>Tensors</code> must be shaped <code>[batch_size, max_time, depth]</code>.
+Using time_major = False is a bit more efficient because it avoids
+transposes at the beginning and end of the RNN calculation.  However,
+most TensorFlow data is batch-major, so by default this function
+accepts input and emits output in batch-major form.</li>
 <li><strong>return_seq</strong>: <code>bool</code>. If True, returns the full sequence instead of
 last sequence output only.</li>
+<li><strong>return_states</strong>: <code>bool</code>. If True, returns a tuple with output and
+states: (output, states).</li>
+<li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
+a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />

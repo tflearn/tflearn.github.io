@@ -8,7 +8,7 @@
   
   <meta name="author" content="Aymeric Damien">
   
-  <title>Initializations - TFLearn</title>
+  <title>Data Flow - TFLearn</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -24,9 +24,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Initializations";
-    var mkdocs_page_input_path = "initializations.md";
-    var mkdocs_page_url = "/initializations/";
+    var mkdocs_page_name = "Data Flow";
+    var mkdocs_page_input_path = "data_flow.md";
+    var mkdocs_page_url = "/data_flow/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -203,27 +203,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Initializations</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#zeros">Zeros</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#uniform">Uniform</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#uniform-scaling">Uniform Scaling</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#normal">Normal</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#truncated-normal">Truncated Normal</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../initializations/">Initializations</a>
         
     </li>
 
@@ -308,8 +289,18 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../data_flow/">Data Flow</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Data Flow</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#data-flow">Data Flow</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#feeddictflow">FeedDictFlow</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -367,11 +358,11 @@
     
       
         
-          <li>Built-in Ops &raquo;</li>
+          <li>Others &raquo;</li>
         
       
     
-    <li>Initializations</li>
+    <li>Data Flow</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -385,108 +376,74 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="zeros">Zeros</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.initializations.zeros</b></span>  (shape=None,  dtype=tf.float32,  seed=None)</span></p>
-<p>Initialize a tensor with all elements set to zero.</p>
+                <h1 id="data-flow">Data Flow</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_flow.DataFlow</b></span>  (coord,  num_threads=8,  max_queue=32,  shuffle=False,  continuous=False,  ensure_data_order=False,  dprep_dict=None,  daug_dict=None)</span></p>
+<p>Base class for using real time pre-processing and controlling data flow.
+Supports pipelining for faster computation.</p>
 <h3>Arguments</h3>
 
 <ul>
-<li><strong>shape</strong>: List of <code>int</code>. A shape to initialize a Tensor (optional).</li>
-<li><strong>dtype</strong>: The tensor data type.</li>
+<li><strong>coord</strong>: <code>Coordinator</code>. A Tensorflow coordinator.</li>
+<li><strong>num_threads</strong>: <code>int</code>. Total number of simultaneous threads to process data.</li>
+<li><strong>max_queue</strong>: <code>int</code>. Maximum number of data stored in a queue.</li>
+<li><strong>shuffle</strong>: <code>bool</code>. If True, data will be shuffle.</li>
+<li><strong>continuous</strong>: <code>bool</code>. If True, when an epoch is over, same data will be
+feeded again.</li>
+<li><strong>ensure_data_order</strong>: <code>bool</code>. Ensure that data order is keeped when using
+'next' to retrieve data (Processing will be slower).</li>
+<li><strong>dprep_dict</strong>: dict. Optional data pre-processing parameter for performing
+real time data pre-processing. Keys must be placeholders and values
+<code>DataPreprocessing</code> subclass object.</li>
+<li><strong>dprep_dict</strong>: dict. Optional data augmentation parameter for performing
+real time data augmentation. Keys must be placeholders and values
+<code>DataAugmentation</code> subclass object.</li>
 </ul>
-<h3>Returns</h3>
-
-<p>The Initializer, or an initialized <code>Tensor</code> if a shape is specified.</p>
 <hr />
-<h1 id="uniform">Uniform</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.initializations.uniform</b></span>  (shape=None,  minval=0,  maxval=None,  dtype=tf.float32,  seed=None)</span></p>
-<p>Initialization with random values from a uniform distribution.</p>
-<p>The generated values follow a uniform distribution in the range
-<code>[minval, maxval)</code>. The lower bound <code>minval</code> is included in the range,
-while the upper bound <code>maxval</code> is excluded.</p>
-<p>For floats, the default range is <code>[0, 1)</code>.  For ints, at least <code>maxval</code>
-must be specified explicitly.</p>
-<p>In the integer case, the random integers are slightly biased unless
-<code>maxval - minval</code> is an exact power of two.  The bias is small for values of
-<code>maxval - minval</code> significantly smaller than the range of the output (either
-<code>2**32</code> or <code>2**64</code>).</p>
+<h1 id="feeddictflow">FeedDictFlow</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_flow.FeedDictFlow</b></span>  (feed_dict,  coord,  batch_size=128,  num_threads=8,  max_queue=32,  shuffle=False,  continuous=False,  ensure_data_order=False,  dprep_dict=None,  daug_dict=None,  index_array=None)</span></p>
+<p>Generate a stream of batches from a dataset. It uses two queues, one for
+generating batch of data ids, and the other one to load data and apply pre
+processing. If continuous is <code>True</code>, data flow will never ends until <code>stop</code>
+is invoked, or <code>coord</code> interrupt threads.</p>
 <h3>Arguments</h3>
 
 <ul>
-<li><strong>shape</strong>: List of <code>int</code>. A shape to initialize a Tensor (optional).</li>
-<li><strong>dtype</strong>: The tensor data type. Only float are supported.</li>
-<li><strong>seed</strong>: <code>int</code>. Used to create a random seed for the distribution.</li>
+<li><strong>feed_dict</strong>: <code>dict</code>. A TensorFlow formatted feed dict (with placeholders
+as keys and data as values).</li>
+<li><strong>coord</strong>: <code>Coordinator</code>. A Tensorflow coordinator.</li>
+<li><strong>num_threads</strong>: <code>int</code>. Total number of simultaneous threads to process data.</li>
+<li><strong>max_queue</strong>: <code>int</code>. Maximum number of data stored in a queue.</li>
+<li><strong>shuffle</strong>: <code>bool</code>. If True, data will be shuffle.</li>
+<li><strong>continuous</strong>: <code>bool</code>. If True, when an epoch is over, same data will be
+feeded again.</li>
+<li><strong>ensure_data_order</strong>: <code>bool</code>. Ensure that data order is keeped when using
+'next' to retrieve data (Processing will be slower).</li>
+<li><strong>dprep_dict</strong>: dict. Optional data pre-processing parameter for performing
+real time data pre-processing. Keys must be placeholders and values
+<code>DataPreprocessing</code> subclass object.</li>
+<li><strong>dprep_dict</strong>: dict. Optional data augmentation parameter for performing
+real time data augmentation. Keys must be placeholders and values
+<code>DataAugmentation</code> subclass object.</li>
+<li><strong>index_array</strong>: <code>list</code>. An optional list of index to be used instead of
+using the whole dataset indexes (Useful for validation split).</li>
 </ul>
-<h3>Returns</h3>
+<h2>Methods</h2>
 
-<p>The Initializer, or an initialized <code>Tensor</code> if shape is specified.</p>
-<hr />
-<h1 id="uniform-scaling">Uniform Scaling</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.initializations.uniform_scaling</b></span>  (shape=None,  factor=1.0,  dtype=tf.float32,  seed=None)</span></p>
-<p>Initialization with random values from uniform distribution without scaling
-variance.</p>
-<p>When initializing a deep network, it is in principle advantageous to keep
-the scale of the input variance constant, so it does not explode or diminish
-by reaching the final layer. If the input is <code>x</code> and the operation <code>x * W</code>,
-and we want to initialize <code>W</code> uniformly at random, we need to pick <code>W</code> from</p>
-<p>[-sqrt(3) / sqrt(dim), sqrt(3) / sqrt(dim)]</p>
-<p>to keep the scale intact, where <code>dim = W.shape[0]</code> (the size of the input).
-A similar calculation for convolutional networks gives an analogous result
-with <code>dim</code> equal to the product of the first 3 dimensions.  When
-nonlinearities are present, we need to multiply this by a constant <code>factor</code>.
-See <a href="https://arxiv.org/abs/1412.6558">Sussillo et al., 2014</a>
-(<a href="http://arxiv.org/pdf/1412.6558.pdf">pdf</a>) for deeper motivation, experiments
-and the calculation of constants. In section 2.3 there, the constants were
-numerically computed: for a linear layer it's 1.0, relu: ~1.43, tanh: ~1.15.</p>
-<h3>Arguments</h3>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>next</b></span>  (timeout=None)</span></p>
+<p>Get the next feed dict.</p>
+<h5>Returns</h5>
+
+<p>A TensorFlow feed dict, or 'False' if it has no more data.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>start</b></span>  (reset_status=True)</span></p>
+<h5>Arguments</h5>
 
 <ul>
-<li><strong>shape</strong>: List of <code>int</code>. A shape to initialize a Tensor (optional).</li>
-<li><strong>factor</strong>: <code>float</code>. A multiplicative factor by which the values will be
-scaled.</li>
-<li><strong>dtype</strong>: The tensor data type. Only float are supported.</li>
-<li><strong>seed</strong>: <code>int</code>. Used to create a random seed for the distribution.</li>
+<li><strong>reset_status</strong>: <code>bool</code>. If True, <code>DataStatus</code> will be reset.</li>
 </ul>
-<h3>Returns</h3>
+<h5>Returns</h5>
 
-<p>The Initializer, or an initialized <code>Tensor</code> if shape is specified.</p>
-<hr />
-<h1 id="normal">Normal</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.initializations.normal</b></span>  (shape=None,  mean=0.0,  stddev=0.02,  dtype=tf.float32,  seed=None)</span></p>
-<p>Initialization with random values from a normal distribution.</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>shape</strong>: List of <code>int</code>. A shape to initialize a Tensor (optional).</li>
-<li><strong>mean</strong>: Same as <code>dtype</code>. The mean of the truncated normal distribution.</li>
-<li><strong>stddev</strong>: Same as <code>dtype</code>. The standard deviation of the truncated
-normal distribution.</li>
-<li><strong>dtype</strong>: The tensor data type.</li>
-<li><strong>seed</strong>: <code>int</code>. Used to create a random seed for the distribution.</li>
-</ul>
-<h3>Returns</h3>
-
-<p>The Initializer, or an initialized <code>Tensor</code> if shape is specified.</p>
-<hr />
-<h1 id="truncated-normal">Truncated Normal</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.initializations.truncated_normal</b></span>  (shape=None,  mean=0.0,  stddev=0.02,  dtype=tf.float32,  seed=None)</span></p>
-<p>Initialization with random values from a normal truncated distribution.</p>
-<p>The generated values follow a normal distribution with specified mean and
-standard deviation, except that values whose magnitude is more than 2 standard
-deviations from the mean are dropped and re-picked.</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>shape</strong>: List of <code>int</code>. A shape to initialize a Tensor (optional).</li>
-<li><strong>mean</strong>: Same as <code>dtype</code>. The mean of the truncated normal distribution.</li>
-<li><strong>stddev</strong>: Same as <code>dtype</code>. The standard deviation of the truncated
-normal distribution.</li>
-<li><strong>dtype</strong>: The tensor data type.</li>
-<li><strong>seed</strong>: <code>int</code>. Used to create a random seed for the distribution.</li>
-</ul>
-<h3>Returns</h3>
-
-<p>The Initializer, or an initialized <code>Tensor</code> if shape is specified.</p>
 <hr />
               
             </div>
@@ -495,10 +452,10 @@ normal distribution.</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../losses/" class="btn btn-neutral float-right" title="Losses">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../data_utils/" class="btn btn-neutral float-right" title="Data Utils">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../metrics/" class="btn btn-neutral" title="Metrics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../data_augmentation/" class="btn btn-neutral" title="Data Augmentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -526,10 +483,10 @@ normal distribution.</li>
           <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../metrics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../data_augmentation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../losses/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../data_utils/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
