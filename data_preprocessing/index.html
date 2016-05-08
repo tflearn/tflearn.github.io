@@ -280,6 +280,12 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#data-preprocessing">Data Preprocessing</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#image-preprocessing">Image Preprocessing</a></li>
+                
+            
             </ul>
         
     </li>
@@ -370,7 +376,126 @@
           <div role="main">
             <div class="section">
               
-                
+                <h1 id="data-preprocessing">Data Preprocessing</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_preprocessing.DataPreprocessing</b></span>  (name='DataPreprocessing')</span></p>
+<p>Manage real-time data preprocessing.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li>None.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_featurewise_stdnorm</b></span>  (std=None)</span></p>
+<p>Scale each sample by the specified standard deviation. If no std
+specified, std is evaluated over all samples data.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>std</strong>: <code>float</code> (optional). Provides a custom standard derivation.
+If none provided, it will be automatically caluclated based on
+the training dataset. Default: None.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_featurewise_zero_center</b></span>  (mean=None)</span></p>
+<p>Zero center every sample with specified mean. If not specified,
+the mean is evaluated over all samples.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>mean</strong>: <code>float</code> (optional). Provides a custom mean. If none
+provided, it will be automatically caluclated based on
+the training dataset. Default: None.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_samplewise_stdnorm</b></span>  (self)</span></p>
+<p>Scale each sample with its standard deviation.</p>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_samplewise_zero_center</b></span>  (self)</span></p>
+<p>Zero center each sample by subtracting it by its mean.</p>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<hr />
+<h1 id="image-preprocessing">Image Preprocessing</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_preprocessing.ImagePreprocessing</b></span>  (self)</span></p>
+<p>Pre-processing methods designed especially for images.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li>None.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_featurewise_stdnorm</b></span>  (std=None,  per_channel=False)</span></p>
+<p>Scale each sample by the specified standard deviation. If no std
+specified, std is evaluated over all samples data.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>std</strong>: <code>float</code> (optional). Provides a custom standard derivation.
+If none provided, it will be automatically caluclated based on
+the training dataset. Default: None.</li>
+<li><strong>per_channel</strong>: <code>bool</code>. If True, compute std per color channel.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_featurewise_zero_center</b></span>  (mean=None,  per_channel=False)</span></p>
+<p>Zero center every sample with specified mean. If not specified,
+the mean is evaluated over all samples.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>mean</strong>: <code>float</code> (optional). Provides a custom mean. If none
+provided, it will be automatically caluclated based on
+the training dataset. Default: None.</li>
+<li><strong>per_channel</strong>: <code>bool</code>. If True, compute mean per color channel.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_image_normalization</b></span>  (self)</span></p>
+<p>Normalize a picture pixel to 0-1 float (instead of 0-255 int).</p>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_samplewise_stdnorm</b></span>  (per_channel=False)</span></p>
+<p>Scale each sample with its standard deviation.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>per_channel</strong>: <code>bool</code>. If True, apply per channel std.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_samplewise_zero_center</b></span>  (per_channel=False)</span></p>
+<p>Zero center each sample by subtracting it by its mean.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>per_channel</strong>: <code>bool</code>. If True, apply per channel mean.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<hr />
               
             </div>
           </div>

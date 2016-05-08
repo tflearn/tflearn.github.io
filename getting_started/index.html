@@ -633,7 +633,7 @@ model.fit(X, Y)
 
 <p>For an example, see: <a href="https://github.com/tflearn/tflearn/blob/master/examples/basics/hdf5.py">hdf5.py</a>.</p>
 <h3 id="data-preprocessing-and-data-augmentation">Data Preprocessing and Data Augmentation</h3>
-<p>It is common to perform data pre-processing and data augmentation while training a model, so TFLearn provides wrappers to easily handle it. Note that TFLearn data stream is designed with pipelining in order to speed-up training (by pre-processing data on CPU while GPU is performing model training).</p>
+<p>It is common to perform data pre-processing and data augmentation while training a model, so TFLearn provides wrappers to easily handle it. Note also that TFLearn data stream is designed with computing pipelines in order to speed-up training (by pre-processing data on CPU while GPU is performing model training).</p>
 <pre><code class="python"># Real-time image preprocessing
 img_prep = tflearn.ImagePreprocessing()
 # Zero Center (With mean computed over the whole dataset)
