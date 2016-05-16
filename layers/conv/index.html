@@ -136,6 +136,9 @@
                 <li class="toctree-l3"><a href="#convolution-2d-transpose">Convolution 2D Transpose</a></li>
                 
             
+                <li class="toctree-l3"><a href="#upsample-2d">UpSample 2D</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#max-pooling-2d">Max Pooling 2D</a></li>
                 
             
@@ -484,6 +487,27 @@ loading a model</li>
 <li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
 <li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
 <li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
+</ul>
+<hr />
+<h1 id="upsample-2d">UpSample 2D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.upsample_2d</b></span>  (incoming,  kernel_size,  name='UpSample2D')</span></p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>4-D Tensor [batch, pooled height, pooled width, in_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Layer to upsample.</li>
+<li><strong>kernel_size</strong>: 'int<code>or list of</code>ints`. Upsampling kernel size.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'UpSample2D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
 </ul>
 <hr />
 <h1 id="max-pooling-2d">Max Pooling 2D</h1>

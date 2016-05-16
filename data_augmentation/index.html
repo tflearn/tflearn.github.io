@@ -396,6 +396,27 @@
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_random_crop</b></span>  (crop_shape,  padding=None)</span></p>
+<p>Randomly crop a picture according to 'crop_shape'. An optional padding
+can be specified, for padding picture with 0s (To conserve original
+image shape).</p>
+<h5>Examples</h5>
+
+<pre><code class="python"># Example: pictures of 32x32
+imgaug = tflearn.ImageAugmentation()
+# Random crop of 24x24 into a 32x32 picture =&gt; output 24x24
+imgaug.add_random_crop((24, 24))
+# Random crop of 32x32 with image padding of 6 (to conserve original image shape) =&gt; output 32x32
+imgaug.add_random_crop((32, 32), 6)
+</code></pre>
+
+<p>Args:
+crop_shape: <code>tuple</code> of <code>int</code>. The crop shape (height, width).
+padding: <code>int</code>. If not None, the image is padded with 'padding' 0s.</p>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>add_random_flip_leftright</b></span>  (self)</span></p>
 <p>Randomly flip an image (left to right).</p>
 <h5>Returns</h5>

@@ -374,7 +374,7 @@
             <div class="section">
               
                 <h1 id="regression">Regression</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.estimator.regression</b></span>  (incoming,  placeholder=None,  optimizer='adam',  loss='categorical_crossentropy',  metric='default',  learning_rate=0.001,  dtype=tf.float32,  batch_size=64,  shuffle_batches=True,  op_name=None,  name=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.estimator.regression</b></span>  (incoming,  placeholder=None,  optimizer='adam',  loss='categorical_crossentropy',  metric='default',  learning_rate=0.001,  dtype=tf.float32,  batch_size=64,  shuffle_batches=True,  trainable_vars=None,  restore=True,  op_name=None,  name=None)</span></p>
 <h3>Input</h3>
 
 <p>2-D Tensor Layer.</p>
@@ -402,6 +402,12 @@ calculation, set it to 'None'.</li>
 supports different batch size for every optimizers. Default: 64.</li>
 <li><strong>shuffle_batches</strong>: <code>bool</code>. Shuffle or not this optimizer batches at
 every epoch. Default: True.</li>
+<li><strong>trainable_vars</strong>: list of <code>Variable</code>. If specified, this regression will
+only update given variable weights. Else, all trainale variable
+are going to be updated.</li>
+<li><strong>restore</strong>: <code>bool</code>. If False, variables related to optimizers such
+as moving averages will not be restored when loading a
+pre-trained model.</li>
 <li><strong>op_name</strong>: A name for this layer optimizer (optional).
 Default: optimizer op name.</li>
 <li><strong>name</strong>: A name for this layer's placeholder scope.</li>

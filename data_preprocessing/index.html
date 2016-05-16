@@ -426,6 +426,18 @@ the training dataset. Default: None.</li>
 <h5>Returns</h5>
 
 <p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_zca_whitening</b></span>  (pc=None)</span></p>
+<p>Apply ZCA Whitening to data.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>pc</strong>: <code>array</code> (optional). Use the provided pre-computed principal
+component instead of computing it.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
 <hr />
 <h1 id="image-preprocessing">Image Preprocessing</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_preprocessing.ImagePreprocessing</b></span>  (self)</span></p>
@@ -437,6 +449,17 @@ the training dataset. Default: None.</li>
 </ul>
 <h2>Methods</h2>
 
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_crop_center</b></span>  (shape)</span></p>
+<p>Crop the center of an image.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>shape</strong>: <code>tuple</code> of <code>int</code>. The croping shape (height, width).</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>add_featurewise_stdnorm</b></span>  (std=None,  per_channel=False)</span></p>
 <p>Scale each sample by the specified standard deviation. If no std

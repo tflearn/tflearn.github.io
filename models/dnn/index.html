@@ -409,8 +409,8 @@ initialized already, otherwise an error will be raised.</li>
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>evaluate</b></span>  (X,  Y,  batch_size)</span></p>
-<p>Evaluate model on given samples.</p>
+<p><span class="extra_h2"><span style="color:black"><b>evaluate</b></span>  (X,  Y,  batch_size=128)</span></p>
+<p>Evaluate model metric(s) on given samples.</p>
 <h5>Arguments</h5>
 
 <ul>
@@ -425,7 +425,7 @@ sequence, i.e. for x[0] =&gt; y[0] = x[1].</li>
 </ul>
 <h5>Returns</h5>
 
-<p>The metric score.</p>
+<p>The metric(s) score.</p>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (X_inputs,  Y_targets,  n_epoch=10,  validation_set=None,  show_metric=False,  batch_size=None,  shuffle=None,  snapshot_epoch=True,  snapshot_step=None,  run_id=None)</span></p>
 <p>Train model, feeding X_inputs and Y_targets to the network.</p>

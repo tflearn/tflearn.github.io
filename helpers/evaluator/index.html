@@ -386,6 +386,20 @@
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>evaluate</b></span>  (feed_dict,  ops,  batch_size=128)</span></p>
+<p>Evaluate a list of tensors over a whole dataset. It is used to compute
+a metric mean score over an entire dataset.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>feed_dict</strong>: <code>dict</code>. The feed dictionary of data.</li>
+<li><strong>ops</strong>: list of <code>Tensors</code>. The tensors to evaluate.</li>
+<li><strong>batch_size</strong>: <code>int</code>. A batch size.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>The mean average result per tensor over the entire dataset.</p>
+<p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>predict</b></span>  (feed_dict)</span></p>
 <p>Run data through each tensor's network, and return prediction value.</p>
 <h5>Arguments</h5>
