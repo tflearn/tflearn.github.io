@@ -147,6 +147,9 @@
                 <li class="toctree-l3"><a href="#single-unit">Single Unit</a></li>
                 
             
+                <li class="toctree-l3"><a href="#fully-connected-highway">Fully Connected Highway</a></li>
+                
+            
             </ul>
         
     </li>
@@ -445,8 +448,9 @@ reverse...).</li>
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming (2+)D Tensor.</li>
 <li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
-(see tflearn.activations). Default: 'linear'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (see tflearn.initializations) Default: 'truncated_normal'.</li>
@@ -457,7 +461,7 @@ layer weights (see tflearn.regularizers). Default: None.
    weight_decay: <code>float</code>. Regularizer decay parameter. Default: 0.001.
    trainable: <code>bool</code>. If True, weights will be trainable.
    restore: <code>bool</code>. If True, this layer weights will be restored when
-loading a model
+loading a model.
    name: A name for this layer (optional). Default: 'FullyConnected'.</li>
 </ul>
 <h3>Attributes</h3>
@@ -535,8 +539,9 @@ with its parameters.</p>
 
 <ul>
 <li><strong>incoming</strong>: A <code>Tensor</code>. The incoming tensor.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
-(see tflearn.activations). Default: 'linear'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
 </ul>
 <hr />
 <h1 id="single-unit">Single Unit</h1>
@@ -552,8 +557,8 @@ with its parameters.</p>
 
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming Tensor.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
-(see tflearn.activations). Default: 'linear'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code>. Activation applied to this
+layer (see tflearn.activations). Default: 'linear'.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
@@ -566,6 +571,55 @@ loading a model.</li>
 <li><strong>W</strong>: <code>Tensor</code>. Variable representing weight.</li>
 <li><strong>b</strong>: <code>Tensor</code>. Variable representing bias.</li>
 </ul>
+<hr />
+<h1 id="fully-connected-highway">Fully Connected Highway</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.highway</b></span>  (incoming,  n_units,  activation='linear',  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='FullyConnectedHighway')</span></p>
+<p>A fully connected highway network layer, with some inspiration from
+<a href="https://github.com/fomorians/highway-fcn">https://github.com/fomorians/highway-fcn</a>.</p>
+<h3>Input</h3>
+
+<p>(2+)-D Tensor [samples, input dim]. If not 2D, input will be flatten.</p>
+<h3>Output</h3>
+
+<p>2D Tensor [samples, n_units].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming (2+)D Tensor.</li>
+<li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'truncated_normal'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model</li>
+<li>name: A name for this layer (optional). Default: 'FullyConnectedHighway'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+<li><strong>W</strong>: <code>Tensor</code>. Variable representing units weights.</li>
+<li><strong>W_t</strong>: <code>Tensor</code>. Variable representing units weights for transform gate.</li>
+<li><strong>b</strong>: <code>Tensor</code>. Variable representing biases.</li>
+<li><strong>b_t</strong>: <code>Tensor</code>. Variable representing biases for transform gate.</li>
+<li>
+<p><h3>Links</h3></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/1505.00387">https://arxiv.org/abs/1505.00387</a></p>
+</li>
+</ul>
+<h3>Links</h3>
+
+<p><a href="https://arxiv.org/abs/1505.00387">https://arxiv.org/abs/1505.00387</a></p>
 <hr />
               
             </div>

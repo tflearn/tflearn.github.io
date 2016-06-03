@@ -396,6 +396,21 @@
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_random_blur</b></span>  (sigma_max=5.0)</span></p>
+<p>Randomly blur an image by applying a gaussian filter with a random
+sigma (0., <code>sigma_max</code>).</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>sigma</strong>: <code>float</code> or list of <code>float</code>. Standard deviation for Gaussian
+kernel. The standard deviations of the Gaussian filter are
+given for each axis as a sequence, or as a single number,
+in which case it is equal for all axes.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>add_random_crop</b></span>  (crop_shape,  padding=None)</span></p>
 <p>Randomly crop a picture according to 'crop_shape'. An optional padding
 can be specified, for padding picture with 0s (To conserve original
@@ -425,6 +440,17 @@ padding: <code>int</code>. If not None, the image is padded with 'padding' 0s.</
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>add_random_flip_updown</b></span>  (self)</span></p>
 <p>Randomly flip an image (upside down).</p>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_random_rotation</b></span>  (max_angle=20.0)</span></p>
+<p>Randomly rotate an image by a random angle (-<code>max_angle</code>, <code>max_angle</code>).</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>max_angle</strong>: <code>float</code>. The maximum rotation angle.</li>
+</ul>
 <h5>Returns</h5>
 
 <p>Nothing.</p>

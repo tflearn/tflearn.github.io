@@ -389,11 +389,11 @@
 If 'None' provided, a placeholder will be added automatically.
 You can retrieve that placeholder through graph key: 'TARGETS',
 or the 'placeholder' attribute of this function's returned tensor.</li>
-<li><strong>optimizer</strong>: <code>str</code> (name) or <code>Optimizer</code>. Optimizer to use.
+<li><strong>optimizer</strong>: <code>str</code> (name), <code>Optimizer</code> or <code>function</code>. Optimizer to use.
 Default: 'sgd' (Stochastic Descent Gradient).</li>
-<li><strong>loss</strong>: <code>str</code> (name) or <code>Tensor</code>. Loss function used by this layer
+<li><strong>loss</strong>: <code>str</code> (name) or <code>function</code>. Loss function used by this layer
 optimizer. Default: 'categorical_crossentropy'.</li>
-<li><strong>metric</strong>: <code>str</code>, <code>Metric</code> or <code>Tensor</code>. The metric to be used.
+<li><strong>metric</strong>: <code>str</code>, <code>Metric</code> or <code>function</code>. The metric to be used.
 Default: 'default' metric is 'accuracy'. To disable metric
 calculation, set it to 'None'.</li>
 <li><strong>learning_rate</strong>: <code>float</code>. This layer optimizer's learning rate.</li>

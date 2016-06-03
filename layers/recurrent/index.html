@@ -386,7 +386,7 @@
             <div class="section">
               
                 <h1 id="simple-rnn">Simple RNN</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.simple_rnn</b></span>  (incoming,  n_units,  activation='sigmoid',  bias=True,  weights_init='truncated_normal',  return_seq=False,  return_states=False,  initial_state=None,  trainable=True,  restore=True,  name='SimpleRNN')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.simple_rnn</b></span>  (incoming,  n_units,  activation='sigmoid',  dropout=None,  bias=True,  weights_init='truncated_normal',  return_seq=False,  return_states=False,  initial_state=None,  sequence_length=None,  trainable=True,  restore=True,  name='SimpleRNN')</span></p>
 <p>Simple Recurrent Layer.</p>
 <h3>Input</h3>
 
@@ -400,8 +400,11 @@ else: 2-D Tensor [samples, output dim].</p>
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming 3-D Tensor.</li>
 <li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
-(See tflearn.activations). Default: 'sigmoid'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>dropout</strong>: <code>tuple</code> of <code>float</code>: (input_keep_prob, out_keep_prob). The
+input and output keep probability.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (See tflearn.initializations) Default: 'truncated_normal'.</li>
@@ -411,11 +414,16 @@ last sequence output only.</li>
 states: (output, states).</li>
 <li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
 a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
+<li><strong>sequence_length</strong>: Specifies the length of each sequence in inputs.
+An int32 or int64 vector (tensor) size <code>[batch_size]</code>.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />
 <h1 id="lstm">LSTM</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.lstm</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  bias=True,  weights_init='truncated_normal',  forget_bias=1.0,  return_seq=False,  return_states=False,  initial_state=None,  trainable=True,  restore=True,  name='LSTM')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.lstm</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  dropout=None,  bias=True,  weights_init='truncated_normal',  forget_bias=1.0,  return_seq=False,  return_states=False,  initial_state=None,  sequence_length=None,  trainable=True,  restore=True,  name='LSTM')</span></p>
 <p>Long Short Term Memory Recurrent Layer.</p>
 <h3>Input</h3>
 
@@ -429,10 +437,13 @@ else: 2-D Tensor [samples, output dim].</p>
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming 3-D Tensor.</li>
 <li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>Tensor</code>. Activation applied to this layer.
-(See tflearn.activations). Default: 'sigmoid'.</li>
-<li><strong>inner_activation</strong>: <code>str</code> (name) or <code>Tensor</code>. LSTM inner activation.
-Default: 'tanh'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'sigmoid'.</li>
+<li><strong>inner_activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+LSTM inner activation. Default: 'tanh'.</li>
+<li><strong>dropout</strong>: <code>tuple</code> of <code>float</code>: (input_keep_prob, out_keep_prob). The
+input and output keep probability.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (See tflearn.initializations) Default: 'truncated_normal'.</li>
@@ -443,6 +454,11 @@ last sequence output only.</li>
 states: (output, states).</li>
 <li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
 a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
+<li><strong>sequence_length</strong>: Specifies the length of each sequence in inputs.
+An int32 or int64 vector (tensor) size <code>[batch_size]</code>.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <h3>References</h3>
@@ -454,7 +470,7 @@ Neural Computation 9(8): 1735-1780, 1997.</p>
 <p><a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf">http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf</a></p>
 <hr />
 <h1 id="gru">GRU</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.gru</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  bias=True,  weights_init='truncated_normal',  return_seq=False,  return_states=False,  initial_state=None,  trainable=True,  restore=True,  name='GRU')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.gru</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  dropout=None,  bias=True,  weights_init='truncated_normal',  return_seq=False,  return_states=False,  initial_state=None,  sequence_length=None,  trainable=True,  restore=True,  name='GRU')</span></p>
 <p>Gated Recurrent Unit Layer.</p>
 <h3>Input</h3>
 
@@ -468,10 +484,13 @@ else: 2-D Tensor [samples, output dim].</p>
 <ul>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming 3-D Tensor.</li>
 <li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
-<li><strong>activation</strong>: <code>str</code> (name). Activation applied to this layer.
-(See tflearn.activations). Default: 'sigmoid'.</li>
-<li><strong>inner_activation</strong>: <code>str</code> (name) or <code>Tensor</code>. GRU inner activation.
-Default: 'tanh'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'sigmoid'.</li>
+<li><strong>inner_activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+GRU inner activation. Default: 'tanh'.</li>
+<li><strong>dropout</strong>: <code>tuple</code> of <code>float</code>: (input_keep_prob, out_keep_prob). The
+input and output keep probability.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (See tflearn.initializations) Default: 'truncated_normal'.</li>
@@ -481,6 +500,11 @@ last sequence output only.</li>
 states: (output, states).</li>
 <li><strong>initial_state</strong>: <code>Tensor</code>. An initial state for the RNN.  This must be
 a tensor of appropriate type and shape [batch_size x cell.state_size].</li>
+<li><strong>sequence_length</strong>: Specifies the length of each sequence in inputs.
+An int32 or int64 vector (tensor) size <code>[batch_size]</code>.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <h3>References</h3>
@@ -492,7 +516,7 @@ Statistical Machine Translation, K. Cho et al., 2014.</p>
 <p><a href="http://arxiv.org/abs/1406.1078">http://arxiv.org/abs/1406.1078</a></p>
 <hr />
 <h1 id="bidirectional-rnn">Bidirectional RNN</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.bidirectional_rnn</b></span>  (incoming,  rnncell_fw,  rnncell_bw,  return_seq=False,  return_states=False,  initial_state_fw=None,  initial_state_bw=None,  name='BidirectionalRNN')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.bidirectional_rnn</b></span>  (incoming,  rnncell_fw,  rnncell_bw,  return_seq=False,  return_states=False,  initial_state_fw=None,  initial_state_bw=None,  sequence_length=None,  name='BidirectionalRNN')</span></p>
 <p>Build a bidirectional recurrent neural network, it requires 2 RNN Cells
 to process sequence in forward and backward order. Any RNN Cell can be
 used i.e. SimpleRNN, LSTM, GRU... with its own parameters. But the two
@@ -520,6 +544,8 @@ x cell.state_size].</li>
 <li><strong>initial_state_bw</strong>: <code>Tensor</code>. An initial state for the backward RNN.
 This must be a tensor of appropriate type and shape [batch_size
 x cell.state_size].</li>
+<li><strong>sequence_length</strong>: Specifies the length of each sequence in inputs.
+An int32 or int64 vector (tensor) size <code>[batch_size]</code>.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />

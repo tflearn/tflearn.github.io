@@ -816,7 +816,7 @@ summary_op = s.summarize_activations(collection='my_summaries')
 <li>For an example, see: <a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/summaries.py">summaries.py</a>.</li>
 </ul>
 <h3 id="regularizers">Regularizers</h3>
-<p>Add regularization to a model can be completed using TFLearn <a href="http://tflearn.org/helpers/regularizers">regularizer</a>. It currently supports weights and activation regularization. Available regularization losses can be found in <a href="http://tflearn.org/losses">here</a>. All regularization losses are stored into tf.GraphKeys.REGULARIZATION_LOSSES collection.</p>
+<p>Add regularization to a model can be completed using TFLearn <a href="http://tflearn.org/helpers/regularizer">regularizer</a>. It currently supports weights and activation regularization. Available regularization losses can be found in <a href="http://tflearn.org/losses">here</a>. All regularization losses are stored into tf.GraphKeys.REGULARIZATION_LOSSES collection.</p>
 <pre><code class="python"># Add L2 regularization to a variable
 W = tf.Variable(tf.random_normal([784, 256]), name=&quot;W&quot;)
 tflearn.add_weight_regularizer(W, 'L2', weight_decay=0.001)
