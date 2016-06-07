@@ -301,6 +301,9 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#vocabularyprocessor">VocabularyProcessor</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#to_categorical">to_categorical</a></li>
                 
             
@@ -394,7 +397,89 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="to_categorical">to_categorical</h1>
+                <h1 id="vocabularyprocessor">VocabularyProcessor</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.VocabularyProcessor</b></span>  (max_document_length,  min_frequency=0,  vocabulary=None,  tokenizer_fn=None)</span></p>
+<p>Maps documents to sequences of word ids.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>max_document_length</strong>: Maximum length of documents.
+if documents are longer, they will be trimmed, if shorter - padded.</li>
+<li><strong>min_frequency</strong>: Minimum frequency of words in the vocabulary.</li>
+<li><strong>vocabulary</strong>: CategoricalVocabulary object.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>vocabulary_</strong>: CategoricalVocabulary object.</li>
+</ul>
+<h2>Methods</h2>
+
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (raw_documents,  unused_y=None)</span></p>
+<p>Learn a vocabulary dictionary of all tokens in the raw documents.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>raw_documents</strong>: An iterable which yield either str or unicode.</li>
+<li><strong>unused_y</strong>: to match fit format signature of estimators.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>self</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>fit_transform</b></span>  (raw_documents,  unused_y=None)</span></p>
+<p>Learn the vocabulary dictionary and return indexies of words.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>raw_documents</strong>: An iterable which yield either str or unicode.</li>
+<li><strong>unused_y</strong>: to match fit_transform signature of estimators.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>X: iterable, [n_samples, max_document_length] Word-id matrix.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>restore</b></span>  (cls,  filename)</span></p>
+<p>Restores vocabulary processor from given file.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>filename</strong>: Path to file to load from.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>VocabularyProcessor object.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>reverse</b></span>  (documents)</span></p>
+<p>Reverses output of vocabulary mapping to words.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>documents</strong>: iterable, list of class ids.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Iterator over mapped in words documents.</p>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>save</b></span>  (filename)</span></p>
+<p>Saves vocabulary processor into given file.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>filename</strong>: Path to output file.</li>
+</ul>
+<p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>transform</b></span>  (raw_documents)</span></p>
+<p>Convert words to ids with vocabulary fitted with fit or the one
+provided in the constructor.</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>raw_documents</strong>: An iterable which yield either str or unicode.</li>
+</ul>
+<hr />
+<h1 id="to_categorical">to_categorical</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.to_categorical</b></span>  (y,  nb_classes)</span></p>
 <p>Convert class vector (integers from 0 to nb_classes)
 to binary class matrix, for use with categorical_crossentropy.</p>

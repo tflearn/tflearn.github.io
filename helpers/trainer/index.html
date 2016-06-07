@@ -414,7 +414,7 @@ initialized already, otherwise an error will be raised.</li>
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  dprep_dict=None,  daug_dict=None,  run_id=None)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  dprep_dict=None,  daug_dict=None,  excl_trainops=None,  run_id=None)</span></p>
 <p>Train network with feeded data dicts.</p>
 <h5>Examples</h5>
 
@@ -449,8 +449,16 @@ save model, if a <code>checkpoint_path</code> is specified in <code>Trainer</cod
 of every epoch.</li>
 <li><strong>shuffle_all</strong>: <code>bool</code>. If True, shuffle all data batches (overrides
 <code>TrainOp</code> shuffle parameter behavior).</li>
-<li>dprep_dict</li>
-<li>daug_dict</li>
+<li><strong>dprep_dict</strong>: <code>dict</code> with <code>Placeholder</code> as key and
+<code>DataPreprocessing</code> as value. Apply realtime data
+preprocessing to the given placeholders (Applied at training
+and testing time).</li>
+<li><strong>daug_dict</strong>: <code>dict</code> with <code>Placeholder</code> as key and
+<code>DataAugmentation</code> as value. Apply realtime data
+augmentation to the given placeholders (Only applied at
+training time).</li>
+<li><strong>excl_trainops</strong>: <code>list</code> of <code>TrainOp</code>. A list of train ops to
+exclude from training process.</li>
 <li><strong>run_id</strong>: <code>str</code>. A name for the current run. Used for Tensorboard
 display. If no name provided, a random one will be generated.</li>
 </ul>

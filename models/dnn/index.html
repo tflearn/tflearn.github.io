@@ -427,7 +427,7 @@ sequence, i.e. for x[0] =&gt; y[0] = x[1].</li>
 
 <p>The metric(s) score.</p>
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (X_inputs,  Y_targets,  n_epoch=10,  validation_set=None,  show_metric=False,  batch_size=None,  shuffle=None,  snapshot_epoch=True,  snapshot_step=None,  run_id=None)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (X_inputs,  Y_targets,  n_epoch=10,  validation_set=None,  show_metric=False,  batch_size=None,  shuffle=None,  snapshot_epoch=True,  snapshot_step=None,  excl_trainops=None,  run_id=None)</span></p>
 <p>Train model, feeding X_inputs and Y_targets to the network.</p>
 <p>NOTE: When not feeding dicts, data assignations is made by
 input/estimator layers creation order (For example, the second
@@ -470,6 +470,9 @@ on validation set, as well as create a checkpoint if
 'checkpoint_path' specified).</li>
 <li><strong>snapshot_step</strong>: <code>int</code> or None. If <code>int</code>, it will snapshot model
 every 'snapshot_step' steps.</li>
+<li><strong>excl_trainops</strong>: <code>list</code> of <code>TrainOp</code>. A list of train ops to
+exclude from training process (TrainOps can be retrieve
+through <code>tf.get_collection_ref(tf.GraphKeys.TRAIN_OPS)</code>).</li>
 <li><strong>run_id</strong>: <code>str</code>. Give a name for this run. (Useful for Tensorboard).</li>
 </ul>
 <p><span class="hr_large"></span> </p>
