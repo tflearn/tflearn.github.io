@@ -139,6 +139,9 @@
                 <li class="toctree-l3"><a href="#upsample-2d">UpSample 2D</a></li>
                 
             
+                <li class="toctree-l3"><a href="#upscore">Upscore</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#max-pooling-2d">Max Pooling 2D</a></li>
                 
             
@@ -157,10 +160,10 @@
                 <li class="toctree-l3"><a href="#global-average-pooling">Global Average Pooling</a></li>
                 
             
-                <li class="toctree-l3"><a href="#residual-bottleneck">Residual Bottleneck</a></li>
+                <li class="toctree-l3"><a href="#residual-block">Residual Block</a></li>
                 
             
-                <li class="toctree-l3"><a href="#residual-block">Residual Block</a></li>
+                <li class="toctree-l3"><a href="#residual-bottleneck">Residual Bottleneck</a></li>
                 
             
                 <li class="toctree-l3"><a href="#highway-convolution-2d">Highway Convolution 2D</a></li>
@@ -521,6 +524,40 @@ loading a model</li>
 <li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
 </ul>
 <hr />
+<h1 id="upscore">Upscore</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.upscore_layer</b></span>  (incoming,  num_classes,  shape=None,  kernel_size=4,  strides=2,  name='Upscore')</span></p>
+<p>This implements the upscore layer as used in
+(Fully Convolutional Networks)[http://arxiv.org/abs/1411.4038]. 
+The upscore layer is initialized as bilinear upsampling filter.</p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>4-D Tensor [batch, pooled height, pooled width, in_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Layer to upsample.</li>
+<li><strong>num_classes</strong>: <code>int</code>. Number of output feature maps.</li>
+<li><strong>shape</strong>: <code>tf.shape</code> or list of <code>ints</code>. Dimension of the output map
+[batch_size, new height, new width]. For convinience four values
+ are allows [batch_size, new height, new width, X], where X
+ is ignored.</li>
+<li><strong>kernel_size</strong>: 'int<code>or list of</code>ints`. Upsampling kernel size.</li>
+<li><strong>strides</strong>: 'int<code>or list of</code>ints`. Strides of conv operation.
+Default: [1 2 2 1].</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Upscore'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+</ul>
+<h3>Links</h3>
+
+<p>(Fully Convolutional Networks)[http://arxiv.org/abs/1411.4038]</p>
+<hr />
 <h1 id="max-pooling-2d">Max Pooling 2D</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.max_pool_2d</b></span>  (incoming,  kernel_size,  strides=None,  padding='same',  name='MaxPool2D')</span></p>
 <h3>Input</h3>
@@ -678,6 +715,58 @@ Default: 'same'.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'GlobalAvgPool'.</li>
 </ul>
 <hr />
+<h1 id="residual-block">Residual Block</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_block</b></span>  (incoming,  nb_blocks,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  name='ResidualBlock')</span></p>
+<p>A residual block as described in MSRA's Deep Residual Network paper.
+Full pre-activation architecture is used here.</p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>4-D Tensor [batch, new height, new width, nb_filter].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Layer.</li>
+<li><strong>nb_blocks</strong>: <code>int</code>. Number of layer blocks.</li>
+<li><strong>out_channels</strong>: <code>int</code>. The number of convolutional filters of the
+convolution layers.</li>
+<li><strong>downsample</strong>: <code>bool</code>. If True, apply downsampling using
+'downsample_strides' for strides.</li>
+<li><strong>downsample_strides</strong>: <code>int</code>. The strides to use when downsampling.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>batch_norm</strong>: <code>bool</code>. If True, apply batch normalization.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'uniform_scaling'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>tf.Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'ShallowBottleneck'.</li>
+</ul>
+<h3>References</h3>
+
+<ul>
+<li>Deep Residual Learning for Image Recognition. Kaiming He, Xiangyu
+Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
+<li>Identity Mappings in Deep Residual Networks. Kaiming He, Xiangyu
+Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
+</ul>
+<h3>Links</h3>
+
+<ul>
+<li><a href="http://arxiv.org/pdf/1512.03385v1.pdf">http://arxiv.org/pdf/1512.03385v1.pdf</a></li>
+<li><a href="https://arxiv.org/pdf/1603.05027v2.pdf">Identity Mappings in Deep Residual Networks</a></li>
+</ul>
+<hr />
 <h1 id="residual-bottleneck">Residual Bottleneck</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_bottleneck</b></span>  (incoming,  nb_blocks,  bottleneck_size,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  name='ResidualBottleneck')</span></p>
 <p>A residual bottleneck block as described in MSRA's Deep Residual Network
@@ -719,62 +808,18 @@ loading a model</li>
 </ul>
 <h3>References</h3>
 
-<p>Deep Residual Learning for Image Recognition. Kaiming He, Xiangyu
-Zhang, Shaoqing Ren, Jian Sun. 2015.
-Identity Mappings in Deep Residual Networks. Kaiming He, Xiangyu
-Zhang, Shaoqing Ren, Jian Sun. 2015.</p>
+<ul>
+<li>Deep Residual Learning for Image Recognition. Kaiming He, Xiangyu
+Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
+<li>Identity Mappings in Deep Residual Networks. Kaiming He, Xiangyu
+Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
+</ul>
 <h3>Links</h3>
-
-<p><a href="http://arxiv.org/pdf/1512.03385v1.pdf">http://arxiv.org/pdf/1512.03385v1.pdf</a>
-<a href="https://arxiv.org/pdf/1603.05027v2.pdf">Identity Mappings in Deep Residual Networks</a></p>
-<hr />
-<h1 id="residual-block">Residual Block</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_block</b></span>  (incoming,  nb_blocks,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  name='ResidualBlock')</span></p>
-<p>A residual block as described in MSRA's Deep Residual Network paper.
-Full pre-activation architecture is used here.</p>
-<h3>Input</h3>
-
-<p>4-D Tensor [batch, height, width, in_channels].</p>
-<h3>Output</h3>
-
-<p>4-D Tensor [batch, new height, new width, nb_filter].</p>
-<h3>Arguments</h3>
 
 <ul>
-<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Layer.</li>
-<li><strong>nb_blocks</strong>: <code>int</code>. Number of layer blocks.</li>
-<li><strong>out_channels</strong>: <code>int</code>. The number of convolutional filters of the
-convolution layers.</li>
-<li><strong>downsample</strong>: <code>bool</code>. If True, apply downsampling using
-'downsample_strides' for strides.</li>
-<li><strong>downsample_strides</strong>: <code>int</code>. The strides to use when downsampling.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
-Activation applied to this layer (see tflearn.activations).
-Default: 'linear'.</li>
-<li><strong>batch_norm</strong>: <code>bool</code>. If True, apply batch normalization.</li>
-<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
-<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
-(see tflearn.initializations) Default: 'uniform_scaling'.</li>
-<li><strong>bias_init</strong>: <code>str</code> (name) or <code>tf.Tensor</code>. Bias initialization.
-(see tflearn.initializations) Default: 'zeros'.</li>
-<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
-layer weights (see tflearn.regularizers). Default: None.</li>
-<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
-<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
-<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
-<li><strong>name</strong>: A name for this layer (optional). Default: 'ShallowBottleneck'.</li>
+<li><a href="http://arxiv.org/pdf/1512.03385v1.pdf">http://arxiv.org/pdf/1512.03385v1.pdf</a></li>
+<li><a href="https://arxiv.org/pdf/1603.05027v2.pdf">Identity Mappings in Deep Residual Networks</a></li>
 </ul>
-<h3>References</h3>
-
-<p>Deep Residual Learning for Image Recognition. Kaiming He, Xiangyu
-Zhang, Shaoqing Ren, Jian Sun. 2015.
-Identity Mappings in Deep Residual Networks. Kaiming He, Xiangyu
-Zhang, Shaoqing Ren, Jian Sun. 2015.</p>
-<h3>Links</h3>
-
-<p><a href="http://arxiv.org/pdf/1512.03385v1.pdf">http://arxiv.org/pdf/1512.03385v1.pdf</a>
-<a href="https://arxiv.org/pdf/1603.05027v2.pdf">Identity Mappings in Deep Residual Networks</a></p>
 <hr />
 <h1 id="highway-convolution-2d">Highway Convolution 2D</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.highway_conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='HighwayConv2D')</span></p>

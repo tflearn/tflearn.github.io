@@ -573,7 +573,7 @@ loading a model.</li>
 </ul>
 <hr />
 <h1 id="fully-connected-highway">Fully Connected Highway</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.highway</b></span>  (incoming,  n_units,  activation='linear',  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='FullyConnectedHighway')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.highway</b></span>  (incoming,  n_units,  activation='linear',  transform_dropout=None,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='FullyConnectedHighway')</span></p>
 <p>A fully connected highway network layer, with some inspiration from
 <a href="https://github.com/fomorians/highway-fcn">https://github.com/fomorians/highway-fcn</a>.</p>
 <h3>Input</h3>
@@ -590,6 +590,7 @@ loading a model.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
 Activation applied to this layer (see tflearn.activations).
 Default: 'linear'.</li>
+<li><strong>transform_dropout</strong>: <code>float</code>: Keep probability on the highway transform gate.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (see tflearn.initializations) Default: 'truncated_normal'.</li>
 <li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.

@@ -190,6 +190,9 @@
                 <li class="toctree-l3"><a href="#softmax-categorical-crossentropy">Softmax Categorical Crossentropy</a></li>
                 
             
+                <li class="toctree-l3"><a href="#weak-crossentropy-2d">Weak Crossentropy 2d</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#categorical-crossentropy">Categorical Crossentropy</a></li>
                 
             
@@ -409,6 +412,25 @@ total of 5 different classes, will be define as [0., 1., 0., 0., 0.])</p>
 <li><strong>y_pred</strong>: <code>Tensor</code>. Predicted values.</li>
 <li><strong>y_true</strong>: <code>Tensor</code> . Targets (labels), a probability distribution.</li>
 </ul>
+<hr />
+<h1 id="weak-crossentropy-2d">Weak Crossentropy 2d</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.objectives.weak_cross_entropy_2d</b></span>  (y_pred,  y_true,  num_classes=None,  epsilon=0.0001,  head=None)</span></p>
+<p>Calculate the semantic segmentation using weak softmax cross entropy loss.</p>
+<p>Given the prediction <code>y_pred</code> shaped as 2d image and the corresponding
+y_true, this calculated the widely used semantic segmentation loss.
+Using <code>tf.nn.softmax_cross_entropy_with_logits</code> is currently not supported.
+See https://github.com/tensorflow/tensorflow/issues/2327#issuecomment-224491229</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>y_pred</strong>: <code>tensor, float</code> - [batch_size, width, height, num_classes].</li>
+<li><strong>y_true</strong>: <code>Labels tensor, int32</code> - [batch_size, width, height, num_classes].
+The ground truth of your data.</li>
+<li><strong>head</strong>: <code>numpy array</code> - [num_classes]. Weighting the loss of each class.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>loss: Loss tensor of type float.</p>
 <hr />
 <h1 id="categorical-crossentropy">Categorical Crossentropy</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.objectives.categorical_crossentropy</b></span>  (y_pred,  y_true)</span></p>
