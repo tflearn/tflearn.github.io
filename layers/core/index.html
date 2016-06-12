@@ -399,11 +399,11 @@
               
                 <h1 id="input-data">Input Data</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.input_data</b></span>  (shape=None,  placeholder=None,  dtype=tf.float32,  data_preprocessing=None,  data_augmentation=None,  name='InputData')</span></p>
-<p><code>input_data</code> is used as a data entry (placeholder) of a network.
-This placeholder will be feeded with data when training</p>
+<p>This layer is used as a data entry (placeholder) of a network. The inner
+placeholder will then be feeded with data when training.</p>
 <p>This layer is used to keep track of the network inputs, by adding the
 placeholder to INPUTS graphkey. TFLearn training functions may retrieve
-those variables to setup the network training process.</p>
+these variables to setup the network training process.</p>
 <h3>Input</h3>
 
 <p>List of <code>int</code> (Shape), to create a new placeholder.

@@ -301,7 +301,7 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#vocabularyprocessor">VocabularyProcessor</a></li>
+                <li class="toctree-l3"><a href="#vocabulary-processor">Vocabulary Processor</a></li>
                 
             
                 <li class="toctree-l3"><a href="#to_categorical">to_categorical</a></li>
@@ -397,7 +397,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="vocabularyprocessor">VocabularyProcessor</h1>
+                <h1 id="vocabulary-processor">Vocabulary Processor</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.VocabularyProcessor</b></span>  (max_document_length,  min_frequency=0,  vocabulary=None,  tokenizer_fn=None)</span></p>
 <p>Maps documents to sequences of word ids.</p>
 <h3>Arguments</h3>
@@ -471,6 +471,7 @@ if documents are longer, they will be trimmed, if shorter - padded.</li>
 </ul>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>transform</b></span>  (raw_documents)</span></p>
+<p>Transform documents to word-id matrix.</p>
 <p>Convert words to ids with vocabulary fitted with fit or the one
 provided in the constructor.</p>
 <h5>Arguments</h5>
@@ -524,7 +525,7 @@ the associated dictionary.</p>
 </ul>
 <h3>Returns</h3>
 
-<p><code>tuple</code>: (inputs, targets, dictionary)</p>
+<p>A tuple: (inputs, targets, dictionary)</p>
 <hr />
 <h1 id="shuffle">shuffle</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.shuffle</b></span>  (*arrs)</span></p>
@@ -532,7 +533,7 @@ the associated dictionary.</p>
 <h3>Arguments</h3>
 
 <ul>
-<li>*arrs: Each array to shuffle at unison as a parameter.</li>
+<li>*arrs: Each array to shuffle at unison.</li>
 </ul>
 <h3>Returns</h3>
 
