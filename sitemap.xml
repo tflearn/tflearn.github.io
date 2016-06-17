@@ -158,32 +158,10 @@
     
         
     <url>
-     <loc>http://tflearn.org/helpers/trainer/</loc>
+     <loc>http://tflearn.org/data_utils/</loc>
      <lastmod>2016-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    <url>
-     <loc>http://tflearn.org/helpers/evaluator/</loc>
-     <lastmod>2016-06-17</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://tflearn.org/helpers/summarizer/</loc>
-     <lastmod>2016-06-17</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>http://tflearn.org/helpers/regularizer/</loc>
-     <lastmod>2016-06-17</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
         
     <url>
      <loc>http://tflearn.org/data_preprocessing/</loc>
@@ -203,14 +181,40 @@
      <changefreq>daily</changefreq>
     </url>
         
+    
+
+    
+        
     <url>
-     <loc>http://tflearn.org/data_utils/</loc>
+     <loc>http://tflearn.org/config/</loc>
+     <lastmod>2016-06-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://tflearn.org/helpers/trainer/</loc>
      <lastmod>2016-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>http://tflearn.org/config/</loc>
+     <loc>http://tflearn.org/helpers/evaluator/</loc>
+     <lastmod>2016-06-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://tflearn.org/helpers/summarizer/</loc>
+     <lastmod>2016-06-17</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://tflearn.org/helpers/regularizer/</loc>
      <lastmod>2016-06-17</lastmod>
      <changefreq>daily</changefreq>
     </url>

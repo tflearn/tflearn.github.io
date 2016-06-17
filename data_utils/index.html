@@ -235,6 +235,94 @@
           
             <li>
     <ul class="subnav">
+    <li><span>Data Management</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Data Utils</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#vocabulary-processor">Vocabulary Processor</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#to_categorical">to_categorical</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#pad_sequences">pad_sequences</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#string_to_semi_redundant_sequences">string_to_semi_redundant_sequences</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#build-hdf5-image-dataset">Build HDF5 Image Dataset</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#image-preloader">Image PreLoader</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#shuffle">shuffle</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#samplewise_zero_center">samplewise_zero_center</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#samplewise_std_normalization">samplewise_std_normalization</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#featurewise_zero_center">featurewise_zero_center</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#featurewise_std_normalization">featurewise_std_normalization</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_preprocessing/">Data Preprocessing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_augmentation/">Data Augmentation</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../data_flow/">Data Flow</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Others</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../config/">Graph Config</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
     <li><span>Helpers for Extending Tensorflow</span></li>
 
         
@@ -262,95 +350,6 @@
             
     <li class="toctree-l1 ">
         <a class="" href="../helpers/regularizer/">Regularizer</a>
-        
-    </li>
-
-        
-    </ul>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Others</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../data_preprocessing/">Data Preprocessing</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../data_augmentation/">Data Augmentation</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../data_flow/">Data Flow</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Data Utils</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#vocabulary-processor">Vocabulary Processor</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#to_categorical">to_categorical</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#pad_sequences">pad_sequences</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#string_to_semi_redundant_sequences">string_to_semi_redundant_sequences</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#build-hdf5-image-dataset">Build HDF5 Image Dataset</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#load-pathclass_id-image-file">Load path/class_id image file:</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#build-a-hdf5-dataset-only-required-once">Build a HDF5 dataset (only required once)</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#load-hdf5-dataset">Load HDF5 dataset</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#build-neural-network-and-train">Build neural network and train</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#shuffle">shuffle</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#samplewise_zero_center">samplewise_zero_center</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#samplewise_std_normalization">samplewise_std_normalization</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#featurewise_zero_center">featurewise_zero_center</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#featurewise_std_normalization">featurewise_std_normalization</a></li>
-                
-            
-            </ul>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="../config/">Graph Config</a>
         
     </li>
 
@@ -394,7 +393,7 @@
     
       
         
-          <li>Others &raquo;</li>
+          <li>Data Management &raquo;</li>
         
       
     
@@ -552,79 +551,74 @@ file with images path and class id.</p>
 
 <p>Note that if sub-folders are not integers from 0 to n_classes, an id will
 be assigned to each sub-folder following alphabetical order.</p>
-<p>'file' mode: Plain text file should be formatted as follow:
-``
-/path/to/img1 class_id
+<p>'file' mode: Plain text file should be formatted as follow:</p>
+<pre><code>/path/to/img1 class_id
 /path/to/img2 class_id
-/path/to/img3 class_id</p>
-<pre><code>
-&lt;h3&gt;Examples&lt;/h3&gt;
-
-
+/path/to/img3 class_id
 </code></pre>
 
-<h1 id="load-pathclass_id-image-file">Load path/class_id image file:</h1>
-<p>dataset_file = 'my_dataset.txt'</p>
-<h1 id="build-a-hdf5-dataset-only-required-once">Build a HDF5 dataset (only required once)</h1>
-<p>from tflearn.data_utils import build_hdf5_image_dataset
-build_hdf5_image_dataset(dataset_file, image_shape=(128, 128), mode='file', output_path='dataset.h5', categorical_labels=True, normalize_img=True)</p>
-<h1 id="load-hdf5-dataset">Load HDF5 dataset</h1>
-<p>import h5py
+<h3>Examples</h3>
+
+<pre><code># Load path/class_id image file:
+dataset_file = 'my_dataset.txt'
+
+# Build a HDF5 dataset (only required once)
+from tflearn.data_utils import build_hdf5_image_dataset
+build_hdf5_image_dataset(dataset_file, image_shape=(128, 128), mode='file', output_path='dataset.h5', categorical_labels=True, normalize_img=True)
+
+# Load HDF5 dataset
+import h5py
 h5f = h5py.File('dataset.h5', 'w')
 X = h5f['X']
-Y = h5f['Y']</p>
-<h1 id="build-neural-network-and-train">Build neural network and train</h1>
-<p>network = ...
+Y = h5f['Y']
+
+# Build neural network and train
+network = ...
 model = DNN(network, ...)
-model.fit(X, Y)</p>
-<pre><code>
-&lt;h3&gt;Arguments&lt;/h3&gt;
+model.fit(X, Y)
+</code></pre>
 
+<h3>Arguments</h3>
 
- - **target_path**: `str`. Path of root folder or images plain text file.
- - **image_shape**: `tuple (height, width)`. The images shape. Images that
-doesn't match that shape will be resized.
- - **output_path**: `str`. The output path for the hdf5 dataset. Default:
-'dataset.h5'
- - **mode**: `str` in ['file', 'folder']. The data source mode. 'folder'
+<ul>
+<li><strong>target_path</strong>: <code>str</code>. Path of root folder or images plain text file.</li>
+<li><strong>image_shape</strong>: <code>tuple (height, width)</code>. The images shape. Images that
+doesn't match that shape will be resized.</li>
+<li><strong>output_path</strong>: <code>str</code>. The output path for the hdf5 dataset. Default:
+'dataset.h5'</li>
+<li><strong>mode</strong>: <code>str</code> in ['file', 'folder']. The data source mode. 'folder'
 accepts a root folder with each of his sub-folder representing a
 class containing the images to classify.
 'file' accepts a single plain text file that contains every
 image path with their class id.
-Default: 'folder'.
- - **categorical_labels**: `bool`. If True, labels are converted to binary
-vectors.
- - **normalize**: `bool`. If True, normalize all pictures by dividing
-every image array by 255.
- - **grayscale**: `bool`. If true, images are converted to grayscale.
- - **files_extension**: `list of str`. A list of allowed image file
+Default: 'folder'.</li>
+<li><strong>categorical_labels</strong>: <code>bool</code>. If True, labels are converted to binary
+vectors.</li>
+<li><strong>normalize</strong>: <code>bool</code>. If True, normalize all pictures by dividing
+every image array by 255.</li>
+<li><strong>grayscale</strong>: <code>bool</code>. If true, images are converted to grayscale.</li>
+<li><strong>files_extension</strong>: <code>list of str</code>. A list of allowed image file
 extension, for example ['.jpg', '.jpeg', '.png']. If None,
-all files are allowed.
- - **chunks**: `bool` or `list of int`. Whether to chunks the dataset or not.
-Additionaly, a specific shape for each chunk can be provided.
-
- ---------- 
-
-# Image PreLoader
-
-&lt;span class=&quot;extra_h1&quot;&gt;&lt;span style=&quot;color:black;&quot;&gt;&lt;b&gt;tflearn.data_utils.image_preloader&lt;/b&gt;&lt;/span&gt;  (target_path,  image_shape,  mode='file',  normalize=True,  grayscale=False,  categorical_labels=True,  files_extension=None)&lt;/span&gt;
-
-Create a python array (`Preloader`) that loads images on the fly (from
+all files are allowed.</li>
+<li><strong>chunks</strong>: <code>bool</code> or <code>list of int</code>. Whether to chunks the dataset or not.
+Additionaly, a specific shape for each chunk can be provided.</li>
+</ul>
+<hr />
+<h1 id="image-preloader">Image PreLoader</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.image_preloader</b></span>  (target_path,  image_shape,  mode='file',  normalize=True,  grayscale=False,  categorical_labels=True,  files_extension=None)</span></p>
+<p>Create a python array (<code>Preloader</code>) that loads images on the fly (from
 disk or url). There is two ways to provide image samples 'folder' or
-'file', see the specifications below.
-
-'folder' mode: Load images from disk, given a root folder. This folder
-should be arranged as follow:
+'file', see the specifications below.</p>
+<p>'folder' mode: Load images from disk, given a root folder. This folder
+should be arranged as follow:</p>
+<pre><code>ROOT_FOLDER -&gt; SUBFOLDER_0 (CLASS 0) -&gt; CLASS0_IMG1.jpg -&gt; CLASS0_IMG2.jpg -&gt; ...-&gt; SUBFOLDER_1 (CLASS 1) -&gt; CLASS1_IMG1.jpg -&gt; ...-&gt; ...
 </code></pre>
 
-<p>ROOT_FOLDER -&gt; SUBFOLDER_0 (CLASS 0) -&gt; CLASS0_IMG1.jpg -&gt; CLASS0_IMG2.jpg -&gt; ...-&gt; SUBFOLDER_1 (CLASS 1) -&gt; CLASS1_IMG1.jpg -&gt; ...-&gt; ...</p>
-<pre><code>Note that if sub-folders are not integers from 0 to n_classes, an id will
-be assigned to each sub-folder following alphabetical order.
-
-'file' mode: A plain text file listing every image path and class id.
-This file should be formatted as follow:
-``
-/path/to/img1 class_id
+<p>Note that if sub-folders are not integers from 0 to n_classes, an id will
+be assigned to each sub-folder following alphabetical order.</p>
+<p>'file' mode: A plain text file listing every image path and class id.
+This file should be formatted as follow:</p>
+<pre><code>/path/to/img1 class_id
 /path/to/img2 class_id
 /path/to/img3 class_id
 </code></pre>
@@ -747,10 +741,10 @@ std value was specified.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../config/" class="btn btn-neutral float-right" title="Graph Config">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../data_preprocessing/" class="btn btn-neutral float-right" title="Data Preprocessing">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../data_flow/" class="btn btn-neutral" title="Data Flow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../variables/" class="btn btn-neutral" title="Variables"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -778,10 +772,10 @@ std value was specified.</p>
           <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../data_flow/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../variables/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../config/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../data_preprocessing/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
