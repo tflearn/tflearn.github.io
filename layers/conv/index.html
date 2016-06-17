@@ -130,6 +130,9 @@
         
             <ul>
             
+                <li class="toctree-l3"><a href="#convolution-3d">Convolution 3D</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#convolution-2d">Convolution 2D</a></li>
                 
             
@@ -137,6 +140,12 @@
                 
             
                 <li class="toctree-l3"><a href="#max-pooling-2d">Max Pooling 2D</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#max-pooling-3d">Max Pooling 3D</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#average-pooling-3d">Average Pooling 3D</a></li>
                 
             
                 <li class="toctree-l3"><a href="#average-pooling-2d">Average Pooling 2D</a></li>
@@ -412,7 +421,49 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="convolution-2d">Convolution 2D</h1>
+                <h1 id="convolution-3d">Convolution 3D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_3d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Conv3D')</span></p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, in_depth, in_height, in_width, in_channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [filter_depth, filter_height, filter_width, in_channels, out_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Tensor.</li>
+<li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters.</li>
+<li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
+<li><strong>strides</strong>: 'int<code>or list of</code>int`. Strides of conv operation.
+Default: [1 1 1 1 1]. Must have strides[0] = strides[4] = 1.</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'truncated_normal'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Conv3D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+<li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
+<li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
+</ul>
+<hr />
+<h1 id="convolution-2d">Convolution 2D</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Conv2D')</span></p>
 <h3>Input</h3>
 
@@ -521,6 +572,56 @@ Default: same as kernel_size.</li>
 <li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
 Default: 'same'.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'MaxPool2D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+</ul>
+<hr />
+<h1 id="max-pooling-3d">Max Pooling 3D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.max_pool_3d</b></span>  (incoming,  kernel_size,  strides=1,  padding='same',  name='MaxPool3D')</span></p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, depth, rows, cols, channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [batch, pooled depth, pooled rows, pooled cols, in_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Layer.</li>
+<li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Pooling kernel size.Must have kernel_size[0] = kernel_size[1] = 1</li>
+<li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.Must have strides[0] = strides[4] = 1.
+Default: [1 1 1 1 1]</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'MaxPool3D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+</ul>
+<hr />
+<h1 id="average-pooling-3d">Average Pooling 3D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.avg_pool_3d</b></span>  (incoming,  kernel_size,  strides=None,  padding='same',  name='AvgPool3D')</span></p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, depth, rows, cols, channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [batch, pooled depth, pooled rows, pooled cols, in_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Layer.</li>
+<li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Pooling kernel size.Must have kernel_size[0] = kernel_size[1] = 1</li>
+<li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.Must have strides[0] = strides[4] = 1.
+Default: [1 1 1 1 1]</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'AvgPool3D'.</li>
 </ul>
 <h3>Attributes</h3>
 
