@@ -382,7 +382,7 @@
             <div class="section">
               
                 <h1 id="regression">Regression</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.estimator.regression</b></span>  (incoming,  placeholder=None,  optimizer='adam',  loss='categorical_crossentropy',  metric='default',  learning_rate=0.001,  dtype=tf.float32,  batch_size=64,  shuffle_batches=True,  trainable_vars=None,  restore=True,  op_name=None,  name=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.estimator.regression</b></span>  (incoming,  placeholder=None,  optimizer='adam',  loss='categorical_crossentropy',  metric='default',  learning_rate=0.001,  dtype=tf.float32,  batch_size=64,  shuffle_batches=True,  to_one_hot=False,  n_classes=None,  trainable_vars=None,  restore=True,  op_name=None,  name=None)</span></p>
 <h3>Input</h3>
 
 <p>2-D Tensor Layer.</p>
@@ -410,6 +410,10 @@ calculation, set it to 'None'.</li>
 supports different batch size for every optimizers. Default: 64.</li>
 <li><strong>shuffle_batches</strong>: <code>bool</code>. Shuffle or not this optimizer batches at
 every epoch. Default: True.</li>
+<li><strong>to_one_hot</strong>: <code>bool</code>. If True, labels will be encoded to one hot vectors.
+'n_classes' must then be specified.</li>
+<li><strong>n_classes</strong>: <code>int</code>. The total number of classes. Only required when using
+'to_one_hot' option.</li>
 <li><strong>trainable_vars</strong>: list of <code>Variable</code>. If specified, this regression will
 only update given variable weights. Else, all trainale variable
 are going to be updated.</li>

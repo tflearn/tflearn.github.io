@@ -502,12 +502,16 @@ w = dnn.get_weights(convlayer.b) # get a conv layer biases
 
 <p><code>np.array</code>. The provided variable weights.</p>
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>load</b></span>  (model_file)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>load</b></span>  (model_file,  weights_only=False)</span></p>
 <p>Restore model weights.</p>
 <h5>Arguments</h5>
 
 <ul>
 <li><strong>model_file</strong>: <code>str</code>. Model path.</li>
+<li><strong>weights_only</strong>: <code>bool</code>. If True, only weights will be restored (
+and not intermediate variable, such as step counter, moving
+averages...). Note that if you are using batch normalization,
+averages will not be restored as well.</li>
 </ul>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>predict</b></span>  (X)</span></p>

@@ -130,9 +130,6 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#convolution-3d">Convolution 3D</a></li>
-                
-            
                 <li class="toctree-l3"><a href="#convolution-2d">Convolution 2D</a></li>
                 
             
@@ -140,12 +137,6 @@
                 
             
                 <li class="toctree-l3"><a href="#max-pooling-2d">Max Pooling 2D</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#max-pooling-3d">Max Pooling 3D</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#average-pooling-3d">Average Pooling 3D</a></li>
                 
             
                 <li class="toctree-l3"><a href="#average-pooling-2d">Average Pooling 2D</a></li>
@@ -164,6 +155,15 @@
                 
             
                 <li class="toctree-l3"><a href="#average-pooling-1d">Average Pooling 1D</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#convolution-3d">Convolution 3D</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#max-pooling-3d">Max Pooling 3D</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#average-pooling-3d">Average Pooling 3D</a></li>
                 
             
                 <li class="toctree-l3"><a href="#global-average-pooling">Global Average Pooling</a></li>
@@ -429,50 +429,8 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="convolution-3d">Convolution 3D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_3d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Conv3D')</span></p>
-<h3>Input</h3>
-
-<p>5-D Tensor [batch, in_depth, in_height, in_width, in_channels].</p>
-<h3>Output</h3>
-
-<p>5-D Tensor [filter_depth, filter_height, filter_width, in_channels, out_channels].</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Tensor.</li>
-<li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters.</li>
-<li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
-<li><strong>strides</strong>: 'int<code>or list of</code>int`. Strides of conv operation.
-Default: [1 1 1 1 1]. Must have strides[0] = strides[4] = 1.</li>
-<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
-Default: 'same'.</li>
-<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
-Activation applied to this layer (see tflearn.activations).
-Default: 'linear'.</li>
-<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
-<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
-(see tflearn.initializations) Default: 'truncated_normal'.</li>
-<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
-(see tflearn.initializations) Default: 'zeros'.</li>
-<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
-layer weights (see tflearn.regularizers). Default: None.</li>
-<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
-<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
-<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
-<li><strong>name</strong>: A name for this layer (optional). Default: 'Conv3D'.</li>
-</ul>
-<h3>Attributes</h3>
-
-<ul>
-<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
-<li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
-<li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
-</ul>
-<hr />
-<h1 id="convolution-2d">Convolution 2D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Conv2D')</span></p>
+                <h1 id="convolution-2d">Convolution 2D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Conv2D')</span></p>
 <h3>Input</h3>
 
 <p>4-D Tensor [batch, height, width, in_channels].</p>
@@ -502,7 +460,12 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2D'.</li>
 </ul>
 <h3>Attributes</h3>
@@ -514,7 +477,7 @@ loading a model</li>
 </ul>
 <hr />
 <h1 id="convolution-2d-transpose">Convolution 2D Transpose</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_2d_transpose</b></span>  (incoming,  nb_filter,  filter_size,  output_shape,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Conv2DTranspose')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_2d_transpose</b></span>  (incoming,  nb_filter,  filter_size,  output_shape,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Conv2DTranspose')</span></p>
 <p>This operation is sometimes called "deconvolution" after (Deconvolutional
 Networks)[http://www.matthewzeiler.com/pubs/cvpr2010/cvpr2010.pdf], but is
 actually the transpose (gradient) of <code>conv_2d</code> rather than an actual
@@ -551,7 +514,12 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2DTranspose'.</li>
 </ul>
 <h3>Attributes</h3>
@@ -580,56 +548,6 @@ Default: same as kernel_size.</li>
 <li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
 Default: 'same'.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'MaxPool2D'.</li>
-</ul>
-<h3>Attributes</h3>
-
-<ul>
-<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
-</ul>
-<hr />
-<h1 id="max-pooling-3d">Max Pooling 3D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.max_pool_3d</b></span>  (incoming,  kernel_size,  strides=1,  padding='same',  name='MaxPool3D')</span></p>
-<h3>Input</h3>
-
-<p>5-D Tensor [batch, depth, rows, cols, channels].</p>
-<h3>Output</h3>
-
-<p>5-D Tensor [batch, pooled depth, pooled rows, pooled cols, in_channels].</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Layer.</li>
-<li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Pooling kernel size.Must have kernel_size[0] = kernel_size[1] = 1</li>
-<li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.Must have strides[0] = strides[4] = 1.
-Default: [1 1 1 1 1]</li>
-<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
-Default: 'same'.</li>
-<li><strong>name</strong>: A name for this layer (optional). Default: 'MaxPool3D'.</li>
-</ul>
-<h3>Attributes</h3>
-
-<ul>
-<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
-</ul>
-<hr />
-<h1 id="average-pooling-3d">Average Pooling 3D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.avg_pool_3d</b></span>  (incoming,  kernel_size,  strides=None,  padding='same',  name='AvgPool3D')</span></p>
-<h3>Input</h3>
-
-<p>5-D Tensor [batch, depth, rows, cols, channels].</p>
-<h3>Output</h3>
-
-<p>5-D Tensor [batch, pooled depth, pooled rows, pooled cols, in_channels].</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Layer.</li>
-<li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Pooling kernel size.Must have kernel_size[0] = kernel_size[1] = 1</li>
-<li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.Must have strides[0] = strides[4] = 1.
-Default: [1 1 1 1 1]</li>
-<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
-Default: 'same'.</li>
-<li><strong>name</strong>: A name for this layer (optional). Default: 'AvgPool3D'.</li>
 </ul>
 <h3>Attributes</h3>
 
@@ -684,7 +602,7 @@ Default: 'same'.</li>
 </ul>
 <hr />
 <h1 id="upscore">Upscore</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.upscore_layer</b></span>  (incoming,  num_classes,  shape=None,  kernel_size=4,  strides=2,  name='Upscore')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.upscore_layer</b></span>  (incoming,  num_classes,  shape=None,  kernel_size=4,  strides=2,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Upscore')</span></p>
 <p>This implements the upscore layer as used in
 (Fully Convolutional Networks)[http://arxiv.org/abs/1411.4038].
 The upscore layer is initialized as bilinear upsampling filter.</p>
@@ -706,7 +624,15 @@ The upscore layer is initialized as bilinear upsampling filter.</p>
 <li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Upsampling kernel size.</li>
 <li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.
 Default: [1 2 2 1].</li>
-<li><strong>name</strong>: A name for this layer (optional). Default: 'Upscore'.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.
+name: A name for this layer (optional). Default: 'Upscore'.</li>
 </ul>
 <h3>Attributes</h3>
 
@@ -718,7 +644,7 @@ Default: [1 2 2 1].</li>
 <p>(Fully Convolutional Networks)[http://arxiv.org/abs/1411.4038]</p>
 <hr />
 <h1 id="convolution-1d">Convolution 1D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_1d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='Conv1D')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_1d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Conv1D')</span></p>
 <h3>Input</h3>
 
 <p>3-D Tensor [batch, steps, in_channels].</p>
@@ -749,6 +675,11 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
 loading a model</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Conv1D'.</li>
 </ul>
 <h3>Attributes</h3>
@@ -809,6 +740,103 @@ Default: 'same'.</li>
 <li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
 </ul>
 <hr />
+<h1 id="convolution-3d">Convolution 3D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_3d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  scope=None,  name='Conv3D')</span></p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, in_depth, in_height, in_width, in_channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [filter_depth, filter_height, filter_width, in_channels, out_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Tensor.</li>
+<li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters.</li>
+<li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
+<li><strong>strides</strong>: 'int<code>or list of</code>int`. Strides of conv operation.
+Default: [1 1 1 1 1]. Must have strides[0] = strides[4] = 1.</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'truncated_normal'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Conv3D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+<li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
+<li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
+</ul>
+<hr />
+<h1 id="max-pooling-3d">Max Pooling 3D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.max_pool_3d</b></span>  (incoming,  kernel_size,  strides=1,  padding='same',  name='MaxPool3D')</span></p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, depth, rows, cols, channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [batch, pooled depth, pooled rows, pooled cols, in_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Layer.</li>
+<li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Pooling kernel size.Must have kernel_size[0] = kernel_size[1] = 1</li>
+<li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.Must have strides[0] = strides[4] = 1.
+Default: [1 1 1 1 1]</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'MaxPool3D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+</ul>
+<hr />
+<h1 id="average-pooling-3d">Average Pooling 3D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.avg_pool_3d</b></span>  (incoming,  kernel_size,  strides=None,  padding='same',  name='AvgPool3D')</span></p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, depth, rows, cols, channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [batch, pooled depth, pooled rows, pooled cols, in_channels].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Layer.</li>
+<li><strong>kernel_size</strong>: 'int<code>or</code>list of int`. Pooling kernel size.Must have kernel_size[0] = kernel_size[1] = 1</li>
+<li><strong>strides</strong>: 'int<code>or</code>list of int`. Strides of conv operation.Must have strides[0] = strides[4] = 1.
+Default: [1 1 1 1 1]</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'AvgPool3D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+</ul>
+<hr />
 <h1 id="global-average-pooling">Global Average Pooling</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.global_avg_pool</b></span>  (incoming,  name='GlobalAvgPool')</span></p>
 <h3>Input</h3>
@@ -825,7 +853,7 @@ Default: 'same'.</li>
 </ul>
 <hr />
 <h1 id="residual-block">Residual Block</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_block</b></span>  (incoming,  nb_blocks,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  name='ResidualBlock')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_block</b></span>  (incoming,  nb_blocks,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='ResidualBlock')</span></p>
 <p>A residual block as described in MSRA's Deep Residual Network paper.
 Full pre-activation architecture is used here.</p>
 <h3>Input</h3>
@@ -858,7 +886,12 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'ShallowBottleneck'.</li>
 </ul>
 <h3>References</h3>
@@ -877,7 +910,7 @@ Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
 </ul>
 <hr />
 <h1 id="residual-bottleneck">Residual Bottleneck</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_bottleneck</b></span>  (incoming,  nb_blocks,  bottleneck_size,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  name='ResidualBottleneck')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.residual_bottleneck</b></span>  (incoming,  nb_blocks,  bottleneck_size,  out_channels,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  bias=True,  weights_init='variance_scaling',  bias_init='zeros',  regularizer='L2',  weight_decay=0.0001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='ResidualBottleneck')</span></p>
 <p>A residual bottleneck block as described in MSRA's Deep Residual Network
 paper. Full pre-activation architecture is used here.</p>
 <h3>Input</h3>
@@ -912,7 +945,12 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'DeepBottleneck'.</li>
 </ul>
 <h3>References</h3>
@@ -931,7 +969,7 @@ Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
 </ul>
 <hr />
 <h1 id="highway-convolution-2d">Highway Convolution 2D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.highway_conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='HighwayConv2D')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.highway_conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='HighwayConv2D')</span></p>
 <h3>Input</h3>
 
 <p>4-D Tensor [batch, height, width, in_channels].</p>
@@ -961,6 +999,11 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
 loading a model</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2D'.</li>
 </ul>
 <h3>Attributes</h3>
@@ -974,7 +1017,7 @@ loading a model</li>
 </ul>
 <hr />
 <h1 id="highway-convolution-1d">Highway Convolution 1D</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.highway_conv_1d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='HighwayConv1D')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.highway_conv_1d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='HighwayConv1D')</span></p>
 <h3>Input</h3>
 
 <p>3-D Tensor [batch, steps, in_channels].</p>
@@ -1003,7 +1046,12 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
-loading a model</li>
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'HighwayConv1D'.</li>
 </ul>
 <h3>Attributes</h3>

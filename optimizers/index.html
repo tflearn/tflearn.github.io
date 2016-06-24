@@ -215,6 +215,9 @@
                 <li class="toctree-l3"><a href="#ftrl-proximal">Ftrl Proximal</a></li>
                 
             
+                <li class="toctree-l3"><a href="#adadelta">AdaDelta</a></li>
+                
+            
             </ul>
         
     </li>
@@ -636,6 +639,27 @@ applying gradients. Defaults to "Ftrl".</li>
 
 <p><a href="https://www.eecs.tufts.
 edu/~dsculley/papers/ad-click-prediction.pdf">Ad Click Prediction: a View from the Trenches</a></p>
+<hr />
+<h1 id="adadelta">AdaDelta</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.AdaDelta</b></span>  (learning_rate=0.001,  rho=0.1,  epsilon=1e-08,  use_locking=False,  name='AdaDelta')</span></p>
+<p>Construct a new Adadelta optimizer.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: A <code>Tensor</code> or a floating point value. The learning rate.</li>
+<li><strong>rho</strong>: A <code>Tensor</code> or a floating point value. The decay rate.</li>
+<li><strong>epsilon</strong>: A <code>Tensor</code> or a floating point value.  A constant epsilon used
+to better conditioning the grad update.</li>
+<li><strong>use_locking</strong>: If <code>True</code> use locks for update operations.</li>
+<li><strong>name</strong>: Optional name prefix for the operations created when applying
+gradients.  Defaults to "Adadelta".</li>
+</ul>
+<h3>References</h3>
+
+<p>ADADELTA: An Adaptive Learning Rate Method, Matthew D. Zeiler, 2012.</p>
+<h3>Links</h3>
+
+<p><a href="http://arxiv.org/abs/1212.5701">http://arxiv.org/abs/1212.5701</a></p>
 <hr />
               
             </div>

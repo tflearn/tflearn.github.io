@@ -417,22 +417,23 @@ pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0
 </code></pre>
 
 <h2 id="upgrade-tensorflow">Upgrade Tensorflow</h2>
-<p>If you version for Tensorflow is too old (under 0.7.0), you may upgrade Tensorflow to avoid some incompatibilities with TFLearn.
+<p>If you version for Tensorflow is too old (under 0.8.0), you may upgrade Tensorflow to avoid some incompatibilities with TFLearn.
 To upgrade Tensorflow, you first need to uninstall Tensorflow and Protobuf:</p>
 <pre><code class="python">pip uninstall protobuf
 pip uninstall tensorflow
 </code></pre>
 
 <p>Then you can re-install Tensorflow:</p>
-<pre><code class="python"># Ubuntu/Linux 64-bit, CPU only:
-pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl
+<pre><code class="python"># Ubuntu/Linux 64-bit, CPU only, Python 2.7:
+$ sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
 
-# Ubuntu/Linux 64-bit, GPU enabled:
-pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.7.1-cp27-none-linux_x86_64.whl
+# Ubuntu/Linux 64-bit, GPU enabled, Python 2.7. Requires CUDA toolkit 7.5 and cuDNN v4.
+# For other versions, see &quot;Install from sources&quot; below.
+$ sudo pip install --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl
 
 # Mac OS X, CPU only:
-easy_install --upgrade six
-pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.7.1-cp27-none-any.whl
+$ sudo easy_install --upgrade six
+$ sudo pip install --upgrade https://storage.googleapis.com/tensorflow/mac/tensorflow-0.8.0-py2-none-any.whl
 </code></pre>
 
 <h2 id="using-latest-tensorflow">Using Latest Tensorflow</h2>

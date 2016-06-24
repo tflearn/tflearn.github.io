@@ -385,7 +385,7 @@
             <div class="section">
               
                 <h1 id="batch-normalization">Batch Normalization</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.normalization.batch_normalization</b></span>  (incoming,  beta=0.0,  gamma=1.0,  epsilon=1e-05,  decay=0.9,  trainable=True,  restore=True,  stddev=0.002,  name='BatchNormalization')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.normalization.batch_normalization</b></span>  (incoming,  beta=0.0,  gamma=1.0,  epsilon=1e-05,  decay=0.9,  stddev=0.002,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='BatchNormalization')</span></p>
 <p>Normalize activations of the previous layer at each batch.</p>
 <h3>Arguments</h3>
 
@@ -395,10 +395,15 @@
 <li><strong>gamma</strong>: <code>float</code>. Default: 1.0.</li>
 <li><strong>epsilon</strong>: <code>float</code>. Defalut: 1e-5.</li>
 <li><strong>decay</strong>: <code>float</code>. Default: 0.9.</li>
+<li><strong>stddev</strong>: <code>float</code>. Standard deviation for weights initialization.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
 loading a model.</li>
-<li><strong>stddev</strong>: <code>float</code>. Standard deviation for weights initialization.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <h3>References</h3>
@@ -427,6 +432,7 @@ Defaults to 5.</li>
 Defaults to 1.0.</li>
 <li><strong>alpha</strong>: <code>float</code>. A scale factor, usually positive. Defaults to 0.0001.</li>
 <li><strong>beta</strong>: <code>float</code>. An exponent. Defaults to <code>0.5</code>.</li>
+<li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />
               

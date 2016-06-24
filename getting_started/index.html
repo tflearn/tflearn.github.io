@@ -103,6 +103,8 @@
                 
                     <li><a class="toctree-l4" href="#data-preprocessing-and-data-augmentation">Data Preprocessing and Data Augmentation</a></li>
                 
+                    <li><a class="toctree-l4" href="#scopes-weights-sharing">Scopes &amp; Weights sharing</a></li>
+                
                     <li><a class="toctree-l4" href="#graph-initialization">Graph Initialization</a></li>
                 
             
@@ -454,11 +456,11 @@
 <tbody>
 <tr>
 <td><a href="http://tflearn.org/layers/core/">core</a></td>
-<td>input_data, fully_connected, dropout, custom_layer, reshape, flatten, activation, single_unit</td>
+<td>input_data, fully_connected, dropout, custom_layer, reshape, flatten, activation, single_unit, highway, one_hot_encoding</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/layers/conv/">conv</a></td>
-<td>conv_2d, conv_2d_transpose, max_pool_2d, avg_pool_2d, conv_1d, max_pool_1d, avg_pool_1d, shallow_residual_block, deep_residual_block</td>
+<td>conv_2d, conv_2d_transpose, max_pool_2d, avg_pool_2d, upsample_2d, conv_1d, max_pool_1d, avg_pool_1d, residual_block, residual_bottleneck, conv_3d, max_pool_3d, avg_pool_3d, highway_conv_2d</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/layers/recurrent/">recurrent</a></td>
@@ -502,7 +504,7 @@
 </tr>
 <tr>
 <td><a href="http://tflearn.org/optimizers">optimizers</a></td>
-<td>SGD, RMSProp, Adam, Momentum, AdaGrad, Ftrl</td>
+<td>SGD, RMSProp, Adam, Momentum, AdaGrad, Ftrl, AdaDelta</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/metrics">metrics</a></td>
@@ -661,6 +663,29 @@ network = input_data(shape=[None, 32, 32, 3],
 </code></pre>
 
 <p>For more details, see <a href="http://tflearn.org/data_preprocessing">Data Preprocessing</a> and <a href="http://tflearn.org/data_augmentation">Data Augmentation</a></p>
+<h3 id="scopes-weights-sharing">Scopes &amp; Weights sharing</h3>
+<p>All layers are built over 'variable_op_scope', that make it easy to share variables among multiple layers and make TFLearn suitable for distributed training. All layers with inner  variables support a 'scope' argument to place variables under; layers with same scope name will then share the same weights.</p>
+<pre><code class="python"># Define a model builder
+def my_model(x):
+    x = tflearn.fully_connected(x, 32, scope='fc1')
+    x = tflearn.fully_connected(x, 32, scope='fc2')
+    x = tflearn.fully_connected(x, 2, scope='out')
+
+# 2 different computation graph but sharing the same weights
+with tf.device('/gpu:0')
+    # Force all Variables to reside on the CPU.
+    with tf.arg_ops([tflearn.variables.variable], device='/cpu:0'):
+        model1 = my_model(placeholder_X)
+# Reuse Variables for the next model
+tf.get_variable_scope().reuse_variables()
+with tf.device('/gpu:1')
+    with tf.arg_ops([tflearn.variables.variable], device='/cpu:0'):
+        model2 = my_model(placeholder_X)
+
+# Model can now be trained by multiple GPUs (see gradient averaging)
+...
+</code></pre>
+
 <h3 id="graph-initialization">Graph Initialization</h3>
 <p>It might be useful to limit resources, or assigns more or less GPU RAM memory while training. To do so, a graph initializer can be used to configure a graph before run:</p>
 <pre><code class="python">tflearn.init_graph(set_seed=8888, num_cores=16, gpu_memory_fraction=0.5)
@@ -713,11 +738,11 @@ net = tf.nn.max_pool(net, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAM
 </tr>
 <tr>
 <td><a href="http://tflearn.org/optimizers">optimizers</a></td>
-<td>SGD, RMSProp, Adam, Momentum, AdaGrad, Ftrl</td>
+<td>SGD, RMSProp, Adam, Momentum, AdaGrad, Ftrl, AdaDelta</td>
 </tr>
 <tr>
-<td><a href="http://tflearn.org/metrics#accuracy_op">metrics</a></td>
-<td>accuracy_op, top_k_op, r2_op</td>
+<td><a href="http://tflearn.org/metrics">metrics</a></td>
+<td>Accuracy, Top_k, R2</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/initializations">initializations</a></td>

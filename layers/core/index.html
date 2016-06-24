@@ -150,6 +150,9 @@
                 <li class="toctree-l3"><a href="#fully-connected-highway">Fully Connected Highway</a></li>
                 
             
+                <li class="toctree-l3"><a href="#one-hot-encoding">One Hot Encoding</a></li>
+                
+            
             </ul>
         
     </li>
@@ -443,7 +446,7 @@ reverse...).</li>
 </ul>
 <hr />
 <h1 id="fully-connected">Fully Connected</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.fully_connected</b></span>  (incoming,  n_units,  activation='linear',  bias=True,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='FullyConnected')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.fully_connected</b></span>  (incoming,  n_units,  activation='linear',  bias=True,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='FullyConnected')</span></p>
 <p>A fully connected layer.</p>
 <h3>Input</h3>
 
@@ -463,14 +466,19 @@ Default: 'linear'.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (see tflearn.initializations) Default: 'truncated_normal'.</li>
 <li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
-(see tflearn.initializations) Default: 'zeros'.
-   regularizer: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
-layer weights (see tflearn.regularizers). Default: None.
-   weight_decay: <code>float</code>. Regularizer decay parameter. Default: 0.001.
-   trainable: <code>bool</code>. If True, weights will be trainable.
-   restore: <code>bool</code>. If True, this layer weights will be restored when
-loading a model.
-   name: A name for this layer (optional). Default: 'FullyConnected'.</li>
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'FullyConnected'.</li>
 </ul>
 <h3>Attributes</h3>
 
@@ -553,7 +561,7 @@ Default: 'linear'.</li>
 </ul>
 <hr />
 <h1 id="single-unit">Single Unit</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.single_unit</b></span>  (incoming,  activation='linear',  bias=True,  trainable=True,  restore=True,  name='Linear')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.single_unit</b></span>  (incoming,  activation='linear',  bias=True,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Linear')</span></p>
 <p>A single unit (Linear) Layer.</p>
 <h3>Input</h3>
 
@@ -571,7 +579,12 @@ layer (see tflearn.activations). Default: 'linear'.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
 loading a model.</li>
-<li><strong>name</strong>: A name for this layer (optional). Default: 'Dense'.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Linear'.</li>
 </ul>
 <h3>Attributes</h3>
 
@@ -581,7 +594,7 @@ loading a model.</li>
 </ul>
 <hr />
 <h1 id="fully-connected-highway">Fully Connected Highway</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.highway</b></span>  (incoming,  n_units,  activation='linear',  transform_dropout=None,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  name='FullyConnectedHighway')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.highway</b></span>  (incoming,  n_units,  activation='linear',  transform_dropout=None,  weights_init='truncated_normal',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='FullyConnectedHighway')</span></p>
 <p>A fully connected highway network layer, with some inspiration from
 <a href="https://github.com/fomorians/highway-fcn">https://github.com/fomorians/highway-fcn</a>.</p>
 <h3>Input</h3>
@@ -609,6 +622,11 @@ layer weights (see tflearn.regularizers). Default: None.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
 loading a model</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'FullyConnectedHighway'.</li>
 </ul>
 <h3>Attributes</h3>
@@ -623,6 +641,25 @@ loading a model</li>
 <h3>Links</h3>
 
 <p><a href="https://arxiv.org/abs/1505.00387">https://arxiv.org/abs/1505.00387</a></p>
+<hr />
+<h1 id="one-hot-encoding">One Hot Encoding</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.one_hot_encoding</b></span>  (target,  n_classes,  on_value=1.0,  off_value=1.0,  name='OneHotEncoding')</span></p>
+<p>Transform numeric labels into a binary vector.</p>
+<h3>Input</h3>
+
+<p>The Labels Placeholder.</p>
+<h3>Output</h3>
+
+<p>2-D Tensor, The encoded labels.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>target</strong>: <code>Placeholder</code>. The labels placeholder.</li>
+<li><strong>n_classes</strong>: <code>int</code>. Total number of classes.</li>
+<li><strong>on_value</strong>: <code>scalar</code>. A scalar defining the on-value.</li>
+<li><strong>off_value</strong>: <code>scalar</code>. A scalar defining the off-value.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'OneHotEncoding'.</li>
+</ul>
 <hr />
               
             </div>
