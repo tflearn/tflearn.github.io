@@ -382,7 +382,7 @@
             <div class="section">
               
                 <h1 id="embedding">Embedding</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.embedding_ops.embedding</b></span>  (incoming,  input_dim,  output_dim,  weights_init='truncated_normal',  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Embedding')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.embedding_ops.embedding</b></span>  (incoming,  input_dim,  output_dim,  validate_indices=False,  weights_init='truncated_normal',  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Embedding')</span></p>
 <p>Embedding layer for a sequence of ids.</p>
 <h3>Input</h3>
 
@@ -396,11 +396,17 @@
 <li><strong>incoming</strong>: Incoming 2-D Tensor.</li>
 <li><strong>input_dim</strong>: list of <code>int</code>. Vocabulary size (number of ids).</li>
 <li><strong>output_dim</strong>: list of <code>int</code>. Embedding size.</li>
+<li><strong>validate_indices</strong>: <code>bool</code>. Whether or not to validate gather indices.</li>
 <li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
 (see tflearn.initializations) Default: 'truncated_normal'.</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
 <li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
 loading a model</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share varibales between layers. Note that scope will
+override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Embedding'.</li>
 </ul>
 <hr />
