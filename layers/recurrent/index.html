@@ -431,13 +431,13 @@ loading a model.</li>
 <li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
 will be reused (shared).</li>
 <li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
-used to share varibales between layers. Note that scope will
+used to share variables between layers. Note that scope will
 override name.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
 <hr />
 <h1 id="lstm">LSTM</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.lstm</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  dropout=None,  bias=True,  weights_init=None,  forget_bias=1.0,  return_seq=False,  return_state=False,  initial_state=None,  dynamic=False,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='LSTM')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.lstm</b></span>  (incoming,  n_units,  activation='tanh',  inner_activation='sigmoid',  dropout=None,  bias=True,  weights_init=None,  forget_bias=1.0,  return_seq=False,  return_state=False,  initial_state=None,  dynamic=False,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='LSTM')</span></p>
 <p>Long Short Term Memory Recurrent Layer.</p>
 <h3>Input</h3>
 
@@ -453,9 +453,9 @@ else: 2-D Tensor [samples, output dim].</p>
 <li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
 Activation applied to this layer (see tflearn.activations).
-Default: 'sigmoid'.</li>
+Default: 'tanh'.</li>
 <li><strong>inner_activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
-LSTM inner activation. Default: 'tanh'.</li>
+LSTM inner activation. Default: 'sigmoid'.</li>
 <li><strong>dropout</strong>: <code>tuple</code> of <code>float</code>: (input_keep_prob, output_keep_prob). The
 input and output keep probability.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
@@ -480,7 +480,7 @@ loading a model.</li>
 <li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
 will be reused (shared).</li>
 <li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
-used to share varibales between layers. Note that scope will
+used to share variables between layers. Note that scope will
 override name.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
@@ -493,7 +493,7 @@ Neural Computation 9(8): 1735-1780, 1997.</p>
 <p><a href="http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf">http://deeplearning.cs.cmu.edu/pdfs/Hochreiter97_lstm.pdf</a></p>
 <hr />
 <h1 id="gru">GRU</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.gru</b></span>  (incoming,  n_units,  activation='sigmoid',  inner_activation='tanh',  dropout=None,  bias=True,  weights_init=None,  return_seq=False,  return_state=False,  initial_state=None,  dynamic=False,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='GRU')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.recurrent.gru</b></span>  (incoming,  n_units,  activation='tanh',  inner_activation='sigmoid',  dropout=None,  bias=True,  weights_init=None,  return_seq=False,  return_state=False,  initial_state=None,  dynamic=False,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='GRU')</span></p>
 <p>Gated Recurrent Unit Layer.</p>
 <h3>Input</h3>
 
@@ -509,9 +509,9 @@ else: 2-D Tensor [samples, output dim].</p>
 <li><strong>n_units</strong>: <code>int</code>, number of units for this layer.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
 Activation applied to this layer (see tflearn.activations).
-Default: 'sigmoid'.</li>
+Default: 'tanh'.</li>
 <li><strong>inner_activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
-GRU inner activation. Default: 'tanh'.</li>
+GRU inner activation. Default: 'sigmoid'.</li>
 <li><strong>dropout</strong>: <code>tuple</code> of <code>float</code>: (input_keep_prob, output_keep_prob). The
 input and output keep probability.</li>
 <li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
@@ -535,7 +535,7 @@ loading a model.</li>
 <li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
 will be reused (shared).</li>
 <li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
-used to share varibales between layers. Note that scope will
+used to share variables between layers. Note that scope will
 override name.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
@@ -583,7 +583,7 @@ So a sequence padded with 0 at the end must be provided. When
 computation is performed, it will stop when it meets a step with
 a value of 0.</li>
 <li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
-used to share varibales between layers. Note that scope will
+used to share variables between layers. Note that scope will
 override name.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
