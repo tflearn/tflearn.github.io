@@ -277,6 +277,9 @@
                 <li class="toctree-l3"><a href="#featurewise_std_normalization">featurewise_std_normalization</a></li>
                 
             
+                <li class="toctree-l3"><a href="#load_csv">load_csv</a></li>
+                
+            
             </ul>
         
     </li>
@@ -733,6 +736,27 @@ will be evaluated over the provided data.</li>
 
 <p>A numpy array with same shape as input. Or a tuple (array, std) if no
 std value was specified.</p>
+<hr />
+<h1 id="load_csv">load_csv</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.load_csv</b></span>  (filepath,  target_column=-1,  categorical_labels=False,  columns_to_ignore=None,  has_header=True,  dtype=<type  'numpy.float32'>,  target_type=<type  'numpy.int64'>)</span></p>
+<p>Load data from a CSV file. By default the labels are considered to be the
+last column, but it can be changed by filling 'target_column' parameter.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>filepath</strong>: <code>str</code>. The csv file path.</li>
+<li><strong>target_column</strong>: The id of the column representing the labels.
+Default: -1 (The last column).</li>
+<li><strong>categorical_labels</strong>: <code>bool</code>. If True, labels are returned as binary
+vectors (to be used with 'categorical_crossentropy').</li>
+<li><strong>columns_to_ignore</strong>: <code>list of int</code>. A list of columns index to ignore.</li>
+<li><strong>has_header</strong>: <code>bool</code>. Whether the csv file has a header or not.</li>
+<li><strong>dtype</strong>: The data type. Default: float32.</li>
+<li><strong>target_type</strong>: The target type. Default: int64.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A tuple (data, target).</p>
 <hr />
               
             </div>
