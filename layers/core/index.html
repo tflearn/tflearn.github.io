@@ -410,11 +410,18 @@
               
                 <h1 id="input-data">Input Data</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.input_data</b></span>  (shape=None,  placeholder=None,  dtype=tf.float32,  data_preprocessing=None,  data_augmentation=None,  name='InputData')</span></p>
-<p>This layer is used as a data entry (placeholder) of a network. The inner
-placeholder will then be feeded with data when training.</p>
-<p>This layer is used to keep track of the network inputs, by adding the
-placeholder to INPUTS graphkey. TFLearn training functions may retrieve
-these variables to setup the network training process.</p>
+<p>This layer is used for inputting (aka. feeding) data to a network.
+A TensorFlow placeholder will be used if it is supplied,
+otherwise a new placeholder will be created with the given shape.</p>
+<p>Either a shape or placeholder must be provided, otherwise an
+exception will be raised.</p>
+<p>Furthermore, the placeholder is added to TensorFlow collections
+so it can be retrieved using tf.get_collection(tf.GraphKeys.INPUTS)
+as well as tf.GraphKeys.LAYER_TENSOR + '/' + name. Similarly for
+the data preprocessing and augmentation objects which are stored in
+the collections with tf.GraphKeys.DATA_PREP and tf.GraphKeys.DATA_AUG.
+This allows other parts of TFLearn to easily retrieve and use these
+objects by referencing these graph-keys.</p>
 <h3>Input</h3>
 
 <p>List of <code>int</code> (Shape), to create a new placeholder.
@@ -427,7 +434,7 @@ Or
 
 <ul>
 <li><strong>shape</strong>: list of <code>int</code>. An array or tuple representing input data shape.
-It is required if no placeholder provided. First element should
+It is required if no placeholder is provided. First element should
 be 'None' (representing batch size), if not provided, it will be
 added automatically.</li>
 <li><strong>placeholder</strong>: A Placeholder to use for feeding this layer (optional).
