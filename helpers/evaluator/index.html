@@ -383,7 +383,7 @@
               
                 <h1 id="evaluator">Evaluator</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.evaluator.Evaluator</b></span>  (tensors,  model=None,  session=None)</span></p>
-<p>A class used for performing predictions or evaluate a model performances.</p>
+<p>A class used for performing predictions and evaluate a model performance.</p>
 <h3>Arguments</h3>
 
 <ul>
@@ -395,8 +395,9 @@
 
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>evaluate</b></span>  (feed_dict,  ops,  batch_size=128)</span></p>
-<p>Evaluate a list of tensors over a whole dataset. It is used to compute
-a metric mean score over an entire dataset.</p>
+<p>Evaluate a list of tensors over a whole dataset. Generally,
+'ops' argument are average performance metrics (such as average mean,
+top-3, etc...)</p>
 <h5>Arguments</h5>
 
 <ul>
@@ -406,10 +407,10 @@ a metric mean score over an entire dataset.</p>
 </ul>
 <h5>Returns</h5>
 
-<p>The mean average result per tensor over the entire dataset.</p>
+<p>The mean average result per tensor over all batches.</p>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>predict</b></span>  (feed_dict)</span></p>
-<p>Run data through each tensor's network, and return prediction value.</p>
+<p>Run data through the provided network and return the result value.</p>
 <h5>Arguments</h5>
 
 <ul>
@@ -418,8 +419,8 @@ keys, and data as values.</li>
 </ul>
 <h5>Returns</h5>
 
-<p>An <code>array</code>. In case of multiple tensors to predict, array is a
-concatanation of each tensor prediction result.</p>
+<p>An <code>array</code>. In case of multiple tensors to predict, each tensor's
+prediction result is concatenated.</p>
 <hr />
               
             </div>
