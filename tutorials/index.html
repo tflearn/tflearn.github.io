@@ -8,7 +8,7 @@
   
   <meta name="author" content="Aymeric Damien">
   
-  <title>Data Flow - TFLearn - TensorFlow Deep Learning Library</title>
+  <title>Tutorials - TFLearn - TensorFlow Deep Learning Library</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -24,9 +24,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Data Flow";
-    var mkdocs_page_input_path = "data_flow.md";
-    var mkdocs_page_url = "/data_flow/";
+    var mkdocs_page_name = "Tutorials";
+    var mkdocs_page_input_path = "tutorials.md";
+    var mkdocs_page_url = "/tutorials/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -94,8 +94,21 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../tutorials/">Tutorials</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Tutorials</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#tflearn-tutorials">TFLearn Tutorials</a></li>
+                
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
+                
+                    <li><a class="toctree-l4" href="#computer-vision">Computer Vision</a></li>
+                
+                    <li><a class="toctree-l4" href="#natural-language-processing">Natural Language Processing</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -277,18 +290,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Data Flow</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#data-flow">Data Flow</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#feeddictflow">FeedDictFlow</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../data_flow/">Data Flow</a>
         
     </li>
 
@@ -382,12 +385,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Data Management &raquo;</li>
-        
-      
     
-    <li>Data Flow</li>
+    <li>Tutorials</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -401,75 +400,13 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="data-flow">Data Flow</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_flow.DataFlow</b></span>  (coord,  num_threads=8,  max_queue=32,  shuffle=False,  continuous=False,  ensure_data_order=False,  dprep_dict=None,  daug_dict=None)</span></p>
-<p>Base class for using real time pre-processing and controlling data flow.
-Supports pipelining for faster computation.</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>coord</strong>: <code>Coordinator</code>. A Tensorflow coordinator.</li>
-<li><strong>num_threads</strong>: <code>int</code>. Total number of simultaneous threads to process data.</li>
-<li><strong>max_queue</strong>: <code>int</code>. Maximum number of data stored in a queue.</li>
-<li><strong>shuffle</strong>: <code>bool</code>. If True, data will be shuffle.</li>
-<li><strong>continuous</strong>: <code>bool</code>. If True, when an epoch is over, same data will be
-feeded again.</li>
-<li><strong>ensure_data_order</strong>: <code>bool</code>. Ensure that data order is keeped when using
-'next' to retrieve data (Processing will be slower).</li>
-<li><strong>dprep_dict</strong>: dict. Optional data pre-processing parameter for performing
-real time data pre-processing. Keys must be placeholders and values
-<code>DataPreprocessing</code> subclass object.</li>
-<li><strong>daug_dict</strong>: dict. Optional data augmentation parameter for performing
-real time data augmentation. Keys must be placeholders and values
-<code>DataAugmentation</code> subclass object.</li>
-</ul>
-<hr />
-<h1 id="feeddictflow">FeedDictFlow</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_flow.FeedDictFlow</b></span>  (feed_dict,  coord,  batch_size=128,  num_threads=8,  max_queue=32,  shuffle=False,  continuous=False,  ensure_data_order=False,  dprep_dict=None,  daug_dict=None,  index_array=None)</span></p>
-<p>Generate a stream of batches from a dataset. It uses two queues, one for
-generating batch of data ids, and the other one to load data and apply pre
-processing. If continuous is <code>True</code>, data flow will never ends until <code>stop</code>
-is invoked, or <code>coord</code> interrupt threads.</p>
-<h3>Arguments</h3>
-
-<ul>
-<li><strong>feed_dict</strong>: <code>dict</code>. A TensorFlow formatted feed dict (with placeholders
-as keys and data as values).</li>
-<li><strong>coord</strong>: <code>Coordinator</code>. A Tensorflow coordinator.</li>
-<li><strong>num_threads</strong>: <code>int</code>. Total number of simultaneous threads to process data.</li>
-<li><strong>max_queue</strong>: <code>int</code>. Maximum number of data stored in a queue.</li>
-<li><strong>shuffle</strong>: <code>bool</code>. If True, data will be shuffle.</li>
-<li><strong>continuous</strong>: <code>bool</code>. If True, when an epoch is over, same data will be
-feeded again.</li>
-<li><strong>ensure_data_order</strong>: <code>bool</code>. Ensure that data order is keeped when using
-'next' to retrieve data (Processing will be slower).</li>
-<li><strong>dprep_dict</strong>: dict. Optional data pre-processing parameter for performing
-real time data pre-processing. Keys must be placeholders and values
-<code>DataPreprocessing</code> subclass object.</li>
-<li><strong>daug_dict</strong>: dict. Optional data augmentation parameter for performing
-real time data augmentation. Keys must be placeholders and values
-<code>DataAugmentation</code> subclass object.</li>
-<li><strong>index_array</strong>: <code>list</code>. An optional list of index to be used instead of
-using the whole dataset indexes (Useful for validation split).</li>
-</ul>
-<h2>Methods</h2>
-
-<p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>next</b></span>  (timeout=None)</span></p>
-<p>Get the next feed dict.</p>
-<h5>Returns</h5>
-
-<p>A TensorFlow feed dict, or 'False' if it has no more data.</p>
-<p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>start</b></span>  (reset_status=True)</span></p>
-<h5>Arguments</h5>
-
-<ul>
-<li><strong>reset_status</strong>: <code>bool</code>. If True, <code>DataStatus</code> will be reset.</li>
-</ul>
-<h5>Returns</h5>
-
-<hr />
+                <h1 id="tflearn-tutorials">TFLearn Tutorials</h1>
+<h2 id="introduction">Introduction</h2>
+<p><a href="quickstart.md">TFLearn Quickstart</a>. Learn the basics of TFLearn through a concrete machine learning task. Build and train a deep neural network classifier.</p>
+<h2 id="computer-vision">Computer Vision</h2>
+<p><a href="">Build an Image Classifier</a>. Coming soon...</p>
+<h2 id="natural-language-processing">Natural Language Processing</h2>
+<p><a href="">Build a Text Classifier</a>. Coming soon...</p>
               
             </div>
           </div>
@@ -477,10 +414,10 @@ using the whole dataset indexes (Useful for validation split).</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../config/" class="btn btn-neutral float-right" title="Graph Config">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../examples/" class="btn btn-neutral float-right" title="Examples">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../data_augmentation/" class="btn btn-neutral" title="Data Augmentation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../getting_started/" class="btn btn-neutral" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -508,10 +445,10 @@ using the whole dataset indexes (Useful for validation split).</li>
           <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../data_augmentation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../getting_started/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../config/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

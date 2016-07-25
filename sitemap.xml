@@ -35,6 +35,14 @@
 
     
     <url>
+     <loc>http://tflearn.org/tutorials/</loc>
+     <lastmod>2016-07-25</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>http://tflearn.org/examples/</loc>
      <lastmod>2016-07-25</lastmod>
      <changefreq>daily</changefreq>
