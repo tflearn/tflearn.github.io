@@ -153,6 +153,9 @@
                 <li class="toctree-l3"><a href="#one-hot-encoding">One Hot Encoding</a></li>
                 
             
+                <li class="toctree-l3"><a href="#time-distributed">Time Distributed</a></li>
+                
+            
             </ul>
         
     </li>
@@ -667,6 +670,35 @@ override name.</li>
 <li><strong>off_value</strong>: <code>scalar</code>. A scalar defining the off-value.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'OneHotEncoding'.</li>
 </ul>
+<hr />
+<h1 id="time-distributed">Time Distributed</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.core.time_distributed</b></span>  (incoming,  fn,  args=None,  scope=None)</span></p>
+<p>This layer applies a function to every timestep of the input tensor. The
+custom function first argument must be the input tensor at every timestep.
+Additional parameters for the custom function may be specified in 'args'
+argument (as a list).</p>
+<h3>Input</h3>
+
+<p>(3+)-D Tensor [samples, timestep, input_dim].</p>
+<h3>Output</h3>
+
+<p>(3+)-D Tensor [samples, timestep, output_dim].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. The incoming tensor.</li>
+<li><strong>fn</strong>: <code>function</code>. A function to apply at every timestep. This function
+first parameter must be the input tensor per timestep. Additional
+parameters may be specified in 'args' argument.</li>
+<li><strong>args</strong>: <code>list</code>. A list of parameters to use with the provided function.</li>
+<li><strong>scope</strong>: <code>str</code>. A scope to give to each timestep tensor. Useful when
+sharing weights. Each timestep tensor scope will be generated
+as 'scope'-'i' where i represents the timestep id. Note that your
+custom function will be required to have a 'scope' parameter.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A Tensor.</p>
 <hr />
               
             </div>
