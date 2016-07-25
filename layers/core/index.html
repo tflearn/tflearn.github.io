@@ -677,6 +677,15 @@ override name.</li>
 custom function first argument must be the input tensor at every timestep.
 Additional parameters for the custom function may be specified in 'args'
 argument (as a list).</p>
+<h3>Examples</h3>
+
+<pre><code class="python"># Applying a fully_connected layer at every timestep
+x = time_distributed(input_tensor, fully_connected, [64])
+
+# Using a conv layer at every timestep with a scope
+x = time_distributed(input_tensor, conv_2d, [64, 3], scope='tconv')
+</code></pre>
+
 <h3>Input</h3>
 
 <p>(3+)-D Tensor [samples, timestep, input_dim].</p>
