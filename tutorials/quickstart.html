@@ -8,7 +8,7 @@
   
   <meta name="author" content="Aymeric Damien">
   
-  <title>Quickstart - TFLearn - TensorFlow Deep Learning Library</title>
+  <title>Quickstart - TFLearn</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -54,7 +54,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> TFLearn </a>
+        <a href="../.." class="icon icon-home"> TFLearn</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -401,7 +401,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">TFLearn - TensorFlow Deep Learning Library</a>
+        <a href="../..">TFLearn</a>
       </nav>
 
       
@@ -530,7 +530,8 @@ titanic.download_dataset('titanic_dataset.csv')
 
 # Load CSV file, indicate that the first column represents labels
 from tflearn.data_utils import load_csv
-data, labels = load_csv('titanic_dataset.csv', target_column=0)
+data, labels = load_csv('titanic_dataset.csv', target_column=0,
+                        categorical_labels=True, n_classes=2)
 </code></pre>
 
 <h2 id="preprocessing-data">Preprocessing Data</h2>
@@ -541,8 +542,8 @@ data, labels = load_csv('titanic_dataset.csv', target_column=0)
 <pre><code class="python"># Preprocessing function
 def preprocess(data, columns_to_ignore):
     # Sort by descending id and delete columns
-    for id in columns_to_ignore.sort(reverse=True):
-        del columns_to_ignore[id]
+    for id in sorted(columns_to_ignore, reverse=True):
+        [r.pop(id) for r in data]
     for i in range(len(data)):
       # Converting 'sex' field to float (id is 1 after removing labels column)
       data[i][1] = 1. if data[i][1] == 'female' else 0.
@@ -621,7 +622,7 @@ Training Step: 820  | total loss: 0.41557
 dicaprio = [3, 'Jack Dawson', 'male', 19, 0, 0, 'N/A', 5.0000]
 winslet = [1, 'Rose DeWitt Bukater', 'female', 17, 1, 2, 'N/A', 100.0000]
 # Preprocess data
-dicaprio, winslet = preprocess([dicaprio, winslet])
+dicaprio, winslet = preprocess([dicaprio, winslet], to_ignore)
 # Predict surviving chances (class 1 results)
 pred = model.predict([dicaprio, winslet])
 print(&quot;DiCaprio Surviving Rate:&quot;, pred[0][1])
@@ -636,7 +637,9 @@ Winslet Surviving Rate: 0.92201167345047
 <p>Impressive! Our model accurately predicted the outcome of the movie. Odds were against DiCaprio, but Winslet had a high chance of surviving.</p>
 <p>More generally, it can bee seen through this study that women and children passengers from first class have the highest chance of surviving, while third class male passengers have the lowest.</p>
 <h1 id="source-code">Source Code</h1>
-<pre><code class="python">import numpy as np
+<pre><code class="python">from __future__ import print_function
+
+import numpy as np
 import tflearn
 
 # Download the Titanic dataset
@@ -645,13 +648,15 @@ titanic.download_dataset('titanic_dataset.csv')
 
 # Load CSV file, indicate that the first column represents labels
 from tflearn.data_utils import load_csv
-data, labels = load_csv('titanic_dataset.csv', target_column=0)
+data, labels = load_csv('titanic_dataset.csv', target_column=0,
+                        categorical_labels=True, n_classes=2)
+
 
 # Preprocessing function
 def preprocess(data, columns_to_ignore):
     # Sort by descending id and delete columns
-    for id in columns_to_ignore.sort(reverse=True):
-        del columns_to_ignore[id]
+    for id in sorted(columns_to_ignore, reverse=True):
+        [r.pop(id) for r in data]
     for i in range(len(data)):
       # Converting 'sex' field to float (id is 1 after removing labels column)
       data[i][1] = 1. if data[i][1] == 'female' else 0.
@@ -679,7 +684,7 @@ model.fit(data, labels, n_epoch=10, batch_size=16, show_metric=True)
 dicaprio = [3, 'Jack Dawson', 'male', 19, 0, 0, 'N/A', 5.0000]
 winslet = [1, 'Rose DeWitt Bukater', 'female', 17, 1, 2, 'N/A', 100.0000]
 # Preprocess data
-dicaprio, winslet = preprocess([dicaprio, winslet])
+dicaprio, winslet = preprocess([dicaprio, winslet], to_ignore)
 # Predict surviving chances (class 1 results)
 pred = model.predict([dicaprio, winslet])
 print(&quot;DiCaprio Surviving Rate:&quot;, pred[0][1])
