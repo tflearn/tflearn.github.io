@@ -167,6 +167,9 @@
                 <li class="toctree-l3"><a href="#local-response-normalization">Local Response Normalization</a></li>
                 
             
+                <li class="toctree-l3"><a href="#l2-normalization">L2 Normalization</a></li>
+                
+            
             </ul>
         
     </li>
@@ -451,6 +454,28 @@ Defaults to 1.0.</li>
 <li><strong>beta</strong>: <code>float</code>. An exponent. Defaults to <code>0.5</code>.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
 </ul>
+<hr />
+<h1 id="l2-normalization">L2 Normalization</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.normalization.l2_normalize</b></span>  (incoming,  dim,  epsilon=1e-12,  name='l2_normalize')</span></p>
+<p>Normalizes along dimension <code>dim</code> using an L2 norm.</p>
+<p>For a 1-D tensor with <code>dim = 0</code>, computes</p>
+<pre><code>output = x / sqrt(max(sum(x**2), epsilon))
+</code></pre>
+
+<p>For <code>x</code> with more dimensions, independently normalizes each 1-D slice along
+dimension <code>dim</code>.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming Tensor.</li>
+<li><strong>dim</strong>: <code>int</code>. Dimension along which to normalize.</li>
+<li><strong>epsilon</strong>: <code>float</code>. A lower bound value for the norm. Will use
+<code>sqrt(epsilon)</code> as the divisor if <code>norm &lt; sqrt(epsilon)</code>.</li>
+<li><strong>name</strong>: <code>str</code>. A name for this layer (optional).</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code> with the same shape as <code>x</code>.</p>
 <hr />
               
             </div>

@@ -399,7 +399,7 @@
             <div class="section">
               
                 <h1 id="deep-neural-network-model">Deep Neural Network Model</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.models.dnn.DNN</b></span>  (network,  clip_gradients=5.0,  tensorboard_verbose=0,  tensorboard_dir='/tmp/tflearn_logs/',  checkpoint_path=None,  max_checkpoints=None,  session=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.models.dnn.DNN</b></span>  (network,  clip_gradients=5.0,  tensorboard_verbose=0,  tensorboard_dir='/tmp/tflearn_logs/',  checkpoint_path=None,  best_checkpoint_path=None,  max_checkpoints=None,  session=None,  best_val_accuracy=0.0)</span></p>
 <p>TODO: complete description</p>
 <h3>Arguments</h3>
 
@@ -419,11 +419,17 @@ different levels of tensorboard logs:</li>
 Default: "/tmp/tflearn_logs/"</li>
 <li><strong>checkpoint_path</strong>: <code>str</code>. Path to store model checkpoints. If None,
 no model checkpoint will be saved. Default: None.</li>
+<li><strong>best_checkpoint_path</strong>: <code>str</code>. Path to store the model when the validation rate reaches its
+highest point of the current training session and also is above best_val_accuracy. Default: None.</li>
 <li><strong>max_checkpoints</strong>: <code>int</code> or None. Maximum amount of checkpoints. If
 None, no limit. Default: None.</li>
 <li><strong>session</strong>: <code>Session</code>. A session for running ops. If None, a new one will
 be created. Note: When providing a session, variables must have been
 initialized already, otherwise an error will be raised.</li>
+<li><strong>best_val_accuracy</strong>: <code>float</code> The minimum validation accuracy that needs to be
+achieved before a model weight's are saved to the best_checkpoint_path. This
+allows the user to skip early saves and also set a minimum save point when continuing
+to train a reloaded model. Default: 0.0.</li>
 </ul>
 <h3>Attributes</h3>
 
