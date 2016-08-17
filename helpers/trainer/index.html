@@ -494,13 +494,17 @@ exclude from training process.</li>
 display. If no name provided, a random one will be generated.</li>
 </ul>
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>restore</b></span>  (model_file,  trainable_variable_only=False)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>restore</b></span>  (model_file,  trainable_variable_only=False,  variable_name_map=None,  scope_for_<span style="color:black"><b>restore</b></span>=None,  create_new_session=True,  verbose=False)</span></p>
 <p>Restore a Tensorflow model</p>
 <h5>Arguments</h5>
 
 <ul>
 <li><strong>model_file</strong>: path of tensorflow model to restore</li>
 <li><strong>trainable_variable_only</strong>: If True, only restore trainable variables.</li>
+<li><strong>variable_name_map</strong>: - a (pattern, repl) tuple providing a regular expression pattern and replacement, which is applied to variable names, before restoration from the model file -- OR, a function map_func, used to perform the mapping, called as: name_in_file = map_func(existing_var_op_name) The function may return None to indicate a variable is not to be restored.</li>
+<li><strong>scope_for_restore</strong>: string specifying the scope to limit to, when restoring variables. -Also removes the scope name prefix from the var name to use when restoring.</li>
+<li><strong>create_new_session</strong>: Set to False if the current session is to be kept.  Set to True (the default) to create a new session, and re-init all variables.</li>
+<li>verbose   : Set to True to see a printout of what variables are being restored,when using scope_for_restore or variable_name_map</li>
 </ul>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>save</b></span>  (model_file,  global_step=None)</span></p>

@@ -526,7 +526,7 @@ w = dnn.get_weights(convlayer.b) # get a conv layer biases
 
 <p><code>np.array</code>. The provided variable weights.</p>
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>load</b></span>  (model_file,  weights_only=False)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>load</b></span>  (model_file,  weights_only=False,  **optargs)</span></p>
 <p>Restore model weights.</p>
 <h5>Arguments</h5>
 
@@ -536,6 +536,7 @@ w = dnn.get_weights(convlayer.b) # get a conv layer biases
 and not intermediate variable, such as step counter, moving
 averages...). Note that if you are using batch normalization,
 averages will not be restored as well.</li>
+<li><strong>optargs</strong>: optional extra arguments for trainer.restore (see helpers/trainer.py) These optional arguments may be used to limit the scope of variables restored, and to control whether a new session is  created for the restored variables.</li>
 </ul>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>predict</b></span>  (X)</span></p>
