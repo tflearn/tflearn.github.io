@@ -459,7 +459,7 @@ sequence, i.e. for x[0] =&gt; y[0] = x[1].</li>
 
 <p>The metric(s) score.</p>
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (X_inputs,  Y_targets,  n_epoch=10,  validation_set=None,  show_metric=False,  batch_size=None,  shuffle=None,  snapshot_epoch=True,  snapshot_step=None,  excl_trainops=None,  run_id=None)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (X_inputs,  Y_targets,  n_epoch=10,  validation_set=None,  show_metric=False,  batch_size=None,  shuffle=None,  snapshot_epoch=True,  snapshot_step=None,  excl_trainops=None,  validation_batch_size=None,  run_id=None,  callbacks=[])</span></p>
 <p>Train model, feeding X_inputs and Y_targets to the network.</p>
 <p>NOTE: When not feeding dicts, data assignations is made by
 input/estimator layers creation order (For example, the second
@@ -493,7 +493,11 @@ X_inputs and Y_targets). Additionally, it also accepts
 <code>float</code> (&lt;1) to performs a data split over training data.</li>
 <li><strong>show_metric</strong>: <code>bool</code>. Display or not accuracy at every step.</li>
 <li><strong>batch_size</strong>: <code>int</code> or None. If <code>int</code>, overrides all network
-estimators 'batch_size' by this value.</li>
+estimators 'batch_size' by this value.  Also overrides
+<code>valiation_batch_size</code> if <code>int</code>, and if <code>valudation_batch_size</code>
+is None.</li>
+<li><strong>validation_batch_size</strong>: <code>int</code> or None. If <code>int</code>, overrides all network
+estimators 'validation_batch_size' by this value.</li>
 <li><strong>shuffle</strong>: <code>bool</code> or None. If <code>bool</code>, overrides all network
 estimators 'shuffle' by this value.</li>
 <li><strong>snapshot_epoch</strong>: <code>bool</code>. If True, it will snapshot model at the end
@@ -506,6 +510,8 @@ every 'snapshot_step' steps.</li>
 exclude from training process (TrainOps can be retrieve
 through <code>tf.get_collection_ref(tf.GraphKeys.TRAIN_OPS)</code>).</li>
 <li><strong>run_id</strong>: <code>str</code>. Give a name for this run. (Useful for Tensorboard).</li>
+<li><strong>callbacks</strong>: <code>Callback</code> or <code>list</code>. Custom callbacks to use in the
+training life cycle</li>
 </ul>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>get_weights</b></span>  (weight_tensor)</span></p>

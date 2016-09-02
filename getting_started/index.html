@@ -447,7 +447,7 @@
 <li>Create and initialize weights and biases variables</li>
 <li>Apply convolution over incoming tensor</li>
 <li>Add an activation function after the convolution</li>
-<li>etc...</li>
+<li>Etc...</li>
 </ul>
 <p>In Tensorflow, writing these kinds of operations can be quite tedious:</p>
 <pre><code class="python">with tf.name_scope('conv1'):
@@ -502,7 +502,7 @@
 </tbody>
 </table>
 <h3 id="built-in-operations">Built-in Operations</h3>
-<p>Besides layers concept, TFLearn also provides many different ops to be used when building a neural network. These ops are firstly mean to be be part of the above 'layers' arguments, but they can also be used independently in any other Tensorflow graph for convenience. In practice, just providing the op name as argument is enough (such as activation='relu' or regularizer='L2' for conv_2d), but a function can also be provided for further customization.</p>
+<p>Besides layers concept, TFLearn also provides many different ops to be used when building a neural network. These ops are firstly mean to be part of the above 'layers' arguments, but they can also be used independently in any other Tensorflow graph for convenience. In practice, just providing the op name as argument is enough (such as activation='relu' or regularizer='L2' for conv_2d), but a function can also be provided for further customization.</p>
 <table>
 <thead>
 <tr>
@@ -679,23 +679,23 @@ network = input_data(shape=[None, 32, 32, 3],
                      data_augmentation=img_aug)
 </code></pre>
 
-<p>For more details, see <a href="http://tflearn.org/data_preprocessing">Data Preprocessing</a> and <a href="http://tflearn.org/data_augmentation">Data Augmentation</a></p>
+<p>For more details, see <a href="http://tflearn.org/data_preprocessing">Data Preprocessing</a> and <a href="http://tflearn.org/data_augmentation">Data Augmentation</a>.</p>
 <h3 id="scopes-weights-sharing">Scopes &amp; Weights sharing</h3>
-<p>All layers are built over 'variable_op_scope', that make it easy to share variables among multiple layers and make TFLearn suitable for distributed training. All layers with inner  variables support a 'scope' argument to place variables under; layers with same scope name will then share the same weights.</p>
+<p>All layers are built over 'variable_op_scope', that makes it easy to share variables among multiple layers and make TFLearn suitable for distributed training. All layers with inner variables support a 'scope' argument to place variables under; layers with same scope name will then share the same weights.</p>
 <pre><code class="python"># Define a model builder
 def my_model(x):
     x = tflearn.fully_connected(x, 32, scope='fc1')
     x = tflearn.fully_connected(x, 32, scope='fc2')
     x = tflearn.fully_connected(x, 2, scope='out')
 
-# 2 different computation graph but sharing the same weights
-with tf.device('/gpu:0')
+# 2 different computation graphs but sharing the same weights
+with tf.device('/gpu:0'):
     # Force all Variables to reside on the CPU.
     with tf.arg_ops([tflearn.variables.variable], device='/cpu:0'):
         model1 = my_model(placeholder_X)
 # Reuse Variables for the next model
 tf.get_variable_scope().reuse_variables()
-with tf.device('/gpu:1')
+with tf.device('/gpu:1'):
     with tf.arg_ops([tflearn.variables.variable], device='/cpu:0'):
         model2 = my_model(placeholder_X)
 
@@ -704,7 +704,7 @@ with tf.device('/gpu:1')
 </code></pre>
 
 <h3 id="graph-initialization">Graph Initialization</h3>
-<p>It might be useful to limit resources, or assigns more or less GPU RAM memory while training. To do so, a graph initializer can be used to configure a graph before run:</p>
+<p>It might be useful to limit resources, or assign more or less GPU RAM memory while training. To do so, a graph initializer can be used to configure a graph before run:</p>
 <pre><code class="python">tflearn.init_graph(set_seed=8888, num_cores=16, gpu_memory_fraction=0.5)
 </code></pre>
 
@@ -732,7 +732,7 @@ net = tf.nn.max_pool(net, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAM
 <li>For an example, see: <a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/layers.py">layers.py</a>.</li>
 </ul>
 <h3 id="built-in-operations_1">Built-in Operations</h3>
-<p>TFLearn built-in ops makes Tensorflow graphs writing faster and more readable. So, similar to layers, built-in ops are fully compatible with any TensorFlow expression. The following code example shows how to use them along with pure Tensorflow API.</p>
+<p>TFLearn built-in ops make Tensorflow graphs writing faster and more readable. So, similar to layers, built-in ops are fully compatible with any TensorFlow expression. The following code example shows how to use them along with pure Tensorflow API.</p>
 <ul>
 <li>See: <a href="https://github.com/tflearn/tflearn/blob/master/examples/extending_tensorflow/builtin_ops.py">builtin_ops.py</a>.</li>
 </ul>
@@ -779,7 +779,7 @@ net = tf.nn.max_pool(net, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAM
 <pre><code class="python">trainop = TrainOp(net=my_network, loss=loss, metric=accuracy)
 </code></pre>
 
-<p>Then, all TrainOp can be feeded into a <code>Trainer</code> class, that will handle the whole training process, considering all TrainOp together as a whole model.</p>
+<p>Then, all TrainOp can be fed into a <code>Trainer</code> class, that will handle the whole training process, considering all TrainOp together as a whole model.</p>
 <pre><code class="python">model = Trainer(trainops=trainop, tensorboard_dir='/tmp/tflearn')
 model.fit(feed_dict={input_placeholder: X, target_placeholder: Y})
 </code></pre>
@@ -829,7 +829,7 @@ tflearn.is_training(False)
 </ul>
 <h3 id="variables">Variables</h3>
 <p>TFLearn defines a set of functions for users to quickly define variables.</p>
-<p>While in Tensorflow, variable creation requires predefined value or initializer, as well as an explicit device placement, TFLearn simplify variable definition:</p>
+<p>While in Tensorflow, variable creation requires predefined value or initializer, as well as an explicit device placement, TFLearn simplifies variable definition:</p>
 <pre><code class="python">import tflearn.variables as vs
 my_var = vs.variable('W',
                      shape=[784, 128],

@@ -445,7 +445,7 @@ to train a reloaded model. Default: 0.0.</li>
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
-<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  dprep_dict=None,  daug_dict=None,  excl_trainops=None,  run_id=None)</span></p>
+<p><span class="extra_h2"><span style="color:black"><b>fit</b></span>  (feed_dicts,  n_epoch=10,  val_feed_dicts=None,  show_metric=False,  snapshot_step=None,  snapshot_epoch=True,  shuffle_all=None,  dprep_dict=None,  daug_dict=None,  excl_trainops=None,  run_id=None,  callbacks=[])</span></p>
 <p>Train network with feeded data dicts.</p>
 <h5>Examples</h5>
 
@@ -492,6 +492,8 @@ training time).</li>
 exclude from training process.</li>
 <li><strong>run_id</strong>: <code>str</code>. A name for the current run. Used for Tensorboard
 display. If no name provided, a random one will be generated.</li>
+<li><strong>callbacks</strong>: <code>Callback</code> or <code>list</code>. Custom callbacks to use in the
+training life cycle</li>
 </ul>
 <p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>restore</b></span>  (model_file,  trainable_variable_only=False,  variable_name_map=None,  scope_for_<span style="color:black"><b>restore</b></span>=None,  create_new_session=True,  verbose=False)</span></p>
@@ -513,12 +515,12 @@ display. If no name provided, a random one will be generated.</li>
 
 <ul>
 <li><strong>model_file</strong>: <code>str</code>. Saving path of tensorflow model</li>
-<li><strong>global_step</strong>: <code>float</code>. The training step to append to the
+<li><strong>global_step</strong>: <code>int</code>. The training step to append to the
 model file name (optional).</li>
 </ul>
 <hr />
 <h1 id="trainop">TrainOp</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.trainer.TrainOp</b></span>  (loss,  optimizer,  metric=None,  batch_size=64,  ema=0.0,  trainable_vars=None,  shuffle=True,  step_tensor=None,  name=None,  graph=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.helpers.trainer.TrainOp</b></span>  (loss,  optimizer,  metric=None,  batch_size=64,  ema=0.0,  trainable_vars=None,  shuffle=True,  step_tensor=None,  validation_monitors=None,  validation_batch_size=None,  name=None,  graph=None)</span></p>
 <p>TrainOp represents a set of operation used for optimizing a network.</p>
 <p>A TrainOp is meant to hold all training parameters of an optimizer.
 <code>Trainer</code> class will then instantiate them all specifically considering all
@@ -541,17 +543,15 @@ use for training. Default: all trainable variables.</li>
 provided, it will be created. Early defining the step tensor
 might be useful for network creation, such as for learning rate
 decay.</li>
-<li><strong>input_vars</strong>: list of <code>Variable</code>. The input data for this training op
-to be transformed by data augmentation. Default:
-tf.GraphKeys.INPUTS collection. (optional) Only necessary when
-using data augmentation.</li>
-<li><strong>data_preprocessing</strong>: A <code>DataPreprocessing</code> subclass object to manage
-real-time data pre-processing when training and predicting (such
-as zero center data, std normalization...).</li>
-<li><strong>data_augmentation</strong>: <code>DataAugmentation</code>. A <code>DataAugmentation</code> subclass
-object to manage real-time data augmentation while training (
-such as random image crop, random image flip, random sequence
-reverse...).</li>
+<li><strong>validation_monitors</strong>: <code>list</code> of <code>Tensor</code> objects.  List of variables
+to compute during validation, which are also used to produce
+summaries for output to TensorBoard.  For example, this can be
+used to periodically record a confusion matrix or AUC metric, 
+during training.  Each variable should have rank 1, i.e. 
+shape [None].</li>
+<li><strong>validation_batch_size</strong>: <code>int</code> or None. If <code>int</code>, specifies the batch
+size to be used for the validation data feed; otherwise 
+defaults to being th esame as <code>batch_size</code>.</li>
 <li><strong>name</strong>: <code>str</code>. A name for this class (optional).</li>
 <li><strong>graph</strong>: <code>tf.Graph</code>. Tensorflow Graph to use for training. Default:
 default tf graph.</li>

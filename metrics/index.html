@@ -233,6 +233,9 @@
                 <li class="toctree-l3"><a href="#accuracy_op">accuracy_op</a></li>
                 
             
+                <li class="toctree-l3"><a href="#binary_accuracy_op">binary_accuracy_op</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#top_k_op">top_k_op</a></li>
                 
             
@@ -446,8 +449,17 @@ build it later using the given network output and targets.</p>
 <p>The metric <code>Tensor</code>.</p>
 <hr />
 <h1 id="accuracy">Accuracy</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.Accuracy</b></span>  (name='acc')</span></p>
-<p>Computes the model accuracy.</p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.Accuracy</b></span>  (name=None)</span></p>
+<p>Computes the model accuracy.  The target predictions are assumed
+to be logits.  </p>
+<p>If the predictions tensor is 1D (ie shape [?], or [?, 1]), then the 
+labels are assumed to be binary (cast as float32), and accuracy is
+computed based on the average number of equal binary outcomes,
+thresholding predictions on logits &gt; 0.  </p>
+<p>Otherwise, accuracy is computed based on categorical outcomes,
+and assumes the inputs (both the model predictions and the labels)
+are one-hot encoded.  tf.argmax is used to obtain categorical
+predictions, for equality comparison.</p>
 <h3>Examples</h3>
 
 <pre><code class="python"># To be used with TFLearn estimators
@@ -498,7 +510,8 @@ regression = regression(net, metric=r2)
 <hr />
 <h1 id="accuracy_op">accuracy_op</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.accuracy_op</b></span>  (predictions,  targets)</span></p>
-<p>An op that calculates mean accuracy.</p>
+<p>An op that calculates mean accuracy, assuming predictiosn are targets
+are both one-hot encoded.</p>
 <h3>Examples</h3>
 
 <pre><code class="python">input_data = placeholder(shape=[None, 784])
@@ -515,6 +528,31 @@ accuracy = sess.run(acc_op, feed_dict={input_data: X, y_true: Y})
 <ul>
 <li><strong>predictions</strong>: <code>Tensor</code>.</li>
 <li><strong>targets</strong>: <code>Tensor</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p><code>Float</code>. The mean accuracy.</p>
+<hr />
+<h1 id="binary_accuracy_op">binary_accuracy_op</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.binary_accuracy_op</b></span>  (predictions,  targets)</span></p>
+<p>An op that calculates mean accuracy, assuming predictions are logits, and
+targets are binary encoded (and represented as int32).</p>
+<h3>Examples</h3>
+
+<pre><code class="python">input_data = placeholder(shape=[None, 784])
+y_pred = my_network(input_data) # Apply some ops
+y_true = placeholder(shape=[None, 10]) # Labels
+acc_op = binary_accuracy_op(y_pred, y_true)
+
+# Calculate accuracy by feeding data X and labels Y
+binary_accuracy = sess.run(acc_op, feed_dict={input_data: X, y_true: Y})
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>predictions</strong>: <code>Tensor</code> of <code>float</code> type.</li>
+<li><strong>targets</strong>: <code>Tensor</code> of <code>float</code> type.</li>
 </ul>
 <h3>Returns</h3>
 

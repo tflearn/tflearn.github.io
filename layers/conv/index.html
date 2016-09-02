@@ -183,6 +183,9 @@
                 <li class="toctree-l3"><a href="#average-pooling-3d">Average Pooling 3D</a></li>
                 
             
+                <li class="toctree-l3"><a href="#global-max-pooling">Global Max Pooling</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#global-average-pooling">Global Average Pooling</a></li>
                 
             
@@ -852,6 +855,21 @@ Default: 'same'.</li>
 
 <ul>
 <li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+</ul>
+<hr />
+<h1 id="global-max-pooling">Global Max Pooling</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.global_max_pool</b></span>  (incoming,  name='GlobalMaxPool')</span></p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>2-D Tensor [batch, pooled dim]</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Tensor.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'GlobalMaxPool'.</li>
 </ul>
 <hr />
 <h1 id="global-average-pooling">Global Average Pooling</h1>
