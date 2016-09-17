@@ -126,6 +126,8 @@
                 
                     <li><a class="toctree-l4" href="#trainer-evaluator-predictor">Trainer / Evaluator / Predictor</a></li>
                 
+                    <li><a class="toctree-l4" href="#training-callbacks">Training Callbacks</a></li>
+                
                     <li><a class="toctree-l4" href="#variables">Variables</a></li>
                 
                     <li><a class="toctree-l4" href="#summaries">Summaries</a></li>
@@ -473,11 +475,11 @@
 <tbody>
 <tr>
 <td><a href="http://tflearn.org/layers/core/">core</a></td>
-<td>input_data, fully_connected, dropout, custom_layer, reshape, flatten, activation, single_unit, highway, one_hot_encoding</td>
+<td>input_data, fully_connected, dropout, custom_layer, reshape, flatten, activation, single_unit, highway, one_hot_encoding, time_distributed</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/layers/conv/">conv</a></td>
-<td>conv_2d, conv_2d_transpose, max_pool_2d, avg_pool_2d, upsample_2d, conv_1d, max_pool_1d, avg_pool_1d, residual_block, residual_bottleneck, conv_3d, max_pool_3d, avg_pool_3d, highway_conv_2d</td>
+<td>conv_2d, conv_2d_transpose, max_pool_2d, avg_pool_2d, upsample_2d, conv_1d, max_pool_1d, avg_pool_1d, residual_block, residual_bottleneck, conv_3d, max_pool_3d, avg_pool_3d, highway_conv_1d, highway_conv_2d, global_avg_pool, global_max_pool</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/layers/recurrent/">recurrent</a></td>
@@ -489,7 +491,7 @@
 </tr>
 <tr>
 <td><a href="http://tflearn.org/layers/normalization/">normalization</a></td>
-<td>batch_normalization, local_response_normalization</td>
+<td>batch_normalization, local_response_normalization, l2_normalize</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/layers/merge_ops/">merge</a></td>
@@ -517,7 +519,7 @@
 </tr>
 <tr>
 <td><a href="http://tflearn.org/objectives">objectives</a></td>
-<td>softmax_categorical_crossentropy, categorical_crossentropy, binary_crossentropy, mean_square, hinge_loss</td>
+<td>softmax_categorical_crossentropy, categorical_crossentropy, binary_crossentropy, mean_square, hinge_loss, roc_auc_score, weak_cross_entropy_2d</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/optimizers">optimizers</a></td>
@@ -529,7 +531,7 @@
 </tr>
 <tr>
 <td><a href="http://tflearn.org/initializations">initializations</a></td>
-<td>zeros, uniform, uniform_scaling, normal, truncated_normal</td>
+<td>zeros, uniform, uniform_scaling, normal, truncated_normal, xavier, variance_scaling</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/losses">losses</a></td>
@@ -751,7 +753,7 @@ net = tf.nn.max_pool(net, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAM
 </tr>
 <tr>
 <td><a href="http://tflearn.org/objectives">objectives</a></td>
-<td>softmax_categorical_crossentropy, categorical_crossentropy, binary_crossentropy, mean_square, hinge_loss</td>
+<td>softmax_categorical_crossentropy, categorical_crossentropy, binary_crossentropy, mean_square, hinge_loss, roc_auc_score, weak_cross_entropy_2d</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/optimizers">optimizers</a></td>
@@ -763,7 +765,7 @@ net = tf.nn.max_pool(net, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAM
 </tr>
 <tr>
 <td><a href="http://tflearn.org/initializations">initializations</a></td>
-<td>zeros, uniform, uniform_scaling, normal, truncated_normal</td>
+<td>zeros, uniform, uniform_scaling, normal, truncated_normal, xavier, variance_scaling</td>
 </tr>
 <tr>
 <td><a href="http://tflearn.org/losses">losses</a></td>
@@ -827,6 +829,46 @@ tflearn.is_training(False)
 <ul>
 <li>See: <a href="http://tflearn.org/config#is_training">training config</a>.</li>
 </ul>
+<h3 id="training-callbacks">Training Callbacks</h3>
+<p>During the training cycle, TFLearn gives you the possibility to track and interact with the metrics of the training throughout a set of functions given by the <a href="https://github.com/tflearn/tflearn/blob/master/tflearn/callbacks.py#L10">Callback</a> interface.
+To simplify the metrics retreivement, each callback method received a <a href="https://github.com/tflearn/tflearn/blob/master/tflearn/helpers/trainer.py#L950">TrainingState</a> which track the state (e.g. : current epoch, step, batch iteration) and metrics (e.g. : current validation accuracy, global accuracy etc..)</p>
+<p>Callback methods which relate to the training cycle : 
+- <code>on_train_begin(training_state)</code>
+- <code>on_epoch_begin(training_state)</code>
+- <code>on_batch_begin(training_state)</code>
+- <code>on_sub_batch_begin(training_state)</code>
+- <code>on_sub_batch_end(training_state, train_index)</code>
+- <code>on_batch_end(training_state, snapshot)</code>
+- <code>on_epoch_end(training_state)</code>
+- <code>on_train_end(training_state)</code></p>
+<h4 id="how-to-use-it">How to use it:</h4>
+<p>Imagine you have your own monitor which track all your training jobs and you need to send metrics to it. You can easily do this by creating a custom callback which will get data and send it to the distant monitor.
+We need to create a CustomCallback and add your logic in the <code>on_epoch_end</code> which is called at the end of an epoch.</p>
+<p>This will give you something like that:</p>
+<pre><code class="python">class MonitorCallback(tflearn.callbacks.Callback):
+    def __init__(self, api):
+        self.my_monitor_api = api
+
+    def on_epoch_end(self, training_state):
+        self.my_monitor_api.send({
+            accuracy: training_state.global_acc,
+            loss: training_state.global_loss,
+        })
+
+</code></pre>
+
+<p>Then you just need to add it on the <code>model.fit</code> call</p>
+<pre><code class="python">
+
+monitorCallback = new MonitorCallback(api)
+model = ...
+
+model.fit(..., callbacks=monitorCallback)
+
+</code></pre>
+
+<p>The <code>callbacks</code> argument can take a <code>Callback</code> or a <code>list</code> of callbacks.
+That's it, your custom callback will be automatically called at each epoch end.</p>
 <h3 id="variables">Variables</h3>
 <p>TFLearn defines a set of functions for users to quickly define variables.</p>
 <p>While in Tensorflow, variable creation requires predefined value or initializer, as well as an explicit device placement, TFLearn simplifies variable definition:</p>

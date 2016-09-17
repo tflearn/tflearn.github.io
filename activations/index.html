@@ -561,13 +561,14 @@ Maas et al. (2013).</p>
 <p><a href="http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf</a></p>
 <hr />
 <h1 id="prelu">PReLU</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.prelu</b></span>  (x,  weights_init='zeros',  restore=True,  name='PReLU')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.prelu</b></span>  (x,  channel_shared=False,  weights_init='zeros',  restore=True,  name='PReLU')</span></p>
 <p>Parametric Rectified Linear Unit.</p>
 <h3>Arguments</h3>
 
 <ul>
 <li><strong>x</strong>: A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
 <code>int16</code>, or <code>int8</code>.</li>
+<li><strong>channel_shared</strong>: <code>bool</code>. Single weight is shared by all channels</li>
 <li><strong>weights_init</strong>: <code>str</code>. Weights initialization. Default: zeros.</li>
 <li><strong>restore</strong>: <code>bool</code>. Restore or not alphas</li>
 <li><strong>name</strong>: A name for this activation op (optional).</li>

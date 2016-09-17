@@ -625,7 +625,7 @@ Additionaly, a specific shape for each chunk can be provided.</li>
 </ul>
 <hr />
 <h1 id="image-preloader">Image PreLoader</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.image_preloader</b></span>  (target_path,  image_shape,  mode='file',  normalize=True,  grayscale=False,  categorical_labels=True,  files_extension=None)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.image_preloader</b></span>  (target_path,  image_shape,  mode='file',  normalize=True,  grayscale=False,  categorical_labels=True,  files_extension=None,  filter_channel=False)</span></p>
 <p>Create a python array (<code>Preloader</code>) that loads images on the fly (from
 disk or url). There is two ways to provide image samples 'folder' or
 'file', see the specifications below.</p>
@@ -681,6 +681,8 @@ every image array by 255.</li>
 <li><strong>files_extension</strong>: <code>list of str</code>. A list of allowed image file
 extension, for example ['.jpg', '.jpeg', '.png']. If None,
 all files are allowed.</li>
+<li><strong>filter_channel</strong>: <code>bool</code>. If true, images which the channel is not 3 should
+be filter.</li>
 </ul>
 <h3>Returns</h3>
 
