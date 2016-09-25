@@ -529,7 +529,7 @@ to binary class matrix, for use with categorical_crossentropy.</p>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.pad_sequences</b></span>  (sequences,  maxlen=None,  dtype='int32',  padding='post',  truncating='post',  value=0.0)</span></p>
 <p>Pad each sequence to the same length: the length of the longest sequence.
 If maxlen is provided, any sequence longer than maxlen is truncated to
-maxlen. Truncation happens off either the beginning or the end (default) 
+maxlen. Truncation happens off either the beginning or the end (default)
 of the sequence. Supports pre-padding and post-padding (default).</p>
 <h3>Arguments</h3>
 
@@ -547,7 +547,7 @@ maxlen either in the beginning or in the end of the sequence</li>
 <p>x: <code>numpy array</code> with dimensions (number_of_sequences, maxlen)</p>
 <hr />
 <h1 id="string_to_semi_redundant_sequences">string_to_semi_redundant_sequences</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.string_to_semi_redundant_sequences</b></span>  (string,  seq_maxlen=25,  redun_step=3)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_utils.string_to_semi_redundant_sequences</b></span>  (string,  seq_maxlen=25,  redun_step=3,  char_idx=None)</span></p>
 <p>Vectorize a string and returns parsed sequences and targets, along with
 the associated dictionary.</p>
 <h3>Arguments</h3>
@@ -556,6 +556,7 @@ the associated dictionary.</p>
 <li><strong>string</strong>: <code>str</code>. Lower-case text from input text file.</li>
 <li><strong>seq_maxlen</strong>: <code>int</code>. Maximum length of a sequence. Default: 25.</li>
 <li><strong>redun_step</strong>: <code>int</code>. Redundancy step. Default: 3.</li>
+<li><strong>char_idx</strong>: 'dict'. A dictionary to convert chars to positions. Will be automatically generated if None</li>
 </ul>
 <h3>Returns</h3>
 
