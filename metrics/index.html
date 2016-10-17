@@ -230,6 +230,9 @@
                 <li class="toctree-l3"><a href="#standard-error">Standard Error</a></li>
                 
             
+                <li class="toctree-l3"><a href="#weighted-standard-error">Weighted Standard Error</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#accuracy_op">accuracy_op</a></li>
                 
             
@@ -240,6 +243,9 @@
                 
             
                 <li class="toctree-l3"><a href="#r2_op">r2_op</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#r2_op_1">r2_op</a></li>
                 
             
             </ul>
@@ -508,6 +514,23 @@ regression = regression(net, metric=r2)
 <li><strong>name</strong>: The name to display.</li>
 </ul>
 <hr />
+<h1 id="weighted-standard-error">Weighted Standard Error</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.WeightedR2</b></span>  (name=None)</span></p>
+<p>Computes coefficient of determination. Useful to evaluate a linear
+regression.</p>
+<h3>Examples</h3>
+
+<pre><code class="python"># To be used with TFLearn estimators
+r2 = R2()
+regression = regression(net, metric=r2)
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>name</strong>: The name to display.</li>
+</ul>
+<hr />
 <h1 id="accuracy_op">accuracy_op</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.accuracy_op</b></span>  (predictions,  targets)</span></p>
 <p>An op that calculates mean accuracy, assuming predictiosn are targets
@@ -584,7 +607,31 @@ top3_accuracy = sess.run(top3_op, feed_dict={input_data: X, y_true: Y})
 <p><code>Float</code>. The top-k mean accuracy.</p>
 <hr />
 <h1 id="r2_op">r2_op</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.r2_op</b></span>  (predictions,  targets,  inputs)</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.r2_op</b></span>  (predictions,  targets)</span></p>
+<p>An op that calculates the standard error.</p>
+<h3>Examples</h3>
+
+<pre><code class="python">input_data = placeholder(shape=[None, 784])
+y_pred = my_network(input_data) # Apply some ops
+y_true = placeholder(shape=[None, 10]) # Labels
+stderr_op = r2_op(y_pred, y_true)
+
+# Calculate standard error by feeding data X and labels Y
+std_error = sess.run(stderr_op, feed_dict={input_data: X, y_true: Y})
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>predictions</strong>: <code>Tensor</code>.</li>
+<li><strong>targets</strong>: <code>Tensor</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p><code>Float</code>. The standard error.</p>
+<hr />
+<h1 id="r2_op_1">r2_op</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.metrics.weighted_r2_op</b></span>  (predictions,  targets,  inputs)</span></p>
 <p>An op that calculates the standard error.</p>
 <h3>Examples</h3>
 

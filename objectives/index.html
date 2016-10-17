@@ -521,6 +521,8 @@ See https://github.com/tensorflow/tensorflow/issues/2327#issuecomment-224491229<
 <li><strong>y_pred</strong>: <code>tensor, float</code> - [batch_size, width, height, num_classes].</li>
 <li><strong>y_true</strong>: <code>Labels tensor, int32</code> - [batch_size, width, height, num_classes].
 The ground truth of your data.</li>
+<li><strong>num_classes</strong>: <code>int</code>. Number of classes.</li>
+<li><strong>epsilon</strong>: <code>float</code>. Small number to add to <code>y_pred</code>.</li>
 <li><strong>head</strong>: <code>numpy array</code> - [num_classes]. Weighting the loss of each class.</li>
 </ul>
 <h3>Returns</h3>
