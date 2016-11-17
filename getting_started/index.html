@@ -621,13 +621,13 @@ fc1_biases_var = fc1_vars[1]
 <p>To get or set the value of these variables, TFLearn models class implement <code>get_weights</code> and <code>set_weights</code> methods:</p>
 <pre><code class="python">input_data = tflearn.input_data(shape=[None, 784])
 fc1 = tflearn.fully_connected(input_data, 64)
-fc2 = tflearn.fully_connected(input_data, 10, activation='softmax')
-net = tflearn.regression(fc1)
+fc2 = tflearn.fully_connected(fc1, 10, activation='softmax')
+net = tflearn.regression(fc2)
 model = DNN(net)
-# Get weights values of fc1
-model.get_weights(fc1.W)
-# Assign new random weights to fc1
-model.set_weights(fc1.W, numpy.random.rand(64, 10))
+# Get weights values of fc2
+model.get_weights(fc2.W)
+# Assign new random weights to fc2
+model.set_weights(fc2.W, numpy.random.rand(64, 10))
 </code></pre>
 
 <p>Note that you can also directly use TensorFlow <code>eval</code> or <code>assign</code> ops to get or set the value of these variables.</p>
