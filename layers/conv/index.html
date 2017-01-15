@@ -7,20 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <meta name="author" content="Aymeric Damien">
-  
-  <title>Convolutional Layers - TFLearn</title>
-  
-
   <link rel="shortcut icon" href="../../img/favicon.ico">
-
-  
+  <title>Convolutional Layers - TFLearn</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../../css/highlight.css">
   <link href="../../css/extra.css" rel="stylesheet">
-
   
   <script>
     // Current page data
@@ -31,9 +25,7 @@
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
   <script src="../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
-  <script src="../../js/theme.js"></script> 
-
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script> 
   
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -63,7 +55,7 @@
       </div>
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
+	<ul class="current">
           
             <li>
     <li class="toctree-l1 ">
@@ -175,6 +167,9 @@
                 
             
                 <li class="toctree-l3"><a href="#convolution-3d">Convolution 3D</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#convolution-3d-transpose">Convolution 3D Transpose</a></li>
                 
             
                 <li class="toctree-l3"><a href="#max-pooling-3d">Max Pooling 3D</a></li>
@@ -438,9 +433,8 @@
     <li>Convolutional Layers</li>
     <li class="wy-breadcrumbs-aside">
       
-        
-          <a href="https://github.com/tflearn/tflearn" class="icon icon-github"> Edit on GitHub</a>
-        
+        <a href="https://github.com/tflearn/tflearn/edit/master/docs/layers/conv.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
     </li>
   </ul>
@@ -807,6 +801,60 @@ override name.</li>
 <li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
 </ul>
 <hr />
+<h1 id="convolution-3d-transpose">Convolution 3D Transpose</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.conv_3d_transpose</b></span>  (incoming,  nb_filter,  filter_size,  output_shape,  strides=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='Conv3DTranspose')</span></p>
+<p>This operation is sometimes called "deconvolution" after (Deconvolutional
+Networks)[http://www.matthewzeiler.com/pubs/cvpr2010/cvpr2010.pdf], but is
+actually the transpose (gradient) of <code>conv_3d</code> rather than an actual
+deconvolution.</p>
+<h3>Input</h3>
+
+<p>5-D Tensor [batch, depth, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>5-D Tensor [batch, new depth, new height, new width, nb_filter].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 5-D Tensor.</li>
+<li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters.</li>
+<li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
+<li><strong>output_shape</strong>: <code>list of int</code>. Dimensions of the output tensor.
+Can optionally include the number of conv filters.
+[new depth, new height, new width, nb_filter] or [new depth, new height, new width].</li>
+<li><strong>strides</strong>: <code>int</code> or list of <code>int</code>. Strides of conv operation.
+Default: [1 1 1 1 1].</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'truncated_normal'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share variables between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2DTranspose'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+<li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
+<li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
+</ul>
+<hr />
 <h1 id="max-pooling-3d">Max Pooling 3D</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.max_pool_3d</b></span>  (incoming,  kernel_size,  strides=1,  padding='same',  name='MaxPool3D')</span></p>
 <h3>Input</h3>
@@ -1128,10 +1176,10 @@ override name.</li>
       </div>
 
     </section>
-
+    
   </div>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
+  <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
           <a href="https://github.com/tflearn/tflearn" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
@@ -1144,6 +1192,7 @@ override name.</li>
       
     </span>
 </div>
+    <script src="../../js/theme.js"></script>
 
 </body>
 </html>
