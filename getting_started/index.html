@@ -822,7 +822,7 @@ tflearn.is_training(False)
 </ul>
 <h3 id="training-callbacks">Training Callbacks</h3>
 <p>During the training cycle, TFLearn gives you the possibility to track and interact with the metrics of the training throughout a set of functions given by the <a href="https://github.com/tflearn/tflearn/blob/master/tflearn/callbacks.py#L10">Callback</a> interface.
-To simplify the metrics retreivement, each callback method received a <a href="https://github.com/tflearn/tflearn/blob/master/tflearn/helpers/trainer.py#L976">TrainingState</a> which track the state (e.g. : current epoch, step, batch iteration) and metrics (e.g. : current validation accuracy, global accuracy etc..)</p>
+To simplify the metrics retrieval, each callback method received a <a href="https://github.com/tflearn/tflearn/blob/master/tflearn/helpers/trainer.py#L976">TrainingState</a> which track the state (e.g. : current epoch, step, batch iteration) and metrics (e.g. : current validation accuracy, global accuracy etc..)</p>
 <p>Callback methods which relate to the training cycle : 
 - <code>on_train_begin(training_state)</code>
 - <code>on_epoch_begin(training_state)</code>

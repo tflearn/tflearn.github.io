@@ -280,6 +280,9 @@
                 <li class="toctree-l3"><a href="#feeddictflow">FeedDictFlow</a></li>
                 
             
+                <li class="toctree-l3"><a href="#arrayflow">ArrayFlow</a></li>
+                
+            
             </ul>
         
     </li>
@@ -460,6 +463,24 @@ using the whole dataset indexes (Useful for validation split).</li>
 </ul>
 <h5>Returns</h5>
 
+<hr />
+<h1 id="arrayflow">ArrayFlow</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.data_flow.ArrayFlow</b></span>  (X,  Y,  multi_inputs=False,  batch_size=32,  shuffle=True)</span></p>
+<p>Convert array samples to tensors and store them in a queue.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>X</strong>: <code>array</code>. The features data array.</li>
+<li><strong>Y</strong>: <code>array</code>. The targets data array.</li>
+<li><strong>multi_inputs</strong>: <code>bool</code>. Set to True if X has multiple input sources (i.e.
+X is a list of arrays).</li>
+<li><strong>batch_size</strong>: <code>int</code>. The batch size.</li>
+<li><strong>shuffle</strong>: <code>bool</code>. If True, data will be shuffled.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>The <code>X</code> and <code>Y</code> data tensors or a list(<code>X</code>) and <code>Y</code> data tensors if
+multi_inputs is True.</p>
 <hr />
               
             </div>

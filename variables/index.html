@@ -419,7 +419,11 @@ tflearn.initializations for references).</li>
 tflearn.losses for references).</li>
 <li><strong>trainable</strong>: <code>bool</code>. If True, this variable weights will be trained.</li>
 <li><strong>collections</strong>: <code>str</code>. A collection to add the new variable to (optional).</li>
-<li><strong>device</strong>: <code>str</code>. Device ID to store the variable. Default: '/cpu:0'.</li>
+<li><strong>caching_device</strong>: <code>str</code>. Optional device string or function describing
+where the Variable should be cached for reading.  Defaults to the
+Variable's device.</li>
+<li><strong>validate_shape</strong>: <code>bool</code>. Validate or not shape when restoring.</li>
+<li><strong>device</strong>: <code>str</code>. Optional device ID to store the variable.</li>
 <li><strong>restore</strong>: <code>bool</code>. Restore or not this variable when loading a
 pre-trained model (Only compatible with tflearn pre-built
 training functions).</li>
