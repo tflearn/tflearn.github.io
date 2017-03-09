@@ -145,6 +145,9 @@
                 <li class="toctree-l3"><a href="#convolution-2d-transpose">Convolution 2D Transpose</a></li>
                 
             
+                <li class="toctree-l3"><a href="#atrous-convolution-2d">Atrous Convolution 2D</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#max-pooling-2d">Max Pooling 2D</a></li>
                 
             
@@ -535,6 +538,79 @@ will be reused (shared).</li>
 used to share variables between layers. Note that scope will
 override name.</li>
 <li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2DTranspose'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+<li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
+<li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
+</ul>
+<hr />
+<h1 id="atrous-convolution-2d">Atrous Convolution 2D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.atrous_conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  rate=1,  padding='same',  activation='linear',  bias=True,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='AtrousConv2D')</span></p>
+<p>(a.k.a. convolution with holes or dilated convolution).</p>
+<p>Computes a 2-D atrous convolution, also known as convolution with holes or
+dilated convolution, given 4-D value and filters tensors. If the rate
+parameter is equal to one, it performs regular 2-D convolution. If the rate
+parameter is greater than one, it performs convolution with holes, sampling
+the input values every rate pixels in the height and width dimensions. This
+is equivalent to convolving the input with a set of upsampled filters,
+produced by inserting rate - 1 zeros between two consecutive values of the
+filters along the height and width dimensions, hence the name atrous
+convolution or convolution with holes (the French word trous means holes
+in English).</p>
+<p>More specifically</p>
+<pre><code>output[b, i, j, k] = sum_{di, dj, q} filters[di, dj, q, k] *
+value[b, i + rate * di, j + rate * dj, q]
+</code></pre>
+
+<p>Atrous convolution allows us to explicitly control how densely to compute
+feature responses in fully convolutional networks. Used in conjunction
+with bilinear interpolation, it offers an alternative to conv2d_transpose
+in dense prediction tasks such as semantic image segmentation,
+optical flow computation, or depth estimation. It also allows us to
+effectively enlarge the field of view of filters without increasing the
+number of parameters or the amount of computation.</p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>4-D Tensor [batch, new height, new width, nb_filter].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Tensor.</li>
+<li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters.</li>
+<li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
+<li><strong>rate</strong>: 'int<code>or list of</code>int<code>.  A positive int32. The stride with
+which we sample input values across the height and width dimensions.
+Equivalently, the rate by which we upsample the filter values by
+inserting zeros across the height and width dimensions. In the
+literature, the same parameter is sometimes called input</code>stride<code>or</code>dilation`.</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>) or None.
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'truncated_normal'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share variables between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2D'.</li>
 </ul>
 <h3>Attributes</h3>
 

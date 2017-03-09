@@ -222,6 +222,9 @@
                 <li class="toctree-l3"><a href="#elu">ELU</a></li>
                 
             
+                <li class="toctree-l3"><a href="#crelu">CReLU</a></li>
+                
+            
             </ul>
         
     </li>
@@ -552,7 +555,7 @@ Maas et al. (2013).</p>
 <p><a href="http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf">http://web.stanford.edu/~awni/papers/relu_hybrid_icml2013_final.pdf</a></p>
 <hr />
 <h1 id="prelu">PReLU</h1>
-<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.prelu</b></span>  (x,  channel_shared=False,  weights_init='zeros',  restore=True,  name='PReLU')</span></p>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.prelu</b></span>  (x,  channel_shared=False,  weights_init='zeros',  trainable=True,  restore=True,  reuse=False,  scope=None,  name='PReLU')</span></p>
 <p>Parametric Rectified Linear Unit.</p>
 <h3>Arguments</h3>
 
@@ -561,7 +564,10 @@ Maas et al. (2013).</p>
 <code>int16</code>, or <code>int8</code>.</li>
 <li><strong>channel_shared</strong>: <code>bool</code>. Single weight is shared by all channels</li>
 <li><strong>weights_init</strong>: <code>str</code>. Weights initialization. Default: zeros.</li>
-<li><strong>restore</strong>: <code>bool</code>. Restore or not alphas</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. Restore or not alphas.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
 <li><strong>name</strong>: A name for this activation op (optional).</li>
 </ul>
 <h3>Attributes</h3>
@@ -588,8 +594,7 @@ on ImageNet Classification. He et al., 2014.</p>
 
 <ul>
 <li>x : A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
-<code>int16</code>, or <code>int8</code>.</li>
-<li>name : A name for this activation op (optional).</li>
+<code>int16</code>, or <code>int8</code></li>
 </ul>
 <h3>Returns</h3>
 
@@ -602,6 +607,25 @@ Djork-Arné Clevert, Thomas Unterthiner, Sepp Hochreiter. 2015.</p>
 <h3>Links</h3>
 
 <p><a href="http://arxiv.org/abs/1511.07289">http://arxiv.org/abs/1511.07289</a></p>
+<hr />
+<h1 id="crelu">CReLU</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.activations.crelu</b></span>  (x)</span></p>
+<p>Computes Concatenated ReLU.</p>
+<p>Concatenates a ReLU which selects only the positive part of the activation
+with a ReLU which selects only the negative part of the activation. Note
+that as a result this non-linearity doubles the depth of the activations.</p>
+<h3>Arguments</h3>
+
+<ul>
+<li>x : A <code>Tensor</code> with type <code>float</code>, <code>double</code>, <code>int32</code>, <code>int64</code>, <code>uint8</code>,
+<code>int16</code>, or <code>int8</code>.</li>
+</ul>
+<h3>Returns</h3>
+
+<p>A <code>Tensor</code> with the same type as <code>x</code>.</p>
+<h3>Links</h3>
+
+<p><a href="https://arxiv.org/abs/1603.05201">https://arxiv.org/abs/1603.05201</a></p>
 <hr />
               
             </div>
