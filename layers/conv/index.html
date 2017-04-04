@@ -193,6 +193,9 @@
                 <li class="toctree-l3"><a href="#residual-bottleneck">Residual Bottleneck</a></li>
                 
             
+                <li class="toctree-l3"><a href="#resnext-block">ResNeXt Block</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#highway-convolution-2d">Highway Convolution 2D</a></li>
                 
             
@@ -584,11 +587,11 @@ number of parameters or the amount of computation.</p>
 <li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Tensor.</li>
 <li><strong>nb_filter</strong>: <code>int</code>. The number of convolutional filters.</li>
 <li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
-<li><strong>rate</strong>: 'int<code>or list of</code>int<code>.  A positive int32. The stride with
-which we sample input values across the height and width dimensions.
-Equivalently, the rate by which we upsample the filter values by
-inserting zeros across the height and width dimensions. In the
-literature, the same parameter is sometimes called input</code>stride<code>or</code>dilation`.</li>
+<li><strong>rate</strong>: 'int<code>.  A positive int32. The stride with which we sample input
+values across the height and width dimensions. Equivalently, the
+rate by which we upsample the filter values by inserting zeros
+across the height and width dimensions. In the literature, the
+same parameter is sometimes called input</code>stride<code>or</code>dilation`.</li>
 <li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
 Default: 'same'.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>) or None.
@@ -1126,6 +1129,56 @@ Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
 <li><a href="http://arxiv.org/pdf/1512.03385v1.pdf">http://arxiv.org/pdf/1512.03385v1.pdf</a></li>
 <li><a href="https://arxiv.org/pdf/1603.05027v2.pdf">Identity Mappings in Deep Residual Networks</a></li>
 </ul>
+<hr />
+<h1 id="resnext-block">ResNeXt Block</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.resnext_block</b></span>  (incoming,  nb_blocks,  out_channels,  cardinality,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  weights_init='variance_scaling',  regularizer='L2',  weight_decay=0.0001,  bias=True,  bias_init='zeros',  trainable=True,  restore=True,  reuse=False,  scope=None,  name='ResNeXtBlock')</span></p>
+<p>A ResNeXt block as described in ResNeXt paper.</p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>4-D Tensor [batch, new height, new width, nb_filter].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Layer.</li>
+<li><strong>nb_blocks</strong>: <code>int</code>. Number of layer blocks.</li>
+<li><strong>out_channels</strong>: <code>int</code>. The number of convolutional filters of the
+layers surrounding the bottleneck layer.</li>
+<li><strong>cardinality</strong>: <code>int</code>. Number of aggregated residual transformations.</li>
+<li><strong>downsample</strong>: <code>bool</code>. If True, apply downsampling using
+'downsample_strides' for strides.</li>
+<li><strong>downsample_strides</strong>: <code>int</code>. The strides to use when downsampling.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>).
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>batch_norm</strong>: <code>bool</code>. If True, apply batch normalization.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'uniform_scaling'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>tf.Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share variables between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'ResNeXtBlock'.</li>
+</ul>
+<h3>References</h3>
+
+<p>Aggregated Residual Transformations for Deep Neural Networks. Saining
+Xie, Ross Girshick, Piotr Dollar, Zhuowen Tu, Kaiming He. 2016.</p>
+<h3>Links</h3>
+
+<p><a href="https://arxiv.org/pdf/1611.05431.pdf">https://arxiv.org/pdf/1611.05431.pdf</a></p>
 <hr />
 <h1 id="highway-convolution-2d">Highway Convolution 2D</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.highway_conv_2d</b></span>  (incoming,  nb_filter,  filter_size,  strides=1,  padding='same',  activation='linear',  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='HighwayConv2D')</span></p>

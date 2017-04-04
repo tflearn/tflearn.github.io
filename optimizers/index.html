@@ -227,6 +227,9 @@
                 <li class="toctree-l3"><a href="#adadelta">AdaDelta</a></li>
                 
             
+                <li class="toctree-l3"><a href="#proximaladagrad">ProximalAdaGrad</a></li>
+                
+            
             </ul>
         
     </li>
@@ -668,6 +671,36 @@ gradients.  Defaults to "Adadelta".</li>
 <h3>Links</h3>
 
 <p><a href="http://arxiv.org/abs/1212.5701">http://arxiv.org/abs/1212.5701</a></p>
+<hr />
+<h1 id="proximaladagrad">ProximalAdaGrad</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.optimizers.ProximalAdaGrad</b></span>  (learning_rate=0.001,  initial_accumulator_value=0.1,  use_locking=False,  name='AdaGrad')</span></p>
+<h3>Examples</h3>
+
+<pre><code class="python"># With TFLearn estimators
+proxi_adagrad = ProximalAdaGrad(learning_rate=0.01,l2_regularization_strength=0.01,initial_accumulator_value=0.01)
+regression = regression(net, optimizer=proxi_adagrad)
+
+# Without TFLearn estimators (returns tf.Optimizer)
+adagrad = ProximalAdaGrad(learning_rate=0.01).get_tensor()
+</code></pre>
+
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>learning_rate</strong>: <code>float</code>. Learning rate.</li>
+<li><strong>initial_accumulator_value</strong>: <code>float</code>. Starting value for the
+accumulators, must be positive</li>
+<li><strong>use_locking</strong>: <code>bool</code>. If True use locks for update operation.</li>
+<li><strong>name</strong>: <code>str</code>. Optional name prefix for the operations created when
+applying gradients. Defaults to "AdaGrad".</li>
+</ul>
+<h3>References</h3>
+
+<p>Efficient Learning using Forward-Backward Splitting. J. Duchi, Yoram
+Singer, 2009.</p>
+<h3>Links</h3>
+
+<p><a href="http://papers.nips.cc/paper/3793-efficient-learning-using-forward-backward-splitting.pdf">Paper</a></p>
 <hr />
               
             </div>
