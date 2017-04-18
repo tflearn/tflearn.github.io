@@ -404,6 +404,18 @@ DataPreprocessing, but only applies at training time.</p>
 <h2>Methods</h2>
 
 <p><span class="hr_large"></span> </p>
+<p><span class="extra_h2"><span style="color:black"><b>add_custom_preprocessing</b></span>  (func)</span></p>
+<p>Apply any custom pre-processing function to the .</p>
+<h5>Arguments</h5>
+
+<ul>
+<li><strong>func</strong>: a <code>Function</code> that take a numpy array as input and returns
+a numpy array.</li>
+</ul>
+<h5>Returns</h5>
+
+<p>Nothing.</p>
+<p><span class="hr_large"></span> </p>
 <p><span class="extra_h2"><span style="color:black"><b>add_featurewise_stdnorm</b></span>  (std=None)</span></p>
 <p>Scale each sample by the specified standard deviation. If no std
 specified, std is evaluated over all samples data.</p>

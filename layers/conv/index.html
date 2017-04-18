@@ -148,6 +148,9 @@
                 <li class="toctree-l3"><a href="#atrous-convolution-2d">Atrous Convolution 2D</a></li>
                 
             
+                <li class="toctree-l3"><a href="#grouped-convolution-2d">Grouped Convolution 2D</a></li>
+                
+            
                 <li class="toctree-l3"><a href="#max-pooling-2d">Max Pooling 2D</a></li>
                 
             
@@ -592,6 +595,68 @@ values across the height and width dimensions. Equivalently, the
 rate by which we upsample the filter values by inserting zeros
 across the height and width dimensions. In the literature, the
 same parameter is sometimes called input</code>stride<code>or</code>dilation`.</li>
+<li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
+Default: 'same'.</li>
+<li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>) or None.
+Activation applied to this layer (see tflearn.activations).
+Default: 'linear'.</li>
+<li><strong>bias</strong>: <code>bool</code>. If True, a bias is used.</li>
+<li><strong>weights_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Weights initialization.
+(see tflearn.initializations) Default: 'truncated_normal'.</li>
+<li><strong>bias_init</strong>: <code>str</code> (name) or <code>Tensor</code>. Bias initialization.
+(see tflearn.initializations) Default: 'zeros'.</li>
+<li><strong>regularizer</strong>: <code>str</code> (name) or <code>Tensor</code>. Add a regularizer to this
+layer weights (see tflearn.regularizers). Default: None.</li>
+<li><strong>weight_decay</strong>: <code>float</code>. Regularizer decay parameter. Default: 0.001.</li>
+<li><strong>trainable</strong>: <code>bool</code>. If True, weights will be trainable.</li>
+<li><strong>restore</strong>: <code>bool</code>. If True, this layer weights will be restored when
+loading a model.</li>
+<li><strong>reuse</strong>: <code>bool</code>. If True and 'scope' is provided, this layer variables
+will be reused (shared).</li>
+<li><strong>scope</strong>: <code>str</code>. Define this layer scope (optional). A scope can be
+used to share variables between layers. Note that scope will
+override name.</li>
+<li><strong>name</strong>: A name for this layer (optional). Default: 'Conv2D'.</li>
+</ul>
+<h3>Attributes</h3>
+
+<ul>
+<li><strong>scope</strong>: <code>Scope</code>. This layer scope.</li>
+<li><strong>W</strong>: <code>Variable</code>. Variable representing filter weights.</li>
+<li><strong>b</strong>: <code>Variable</code>. Variable representing biases.</li>
+</ul>
+<hr />
+<h1 id="grouped-convolution-2d">Grouped Convolution 2D</h1>
+<p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.grouped_conv_2d</b></span>  (incoming,  channel_multiplier,  filter_size,  strides=1,  padding='same',  activation='linear',  bias=False,  weights_init='uniform_scaling',  bias_init='zeros',  regularizer=None,  weight_decay=0.001,  trainable=True,  restore=True,  reuse=False,  scope=None,  name='GroupedConv2D')</span></p>
+<p>a.k.a DepthWise Convolution 2D.</p>
+<p>Given a 4D input tensor ('NHWC' or 'NCHW' data formats), a kernel_size and
+a channel_multiplier, grouped_conv_2d applies a different filter to each
+input channel (expanding from 1 channel to channel_multiplier channels
+for each), then concatenates the results together. The output has
+in_channels * channel_multiplier channels.</p>
+<p>In detail,</p>
+<pre><code>output[b, i, j, k * channel_multiplier + q] = sum_{di, dj}
+ filter[di, dj, k, q] * input[b, strides[1] * i + rate[0] * di, strides[2] * j + rate[1] * dj, k]
+</code></pre>
+
+<p>Must have strides[0] = strides[3] = 1. For the most common case of the same
+horizontal and vertical strides, strides = [1, stride, stride, 1]. If any
+value in rate is greater than 1, we perform atrous depthwise convolution,
+in which case all values in the strides tensor must be equal to 1.</p>
+<h3>Input</h3>
+
+<p>4-D Tensor [batch, height, width, in_channels].</p>
+<h3>Output</h3>
+
+<p>4-D Tensor [batch, new height, new width, in_channels * channel_multiplier].</p>
+<h3>Arguments</h3>
+
+<ul>
+<li><strong>incoming</strong>: <code>Tensor</code>. Incoming 4-D Tensor.</li>
+<li><strong>channel_multiplier</strong>: <code>int</code>. The number of channels to expand to.</li>
+<li><strong>filter_size</strong>: <code>int</code> or <code>list of int</code>. Size of filters.</li>
+<li><strong>strides</strong>: 'int<code>or list of</code>int`. Strides of conv operation.
+Default: [1 1 1 1].</li>
 <li><strong>padding</strong>: <code>str</code> from <code>"same", "valid"</code>. Padding algo to use.
 Default: 'same'.</li>
 <li><strong>activation</strong>: <code>str</code> (name) or <code>function</code> (returning a <code>Tensor</code>) or None.
@@ -1132,13 +1197,13 @@ Zhang, Shaoqing Ren, Jian Sun. 2015.</li>
 <hr />
 <h1 id="resnext-block">ResNeXt Block</h1>
 <p><span class="extra_h1"><span style="color:black;"><b>tflearn.layers.conv.resnext_block</b></span>  (incoming,  nb_blocks,  out_channels,  cardinality,  downsample=False,  downsample_strides=2,  activation='relu',  batch_norm=True,  weights_init='variance_scaling',  regularizer='L2',  weight_decay=0.0001,  bias=True,  bias_init='zeros',  trainable=True,  restore=True,  reuse=False,  scope=None,  name='ResNeXtBlock')</span></p>
-<p>A ResNeXt block as described in ResNeXt paper.</p>
+<p>A ResNeXt block as described in ResNeXt paper (Figure 2, c).</p>
 <h3>Input</h3>
 
 <p>4-D Tensor [batch, height, width, in_channels].</p>
 <h3>Output</h3>
 
-<p>4-D Tensor [batch, new height, new width, nb_filter].</p>
+<p>4-D Tensor [batch, new height, new width, out_channels].</p>
 <h3>Arguments</h3>
 
 <ul>
